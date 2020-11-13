@@ -121,7 +121,7 @@ public class frmMain extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Detalle del Producto");
+        jLabel11.setText("Historial de Productos");
         panelDetalle.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 140, 20));
 
         jPanel2.add(panelDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 220, 40));
