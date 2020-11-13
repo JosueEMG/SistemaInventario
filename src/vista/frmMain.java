@@ -34,6 +34,7 @@ public class frmMain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jProgressBar1 = new javax.swing.JProgressBar();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         panelSalida = new javax.swing.JPanel();
@@ -56,7 +57,7 @@ public class frmMain extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         frmRegistro = new javax.swing.JInternalFrame();
-        btnCerrar = new javax.swing.JButton();
+        btnCerrarRegistro = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,11 +71,6 @@ public class frmMain extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelSalida.setBackground(new java.awt.Color(54, 70, 78));
-        panelSalida.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                panelSalidaMouseEntered(evt);
-            }
-        });
         panelSalida.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -180,10 +176,10 @@ public class frmMain extends javax.swing.JFrame {
 
         frmRegistro.setVisible(true);
 
-        btnCerrar.setText("Cerrar");
-        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+        btnCerrarRegistro.setText("Cerrar");
+        btnCerrarRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCerrarActionPerformed(evt);
+                btnCerrarRegistroActionPerformed(evt);
             }
         });
 
@@ -191,17 +187,17 @@ public class frmMain extends javax.swing.JFrame {
         frmRegistro.getContentPane().setLayout(frmRegistroLayout);
         frmRegistroLayout.setHorizontalGroup(
             frmRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(frmRegistroLayout.createSequentialGroup()
-                .addGap(339, 339, 339)
-                .addComponent(btnCerrar)
-                .addContainerGap(362, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmRegistroLayout.createSequentialGroup()
+                .addContainerGap(357, Short.MAX_VALUE)
+                .addComponent(btnCerrarRegistro)
+                .addGap(344, 344, 344))
         );
         frmRegistroLayout.setVerticalGroup(
             frmRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmRegistroLayout.createSequentialGroup()
-                .addContainerGap(437, Short.MAX_VALUE)
-                .addComponent(btnCerrar)
-                .addGap(69, 69, 69))
+                .addContainerGap(424, Short.MAX_VALUE)
+                .addComponent(btnCerrarRegistro)
+                .addGap(82, 82, 82))
         );
 
         jPanel1.add(frmRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 770, 560));
@@ -270,13 +266,9 @@ public class frmMain extends javax.swing.JFrame {
         resetlabelcolor(jLabel3);
     }//GEN-LAST:event_jLabel3MouseExited
 
-    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+    private void btnCerrarRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarRegistroActionPerformed
         frmRegistro.setVisible(false);
-    }//GEN-LAST:event_btnCerrarActionPerformed
-
-    private void panelSalidaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelSalidaMouseEntered
-  
-    }//GEN-LAST:event_panelSalidaMouseEntered
+    }//GEN-LAST:event_btnCerrarRegistroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -317,7 +309,7 @@ public class frmMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCerrar;
+    private javax.swing.JButton btnCerrarRegistro;
     private javax.swing.JInternalFrame frmRegistro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -335,6 +327,7 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JPanel panelDetalle;
     private javax.swing.JPanel panelInspeccion;
     private javax.swing.JPanel panelListadoUsuarios;

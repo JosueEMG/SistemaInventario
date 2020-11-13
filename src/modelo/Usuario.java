@@ -21,8 +21,7 @@ public class Usuario {
     private String nombre_tipo;
     
     // Constructor for create a new user
-    public Usuario(int id, String nombre, int dni, String contraseña, String correo, int id_tipo) {
-        this.id = id;
+    public Usuario(String nombre, int dni, String contraseña, String correo, int id_tipo) {
         this.nombre = nombre;
         this.dni = dni;
         this.contraseña = contraseña;
@@ -31,11 +30,10 @@ public class Usuario {
     }
 
     // Constructor for show the users
-    public Usuario(int id, String nombre, int dni, String contraseña, String correo, String nombre_tipo) {
+    public Usuario(int id, String nombre, int dni, String correo, String nombre_tipo) {
         this.id = id;
         this.nombre = nombre;
         this.dni = dni;
-        this.contraseña = contraseña;
         this.correo = correo;
         this.nombre_tipo = nombre_tipo;
     }
