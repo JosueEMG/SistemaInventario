@@ -16,7 +16,7 @@ import controlador.EventsController;
  */
 public class frmMain extends javax.swing.JFrame {
 
-    int x = 220;
+    int x = 230;
     int a = 0;
     EventsController view;
     public frmMain() {
@@ -139,8 +139,8 @@ public class frmMain extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("Inspección de Productos");
-        panelInspeccion.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 150, 20));
+        jLabel13.setText("Clasificación de Productos");
+        panelInspeccion.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 160, 20));
 
         jPanel2.add(panelInspeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 220, 40));
 
@@ -158,7 +158,7 @@ public class frmMain extends javax.swing.JFrame {
 
         jPanel2.add(panelListadoUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 220, 40));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 73, 220, 552));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 73, 230, 552));
 
         jLabel3.setBackground(new java.awt.Color(0, 102, 204));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -194,7 +194,7 @@ public class frmMain extends javax.swing.JFrame {
             .addGroup(frmRegistroLayout.createSequentialGroup()
                 .addGap(339, 339, 339)
                 .addComponent(btnCerrar)
-                .addContainerGap(372, Short.MAX_VALUE))
+                .addContainerGap(362, Short.MAX_VALUE))
         );
         frmRegistroLayout.setVerticalGroup(
             frmRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,7 +204,7 @@ public class frmMain extends javax.swing.JFrame {
                 .addGap(69, 69, 69))
         );
 
-        jPanel1.add(frmRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 780, 560));
+        jPanel1.add(frmRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 770, 560));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/FMainMenu.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 625));
@@ -224,14 +224,14 @@ public class frmMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        if ( x == 220 ) {
-            jPanel2.setSize(220, 552);
+        if ( x == 230 ) {
+            jPanel2.setSize(230, 552);
             Thread th = new Thread() {
                 @Override
                 public void run(){
                     try {
                         
-                        for ( int i = 220; i >= 0; i--){
+                        for ( int i = 230; i >= 0; i--){
                             Thread.sleep(1);
                             jPanel2.setSize(i, 552);
                             
@@ -258,7 +258,7 @@ public class frmMain extends javax.swing.JFrame {
                     }
                 }
             };th.start();
-            x = 220;
+            x = 230;
         }
     }//GEN-LAST:event_jLabel3MouseClicked
 
