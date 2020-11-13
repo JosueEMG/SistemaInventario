@@ -7,7 +7,8 @@ package vista;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
+import javax.swing.JPanel;
+import controlador.EventsController;
 
 /**
  *
@@ -15,11 +16,13 @@ import javax.swing.JOptionPane;
  */
 public class frmMain extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainMenu
-     */
+    int x = 220;
+    int a = 0;
+    EventsController view;
     public frmMain() {
         initComponents();
+        view = new EventsController(this);
+        frmRegistro.setVisible(false);
     }
 
     /**
@@ -33,25 +36,27 @@ public class frmMain extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
+        panelSalida = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        panelRegistro = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
+        panelProveedores = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
+        panelDetalle = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
+        panelInspeccion = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jPanel9 = new javax.swing.JPanel();
+        panelListadoUsuarios = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        frmRegistro = new javax.swing.JInternalFrame();
+        btnCerrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -64,89 +69,94 @@ public class frmMain extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(54, 70, 78));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel4.setBackground(new java.awt.Color(54, 70, 78));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelSalida.setBackground(new java.awt.Color(54, 70, 78));
+        panelSalida.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelSalidaMouseEntered(evt);
+            }
+        });
+        panelSalida.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-magazine-23.png"))); // NOI18N
-        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 4, 40, 30));
+        panelSalida.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 4, 40, 30));
 
         jLabel5.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Salida de Productos");
-        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 140, 20));
+        panelSalida.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 140, 20));
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 220, 40));
+        jPanel2.add(panelSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 220, 40));
 
-        jPanel5.setBackground(new java.awt.Color(54, 70, 78));
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelRegistro.setBackground(new java.awt.Color(54, 70, 78));
+        panelRegistro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-home-page-23.png"))); // NOI18N
-        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 4, 40, 30));
+        panelRegistro.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 4, 40, 30));
 
         jLabel7.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Registro de Productos");
-        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 140, 20));
+        panelRegistro.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 140, 20));
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 220, 40));
+        jPanel2.add(panelRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 220, 40));
 
-        jPanel6.setBackground(new java.awt.Color(54, 70, 78));
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelProveedores.setBackground(new java.awt.Color(54, 70, 78));
+        panelProveedores.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-male-user-23.png"))); // NOI18N
-        jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 4, 40, 30));
+        panelProveedores.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 4, 40, 30));
 
         jLabel9.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Proveedores");
-        jPanel6.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 140, 20));
+        panelProveedores.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 140, 20));
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 220, 40));
+        jPanel2.add(panelProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 220, 40));
 
-        jPanel7.setBackground(new java.awt.Color(54, 70, 78));
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelDetalle.setBackground(new java.awt.Color(54, 70, 78));
+        panelDetalle.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-increase-23.png"))); // NOI18N
-        jPanel7.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 4, 40, 30));
+        panelDetalle.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 4, 40, 30));
 
         jLabel11.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Detalle del Producto");
-        jPanel7.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 140, 20));
+        panelDetalle.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 140, 20));
 
-        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 220, 40));
+        jPanel2.add(panelDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 220, 40));
 
-        jPanel8.setBackground(new java.awt.Color(54, 70, 78));
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelInspeccion.setBackground(new java.awt.Color(54, 70, 78));
+        panelInspeccion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-survey-23.png"))); // NOI18N
-        jPanel8.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 4, 40, 30));
+        panelInspeccion.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 4, 40, 30));
 
         jLabel13.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Inspección de Productos");
-        jPanel8.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 150, 20));
+        panelInspeccion.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 150, 20));
 
-        jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 220, 40));
+        jPanel2.add(panelInspeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 220, 40));
 
-        jPanel9.setBackground(new java.awt.Color(54, 70, 78));
-        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelListadoUsuarios.setBackground(new java.awt.Color(54, 70, 78));
+        panelListadoUsuarios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-increase-23.png"))); // NOI18N
-        jPanel9.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 4, 40, 30));
+        panelListadoUsuarios.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 4, 40, 30));
 
         jLabel15.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Listado de Usuarios");
-        jPanel9.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 140, 20));
+        panelListadoUsuarios.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 140, 20));
 
-        jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 220, 40));
+        jPanel2.add(panelListadoUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 220, 40));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 73, 220, 552));
 
@@ -168,6 +178,34 @@ public class frmMain extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 40, -1));
 
+        frmRegistro.setVisible(true);
+
+        btnCerrar.setText("Cerrar");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout frmRegistroLayout = new javax.swing.GroupLayout(frmRegistro.getContentPane());
+        frmRegistro.getContentPane().setLayout(frmRegistroLayout);
+        frmRegistroLayout.setHorizontalGroup(
+            frmRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frmRegistroLayout.createSequentialGroup()
+                .addGap(339, 339, 339)
+                .addComponent(btnCerrar)
+                .addContainerGap(372, Short.MAX_VALUE))
+        );
+        frmRegistroLayout.setVerticalGroup(
+            frmRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmRegistroLayout.createSequentialGroup()
+                .addContainerGap(437, Short.MAX_VALUE)
+                .addComponent(btnCerrar)
+                .addGap(69, 69, 69))
+        );
+
+        jPanel1.add(frmRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 780, 560));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/FMainMenu.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 625));
 
@@ -184,8 +222,7 @@ public class frmMain extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    int x = 220;
-    int a = 0;
+
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         if ( x == 220 ) {
             jPanel2.setSize(220, 552);
@@ -233,6 +270,14 @@ public class frmMain extends javax.swing.JFrame {
         resetlabelcolor(jLabel3);
     }//GEN-LAST:event_jLabel3MouseExited
 
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        frmRegistro.setVisible(false);
+    }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void panelSalidaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelSalidaMouseEntered
+  
+    }//GEN-LAST:event_panelSalidaMouseEntered
+
     /**
      * @param args the command line arguments
      */
@@ -272,6 +317,8 @@ public class frmMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCerrar;
+    private javax.swing.JInternalFrame frmRegistro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -288,18 +335,47 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel panelDetalle;
+    private javax.swing.JPanel panelInspeccion;
+    private javax.swing.JPanel panelListadoUsuarios;
+    private javax.swing.JPanel panelProveedores;
+    private javax.swing.JPanel panelRegistro;
+    private javax.swing.JPanel panelSalida;
     // End of variables declaration//GEN-END:variables
     private void labelcolor(JLabel label){
         label.setBackground(new java.awt.Color(53,162,107));
     }
-    
+   
     private void resetlabelcolor(JLabel label){
         label.setBackground(new java.awt.Color(54,70,78));
     }
+    
+    public javax.swing.JPanel getPanelDetalle() {
+        return panelDetalle;
+    }
+
+    public javax.swing.JPanel getPanelInspeccion() {
+        return panelInspeccion;
+    }
+
+    public javax.swing.JPanel getPanelListadoUsuarios() {
+        return panelListadoUsuarios;
+    }
+
+    public javax.swing.JPanel getPanelProveedores() {
+        return panelProveedores;
+    }
+
+    public javax.swing.JPanel getPanelRegistro() {
+        return panelRegistro;
+    }
+
+    public javax.swing.JPanel getPanelSalida() {
+        return panelSalida;
+    }
+
+    public javax.swing.JInternalFrame getFrmRegistro() {
+        return frmRegistro;
+    }
+    
 }
