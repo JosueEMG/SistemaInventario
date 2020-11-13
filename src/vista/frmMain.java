@@ -82,7 +82,7 @@ public class frmMain extends javax.swing.JFrame {
         jLabel5.setText("Salida de Productos");
         panelSalida.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 140, 20));
 
-        jPanel2.add(panelSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 220, 40));
+        jPanel2.add(panelSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 230, 40));
 
         panelRegistro.setBackground(new java.awt.Color(54, 70, 78));
         panelRegistro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -96,7 +96,7 @@ public class frmMain extends javax.swing.JFrame {
         jLabel7.setText("Registro de Productos");
         panelRegistro.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 140, 20));
 
-        jPanel2.add(panelRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 220, 40));
+        jPanel2.add(panelRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 230, 40));
 
         panelProveedores.setBackground(new java.awt.Color(54, 70, 78));
         panelProveedores.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -110,7 +110,7 @@ public class frmMain extends javax.swing.JFrame {
         jLabel9.setText("Proveedores");
         panelProveedores.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 140, 20));
 
-        jPanel2.add(panelProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 220, 40));
+        jPanel2.add(panelProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 230, 40));
 
         panelDetalle.setBackground(new java.awt.Color(54, 70, 78));
         panelDetalle.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -124,7 +124,7 @@ public class frmMain extends javax.swing.JFrame {
         jLabel11.setText("Historial de Productos");
         panelDetalle.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 140, 20));
 
-        jPanel2.add(panelDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 220, 40));
+        jPanel2.add(panelDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 230, 40));
 
         panelInspeccion.setBackground(new java.awt.Color(54, 70, 78));
         panelInspeccion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -138,7 +138,7 @@ public class frmMain extends javax.swing.JFrame {
         jLabel13.setText("Clasificación de Productos");
         panelInspeccion.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 160, 20));
 
-        jPanel2.add(panelInspeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 220, 40));
+        jPanel2.add(panelInspeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 230, 40));
 
         panelListadoUsuarios.setBackground(new java.awt.Color(54, 70, 78));
         panelListadoUsuarios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -152,7 +152,7 @@ public class frmMain extends javax.swing.JFrame {
         jLabel15.setText("Listado de Usuarios");
         panelListadoUsuarios.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 140, 20));
 
-        jPanel2.add(panelListadoUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 220, 40));
+        jPanel2.add(panelListadoUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 230, 40));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 73, 230, 552));
 
