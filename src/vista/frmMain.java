@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import controlador.EventsController;
+import javax.swing.JInternalFrame;
 
 /**
  *
@@ -19,10 +20,12 @@ public class frmMain extends javax.swing.JFrame {
     int x = 230;
     int a = 0;
     EventsController view;
+    private JInternalFrame activeFrame;
     public frmMain() {
         initComponents();
         view = new EventsController(this);
         frmRegistro.setVisible(false);
+        frmSalida.setVisible(false);
     }
 
     /**
@@ -35,6 +38,7 @@ public class frmMain extends javax.swing.JFrame {
     private void initComponents() {
 
         jProgressBar1 = new javax.swing.JProgressBar();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         panelSalida = new javax.swing.JPanel();
@@ -56,6 +60,8 @@ public class frmMain extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        frmSalida = new javax.swing.JInternalFrame();
+        btnCerrarSalida = new javax.swing.JButton();
         frmRegistro = new javax.swing.JInternalFrame();
         btnCerrarRegistro = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -174,6 +180,34 @@ public class frmMain extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 40, -1));
 
+        frmSalida.setVisible(true);
+
+        btnCerrarSalida.setText("Cerrar");
+        btnCerrarSalida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarSalidaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout frmSalidaLayout = new javax.swing.GroupLayout(frmSalida.getContentPane());
+        frmSalida.getContentPane().setLayout(frmSalidaLayout);
+        frmSalidaLayout.setHorizontalGroup(
+            frmSalidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frmSalidaLayout.createSequentialGroup()
+                .addGap(340, 340, 340)
+                .addComponent(btnCerrarSalida)
+                .addContainerGap(361, Short.MAX_VALUE))
+        );
+        frmSalidaLayout.setVerticalGroup(
+            frmSalidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmSalidaLayout.createSequentialGroup()
+                .addContainerGap(387, Short.MAX_VALUE)
+                .addComponent(btnCerrarSalida)
+                .addGap(119, 119, 119))
+        );
+
+        jPanel1.add(frmSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 770, 560));
+
         frmRegistro.setVisible(true);
 
         btnCerrarRegistro.setText("Cerrar");
@@ -188,7 +222,7 @@ public class frmMain extends javax.swing.JFrame {
         frmRegistroLayout.setHorizontalGroup(
             frmRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmRegistroLayout.createSequentialGroup()
-                .addContainerGap(357, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCerrarRegistro)
                 .addGap(344, 344, 344))
         );
@@ -226,18 +260,21 @@ public class frmMain extends javax.swing.JFrame {
                 @Override
                 public void run(){
                     try {
-                        
+                        int cont = 0 ;
                         for ( int i = 230; i >= 0; i--){
+                            cont++;
                             Thread.sleep(1);
                             jPanel2.setSize(i, 552);
-                            
+                            activeFrame.setSize(770 + cont, 560);
+                            activeFrame.setLocation(i, 70);
                             a++;
                         }
                     } catch (Exception e) {
                         JOptionPane.showMessageDialog(null, e);
                     }
                 }
-            };th.start();
+            };
+            th.start();
             x=0;
         } else if( x == 0 ){
             jPanel2.setSize(x, 552);
@@ -245,15 +282,20 @@ public class frmMain extends javax.swing.JFrame {
                 @Override
                 public void run(){
                     try {
+                        int cont = 0 ;
                         for (int i = 0; i <= x; i++){
+                            cont++;
                             Thread.sleep(1);
                             jPanel2.setSize(i, 552);
+                            activeFrame.setSize((770 + x) - cont, 560);
+                            activeFrame.setLocation(i, 70);
                         }
                     } catch (Exception e) {
                         JOptionPane.showMessageDialog(null, e);
                     }
                 }
-            };th.start();
+            };
+            th.start();
             x = 230;
         }
     }//GEN-LAST:event_jLabel3MouseClicked
@@ -270,6 +312,13 @@ public class frmMain extends javax.swing.JFrame {
         frmRegistro.setVisible(false);
     }//GEN-LAST:event_btnCerrarRegistroActionPerformed
 
+    private void btnCerrarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSalidaActionPerformed
+        frmSalida.setVisible(false);
+    }//GEN-LAST:event_btnCerrarSalidaActionPerformed
+
+    public void setActiveInternalFrame(JInternalFrame frame) {
+        this.activeFrame = frame;
+    }
     /**
      * @param args the command line arguments
      */
@@ -310,7 +359,10 @@ public class frmMain extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarRegistro;
+    private javax.swing.JButton btnCerrarSalida;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JInternalFrame frmRegistro;
+    private javax.swing.JInternalFrame frmSalida;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -370,5 +422,9 @@ public class frmMain extends javax.swing.JFrame {
     public javax.swing.JInternalFrame getFrmRegistro() {
         return frmRegistro;
     }
-    
+
+    public javax.swing.JInternalFrame getFrmSalida() {
+        return frmSalida;
+    }
+
 }

@@ -33,6 +33,11 @@ public class EventsController implements MouseListener{
        menu.getPanelSalida().addMouseListener(this);
     }
     
+    void closeActivePanels() {
+        menu.getFrmRegistro().setVisible(false);
+        menu.getFrmSalida().setVisible(false);
+    }
+    
     @Override
     public void mouseClicked(MouseEvent me) {
         Object evt = me.getSource();
@@ -51,10 +56,15 @@ public class EventsController implements MouseListener{
         }
         else if(evt.equals(menu.getPanelRegistro())){
             System.out.println("Panel registro");
+            closeActivePanels();
             menu.getFrmRegistro().setVisible(true);
+            menu.setActiveInternalFrame(menu.getFrmRegistro());
         }
         else if(evt.equals(menu.getPanelSalida())){
             System.out.println("Panel salida");
+            closeActivePanels();
+            menu.getFrmSalida().setVisible(true);
+            menu.setActiveInternalFrame(menu.getFrmSalida());
         }
         
     }
