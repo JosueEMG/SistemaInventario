@@ -58,13 +58,13 @@ public class EventsController implements MouseListener{
             System.out.println("Panel registro");
             closeActivePanels();
             menu.getFrmRegistro().setVisible(true);
-            menu.setActiveInternalFrame(menu.getFrmRegistro());
+            menu.setActiveFrame(menu.getFrmRegistro());
         }
         else if(evt.equals(menu.getPanelSalida())){
             System.out.println("Panel salida");
             closeActivePanels();
             menu.getFrmSalida().setVisible(true);
-            menu.setActiveInternalFrame(menu.getFrmSalida());
+            menu.setActiveFrame(menu.getFrmSalida());
         }
         
     }

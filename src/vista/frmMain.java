@@ -316,7 +316,7 @@ public class frmMain extends javax.swing.JFrame {
         frmSalida.setVisible(false);
     }//GEN-LAST:event_btnCerrarSalidaActionPerformed
 
-    public void setActiveInternalFrame(JInternalFrame frame) {
+    public void setActiveFrame(JInternalFrame frame) {
         this.activeFrame = frame;
     }
     /**
