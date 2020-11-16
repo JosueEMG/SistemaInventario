@@ -18,7 +18,6 @@ import javax.swing.JInternalFrame;
 public class frmMain extends javax.swing.JFrame {
 
     int x = 230;
-    int a = 0;
     EventsController view;
     private JInternalFrame activeFrame;
     public frmMain() {
@@ -26,6 +25,7 @@ public class frmMain extends javax.swing.JFrame {
         view = new EventsController(this);
         frmRegistro.setVisible(false);
         frmSalida.setVisible(false);
+        frmProveedores.setVisible(false);
     }
 
     /**
@@ -64,6 +64,8 @@ public class frmMain extends javax.swing.JFrame {
         btnCerrarSalida = new javax.swing.JButton();
         frmRegistro = new javax.swing.JInternalFrame();
         btnCerrarRegistro = new javax.swing.JButton();
+        frmProveedores = new javax.swing.JInternalFrame();
+        btnCerrarProveedores = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -160,7 +162,7 @@ public class frmMain extends javax.swing.JFrame {
 
         jPanel2.add(panelListadoUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 230, 40));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 73, 230, 552));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 230, 560));
 
         jLabel3.setBackground(new java.awt.Color(0, 102, 204));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -236,6 +238,34 @@ public class frmMain extends javax.swing.JFrame {
 
         jPanel1.add(frmRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 770, 560));
 
+        frmProveedores.setVisible(true);
+
+        btnCerrarProveedores.setText("Cerrar");
+        btnCerrarProveedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarProveedoresActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout frmProveedoresLayout = new javax.swing.GroupLayout(frmProveedores.getContentPane());
+        frmProveedores.getContentPane().setLayout(frmProveedoresLayout);
+        frmProveedoresLayout.setHorizontalGroup(
+            frmProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frmProveedoresLayout.createSequentialGroup()
+                .addGap(326, 326, 326)
+                .addComponent(btnCerrarProveedores)
+                .addContainerGap(375, Short.MAX_VALUE))
+        );
+        frmProveedoresLayout.setVerticalGroup(
+            frmProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmProveedoresLayout.createSequentialGroup()
+                .addContainerGap(410, Short.MAX_VALUE)
+                .addComponent(btnCerrarProveedores)
+                .addGap(96, 96, 96))
+        );
+
+        jPanel1.add(frmProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 770, 560));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/FMainMenu.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 625));
 
@@ -254,8 +284,9 @@ public class frmMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+
         if ( x == 230 ) {
-            jPanel2.setSize(230, 552);
+            jPanel2.setSize(230, 560);
             Thread th = new Thread() {
                 @Override
                 public void run(){
@@ -264,10 +295,13 @@ public class frmMain extends javax.swing.JFrame {
                         for ( int i = 230; i >= 0; i--){
                             cont++;
                             Thread.sleep(1);
-                            jPanel2.setSize(i, 552);
-                            activeFrame.setSize(770 + cont, 560);
-                            activeFrame.setLocation(i, 70);
-                            a++;
+                            jPanel2.setSize(i, 560);
+                            try {
+                                activeFrame.setSize(770 + cont, 560);
+                                activeFrame.setLocation(i, 70);
+                            } catch (Exception e) {
+                            }
+                 
                         }
                     } catch (Exception e) {
                         JOptionPane.showMessageDialog(null, e);
@@ -277,7 +311,7 @@ public class frmMain extends javax.swing.JFrame {
             th.start();
             x=0;
         } else if( x == 0 ){
-            jPanel2.setSize(x, 552);
+            jPanel2.setSize(x, 560);
             Thread th = new Thread(){
                 @Override
                 public void run(){
@@ -286,9 +320,12 @@ public class frmMain extends javax.swing.JFrame {
                         for (int i = 0; i <= x; i++){
                             cont++;
                             Thread.sleep(1);
-                            jPanel2.setSize(i, 552);
-                            activeFrame.setSize((770 + x) - cont, 560);
-                            activeFrame.setLocation(i, 70);
+                            jPanel2.setSize(i, 560);
+                            try {
+                                activeFrame.setSize((770 + x) - cont, 560);
+                                activeFrame.setLocation(i, 70);
+                            } catch (Exception e) {
+                            }
                         }
                     } catch (Exception e) {
                         JOptionPane.showMessageDialog(null, e);
@@ -311,6 +348,10 @@ public class frmMain extends javax.swing.JFrame {
     private void btnCerrarRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarRegistroActionPerformed
         frmRegistro.setVisible(false);
     }//GEN-LAST:event_btnCerrarRegistroActionPerformed
+
+    private void btnCerrarProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarProveedoresActionPerformed
+        frmProveedores.setVisible(false);
+    }//GEN-LAST:event_btnCerrarProveedoresActionPerformed
 
     private void btnCerrarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSalidaActionPerformed
         frmSalida.setVisible(false);
@@ -358,9 +399,11 @@ public class frmMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCerrarProveedores;
     private javax.swing.JButton btnCerrarRegistro;
     private javax.swing.JButton btnCerrarSalida;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JInternalFrame frmProveedores;
     private javax.swing.JInternalFrame frmRegistro;
     private javax.swing.JInternalFrame frmSalida;
     private javax.swing.JLabel jLabel1;
@@ -425,6 +468,10 @@ public class frmMain extends javax.swing.JFrame {
 
     public javax.swing.JInternalFrame getFrmSalida() {
         return frmSalida;
+    }
+
+    public javax.swing.JInternalFrame getFrmProveedores() {
+        return frmProveedores;
     }
 
 }

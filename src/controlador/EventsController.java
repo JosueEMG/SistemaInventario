@@ -36,6 +36,7 @@ public class EventsController implements MouseListener{
     void closeActivePanels() {
         menu.getFrmRegistro().setVisible(false);
         menu.getFrmSalida().setVisible(false);
+        menu.getFrmProveedores().setVisible(false);
     }
     
     @Override
@@ -53,6 +54,8 @@ public class EventsController implements MouseListener{
         }
         else if(evt.equals(menu.getPanelProveedores())){
             System.out.println("Panel proveedores");
+            menu.getFrmProveedores().setVisible(true);
+            menu.setActiveFrame(menu.getFrmProveedores());
         }
         else if(evt.equals(menu.getPanelRegistro())){
             System.out.println("Panel registro");
