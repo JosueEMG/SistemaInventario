@@ -54,6 +54,7 @@ public class EventsController implements MouseListener{
         }
         else if(evt.equals(menu.getPanelProveedores())){
             System.out.println("Panel proveedores");
+            closeActivePanels();
             menu.getFrmProveedores().setVisible(true);
             menu.setActiveFrame(menu.getFrmProveedores());
         }
