@@ -26,6 +26,7 @@ public class frmMain extends javax.swing.JFrame {
         frmRegistro.setVisible(false);
         frmSalida.setVisible(false);
         frmProveedores.setVisible(false);
+        frmHistorial.setVisible(false);
     }
 
     /**
@@ -66,6 +67,9 @@ public class frmMain extends javax.swing.JFrame {
         btnCerrarRegistro = new javax.swing.JButton();
         frmProveedores = new javax.swing.JInternalFrame();
         btnCerrarProveedores = new javax.swing.JButton();
+        frmHistorial = new javax.swing.JInternalFrame();
+        btnCerrarHistorial = new javax.swing.JButton();
+        gg = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -266,6 +270,46 @@ public class frmMain extends javax.swing.JFrame {
 
         jPanel1.add(frmProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 770, 560));
 
+        frmHistorial.setVisible(true);
+
+        btnCerrarHistorial.setText("Cerrar");
+        btnCerrarHistorial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarHistorialActionPerformed(evt);
+            }
+        });
+
+        gg.setText("hola");
+
+        javax.swing.GroupLayout frmHistorialLayout = new javax.swing.GroupLayout(frmHistorial.getContentPane());
+        frmHistorial.getContentPane().setLayout(frmHistorialLayout);
+        frmHistorialLayout.setHorizontalGroup(
+            frmHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frmHistorialLayout.createSequentialGroup()
+                .addGap(340, 340, 340)
+                .addComponent(btnCerrarHistorial)
+                .addContainerGap(361, Short.MAX_VALUE))
+            .addGroup(frmHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(frmHistorialLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(gg)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        frmHistorialLayout.setVerticalGroup(
+            frmHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmHistorialLayout.createSequentialGroup()
+                .addContainerGap(387, Short.MAX_VALUE)
+                .addComponent(btnCerrarHistorial)
+                .addGap(119, 119, 119))
+            .addGroup(frmHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(frmHistorialLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(gg)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        jPanel1.add(frmHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 770, 560));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/FMainMenu.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 625));
 
@@ -357,6 +401,10 @@ public class frmMain extends javax.swing.JFrame {
         frmSalida.setVisible(false);
     }//GEN-LAST:event_btnCerrarSalidaActionPerformed
 
+    private void btnCerrarHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarHistorialActionPerformed
+        frmHistorial.setVisible(false);
+    }//GEN-LAST:event_btnCerrarHistorialActionPerformed
+
     public void setActiveFrame(JInternalFrame frame) {
         this.activeFrame = frame;
     }
@@ -399,13 +447,16 @@ public class frmMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCerrarHistorial;
     private javax.swing.JButton btnCerrarProveedores;
     private javax.swing.JButton btnCerrarRegistro;
     private javax.swing.JButton btnCerrarSalida;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JInternalFrame frmHistorial;
     private javax.swing.JInternalFrame frmProveedores;
     private javax.swing.JInternalFrame frmRegistro;
     private javax.swing.JInternalFrame frmSalida;
+    private javax.swing.JLabel gg;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -473,5 +524,11 @@ public class frmMain extends javax.swing.JFrame {
     public javax.swing.JInternalFrame getFrmProveedores() {
         return frmProveedores;
     }
+
+    public javax.swing.JInternalFrame getFrmHistorial() {
+        return frmHistorial;
+    }
+    
+    
 
 }
