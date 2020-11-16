@@ -2,13 +2,11 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group name="Integrador">
-            <file>file:/C:/Users/Lenovo/Desktop/6to%20ciclo%20UTP/Curso%20Integrador%201/Trabajo_grupal/SistemaInventario/src/modelo/Productos.java</file>
-            <file>file:/C:/Users/Lenovo/Desktop/6to%20ciclo%20UTP/Curso%20Integrador%201/Trabajo_grupal/SistemaInventario/src/modelo/Categoria.java</file>
-            <file>file:/C:/Users/Lenovo/Desktop/6to%20ciclo%20UTP/Curso%20Integrador%201/Trabajo_grupal/SistemaInventario/src/modelo/Usuario.java</file>
-            <file>file:/C:/Users/Lenovo/Desktop/6to%20ciclo%20UTP/Curso%20Integrador%201/Trabajo_grupal/SistemaInventario/src/modelo/Proveedores.java</file>
-            <file>file:/C:/Users/Lenovo/Desktop/6to%20ciclo%20UTP/Curso%20Integrador%201/Trabajo_grupal/SistemaInventario/src/util/MySQLConexion.java</file>
-            <file>file:/C:/Users/Lenovo/Desktop/6to%20ciclo%20UTP/Curso%20Integrador%201/Trabajo_grupal/SistemaInventario/src/modelo/Detalle.java</file>
+        <group name="Curso Integrador I">
+            <file>file:/C:/Users/Josue/Desktop/UTP/Ciclo%206/Integrador%20I/SistemaInventario/src/util/SQLConexion.java</file>
+            <file>file:/C:/Users/Josue/Desktop/UTP/Ciclo%206/Integrador%20I/SistemaInventario/src/modelo/Usuario.java</file>
+            <file>file:/C:/Users/Josue/Desktop/UTP/Ciclo%206/Integrador%20I/SistemaInventario/src/vista/frmMain.java</file>
+            <file>file:/C:/Users/Josue/Desktop/UTP/Ciclo%206/Integrador%20I/SistemaInventario/src/controlador/EventsController.java</file>
         </group>
     </open-files>
 </project-private>
