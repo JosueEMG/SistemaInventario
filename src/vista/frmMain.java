@@ -26,6 +26,8 @@ public class frmMain extends javax.swing.JFrame {
         frmRegistro.setVisible(false);
         frmSalida.setVisible(false);
         frmProveedores.setVisible(false);
+        frmClasificacion.setVisible(false);
+        frmLisUsuario.setVisible(false);
         frmHistorial.setVisible(false);
     }
 
@@ -70,6 +72,10 @@ public class frmMain extends javax.swing.JFrame {
         frmHistorial = new javax.swing.JInternalFrame();
         btnCerrarHistorial = new javax.swing.JButton();
         gg = new javax.swing.JLabel();
+        frmClasificacion = new javax.swing.JInternalFrame();
+        btnCerrarClasificacion = new javax.swing.JButton();
+        frmLisUsuario = new javax.swing.JInternalFrame();
+        btnCerrarLisUsuario = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -310,8 +316,73 @@ public class frmMain extends javax.swing.JFrame {
 
         jPanel1.add(frmHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 770, 560));
 
+        frmClasificacion.setVisible(true);
+
+        btnCerrarClasificacion.setText("Cerrar");
+        btnCerrarClasificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarClasificacionActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout frmClasificacionLayout = new javax.swing.GroupLayout(frmClasificacion.getContentPane());
+        frmClasificacion.getContentPane().setLayout(frmClasificacionLayout);
+        frmClasificacionLayout.setHorizontalGroup(
+            frmClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frmClasificacionLayout.createSequentialGroup()
+                .addGap(340, 340, 340)
+                .addComponent(btnCerrarClasificacion)
+                .addContainerGap(361, Short.MAX_VALUE))
+        );
+        frmClasificacionLayout.setVerticalGroup(
+            frmClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmClasificacionLayout.createSequentialGroup()
+                .addContainerGap(387, Short.MAX_VALUE)
+                .addComponent(btnCerrarClasificacion)
+                .addGap(119, 119, 119))
+        );
+
+        jPanel1.add(frmClasificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 770, 560));
+
+        frmLisUsuario.setVisible(true);
+
+        btnCerrarLisUsuario.setText("Cerrar");
+        btnCerrarLisUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarLisUsuarioActionPerformed(evt);
+            }
+        });
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/FMainMenu.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 625));
+
+        javax.swing.GroupLayout frmLisUsuarioLayout = new javax.swing.GroupLayout(frmLisUsuario.getContentPane());
+        frmLisUsuario.getContentPane().setLayout(frmLisUsuarioLayout);
+        frmLisUsuarioLayout.setHorizontalGroup(
+            frmLisUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frmLisUsuarioLayout.createSequentialGroup()
+                .addGap(340, 340, 340)
+                .addComponent(btnCerrarLisUsuario)
+                .addContainerGap(593, Short.MAX_VALUE))
+            .addGroup(frmLisUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(frmLisUsuarioLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        frmLisUsuarioLayout.setVerticalGroup(
+            frmLisUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmLisUsuarioLayout.createSequentialGroup()
+                .addContainerGap(474, Short.MAX_VALUE)
+                .addComponent(btnCerrarLisUsuario)
+                .addGap(119, 119, 119))
+            .addGroup(frmLisUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(frmLisUsuarioLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        jPanel1.add(frmLisUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 770, 560));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -405,6 +476,14 @@ public class frmMain extends javax.swing.JFrame {
         frmHistorial.setVisible(false);
     }//GEN-LAST:event_btnCerrarHistorialActionPerformed
 
+    private void btnCerrarClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarClasificacionActionPerformed
+       frmClasificacion.setVisible(false);
+    }//GEN-LAST:event_btnCerrarClasificacionActionPerformed
+
+    private void btnCerrarLisUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarLisUsuarioActionPerformed
+      frmLisUsuario.setVisible(false);
+    }//GEN-LAST:event_btnCerrarLisUsuarioActionPerformed
+
     public void setActiveFrame(JInternalFrame frame) {
         this.activeFrame = frame;
     }
@@ -447,12 +526,16 @@ public class frmMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCerrarClasificacion;
     private javax.swing.JButton btnCerrarHistorial;
+    private javax.swing.JButton btnCerrarLisUsuario;
     private javax.swing.JButton btnCerrarProveedores;
     private javax.swing.JButton btnCerrarRegistro;
     private javax.swing.JButton btnCerrarSalida;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JInternalFrame frmClasificacion;
     private javax.swing.JInternalFrame frmHistorial;
+    private javax.swing.JInternalFrame frmLisUsuario;
     private javax.swing.JInternalFrame frmProveedores;
     private javax.swing.JInternalFrame frmRegistro;
     private javax.swing.JInternalFrame frmSalida;
@@ -527,6 +610,14 @@ public class frmMain extends javax.swing.JFrame {
 
     public javax.swing.JInternalFrame getFrmHistorial() {
         return frmHistorial;
+    }
+
+    public javax.swing.JInternalFrame getFrmClasificacion() {
+        return frmClasificacion;
+    }
+
+    public javax.swing.JInternalFrame getFrmLisUsuario() {
+        return frmLisUsuario;
     }
     
     
