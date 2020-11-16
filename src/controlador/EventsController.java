@@ -37,6 +37,7 @@ public class EventsController implements MouseListener{
         menu.getFrmRegistro().setVisible(false);
         menu.getFrmSalida().setVisible(false);
         menu.getFrmProveedores().setVisible(false);
+        menu.getFrmHistorial().setVisible(false);
     }
     
     @Override
@@ -45,6 +46,9 @@ public class EventsController implements MouseListener{
         
         if(evt.equals(menu.getPanelDetalle())) {
             System.out.println("Panel detalle");
+            closeActivePanels();
+            menu.getFrmHistorial().setVisible(true);
+            menu.setActiveFrame(menu.getFrmHistorial());
         }
         else if(evt.equals(menu.getPanelInspeccion())){
             System.out.println("Panel inspeccion");
