@@ -22,11 +22,18 @@ public class frmMain extends javax.swing.JFrame {
     private JInternalFrame activeFrame;
     public frmMain() {
         initComponents();
+        this.setLocationRelativeTo(null);
         view = new EventsController(this);
+        closeAllFrames();
+    }
+    
+    void closeAllFrames() {
         frmRegistro.setVisible(false);
         frmSalida.setVisible(false);
         frmProveedores.setVisible(false);
         frmHistorial.setVisible(false);
+        frmClasificacion.setVisible(false);
+        frmListadoUsuarios.setVisible(false);
     }
 
     /**
@@ -41,7 +48,7 @@ public class frmMain extends javax.swing.JFrame {
         jProgressBar1 = new javax.swing.JProgressBar();
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        slideBar = new javax.swing.JPanel();
         panelSalida = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -54,13 +61,17 @@ public class frmMain extends javax.swing.JFrame {
         panelDetalle = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        panelInspeccion = new javax.swing.JPanel();
+        panelClasificacion = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         panelListadoUsuarios = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        slideIcon = new javax.swing.JLabel();
+        frmListadoUsuarios = new javax.swing.JInternalFrame();
+        btnCerrarListado = new javax.swing.JButton();
+        frmClasificacion = new javax.swing.JInternalFrame();
+        btnCerrarClasificacion = new javax.swing.JButton();
         frmSalida = new javax.swing.JInternalFrame();
         btnCerrarSalida = new javax.swing.JButton();
         frmRegistro = new javax.swing.JInternalFrame();
@@ -70,17 +81,21 @@ public class frmMain extends javax.swing.JFrame {
         frmHistorial = new javax.swing.JInternalFrame();
         btnCerrarHistorial = new javax.swing.JButton();
         gg = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        fontImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setResizable(false);
+        setSize(new java.awt.Dimension(1230, 720));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(1000, 625));
+        jPanel1.setRequestFocusEnabled(false);
+        jPanel1.setVerifyInputWhenFocusTarget(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(54, 70, 78));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        slideBar.setBackground(new java.awt.Color(54, 70, 78));
+        slideBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelSalida.setBackground(new java.awt.Color(54, 70, 78));
         panelSalida.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -94,7 +109,7 @@ public class frmMain extends javax.swing.JFrame {
         jLabel5.setText("Salida de Productos");
         panelSalida.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 140, 20));
 
-        jPanel2.add(panelSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 230, 40));
+        slideBar.add(panelSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 230, 40));
 
         panelRegistro.setBackground(new java.awt.Color(54, 70, 78));
         panelRegistro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -108,7 +123,7 @@ public class frmMain extends javax.swing.JFrame {
         jLabel7.setText("Registro de Productos");
         panelRegistro.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 140, 20));
 
-        jPanel2.add(panelRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 230, 40));
+        slideBar.add(panelRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 230, 40));
 
         panelProveedores.setBackground(new java.awt.Color(54, 70, 78));
         panelProveedores.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -122,7 +137,7 @@ public class frmMain extends javax.swing.JFrame {
         jLabel9.setText("Proveedores");
         panelProveedores.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 140, 20));
 
-        jPanel2.add(panelProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 230, 40));
+        slideBar.add(panelProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 230, 40));
 
         panelDetalle.setBackground(new java.awt.Color(54, 70, 78));
         panelDetalle.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -136,21 +151,21 @@ public class frmMain extends javax.swing.JFrame {
         jLabel11.setText("Historial de Productos");
         panelDetalle.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 140, 20));
 
-        jPanel2.add(panelDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 230, 40));
+        slideBar.add(panelDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 230, 40));
 
-        panelInspeccion.setBackground(new java.awt.Color(54, 70, 78));
-        panelInspeccion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelClasificacion.setBackground(new java.awt.Color(54, 70, 78));
+        panelClasificacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-survey-23.png"))); // NOI18N
-        panelInspeccion.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 4, 40, 30));
+        panelClasificacion.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 4, 40, 30));
 
         jLabel13.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Clasificación de Productos");
-        panelInspeccion.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 160, 20));
+        panelClasificacion.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 160, 20));
 
-        jPanel2.add(panelInspeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 230, 40));
+        slideBar.add(panelClasificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 230, 40));
 
         panelListadoUsuarios.setBackground(new java.awt.Color(54, 70, 78));
         panelListadoUsuarios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -164,27 +179,83 @@ public class frmMain extends javax.swing.JFrame {
         jLabel15.setText("Listado de Usuarios");
         panelListadoUsuarios.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 140, 20));
 
-        jPanel2.add(panelListadoUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 230, 40));
+        slideBar.add(panelListadoUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 230, 40));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 230, 560));
+        jPanel1.add(slideBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 230, 650));
 
-        jLabel3.setBackground(new java.awt.Color(0, 102, 204));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-menu-30.png"))); // NOI18N
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel3.setOpaque(true);
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        slideIcon.setBackground(new java.awt.Color(0, 102, 204));
+        slideIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        slideIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-menu-30.png"))); // NOI18N
+        slideIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        slideIcon.setOpaque(true);
+        slideIcon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                slideIconMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel3MouseEntered(evt);
+                slideIconMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel3MouseExited(evt);
+                slideIconMouseExited(evt);
             }
         });
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 40, -1));
+        jPanel1.add(slideIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 40, -1));
+
+        frmListadoUsuarios.setVisible(true);
+
+        btnCerrarListado.setText("Cerrar");
+        btnCerrarListado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarListadoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout frmListadoUsuariosLayout = new javax.swing.GroupLayout(frmListadoUsuarios.getContentPane());
+        frmListadoUsuarios.getContentPane().setLayout(frmListadoUsuariosLayout);
+        frmListadoUsuariosLayout.setHorizontalGroup(
+            frmListadoUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frmListadoUsuariosLayout.createSequentialGroup()
+                .addGap(340, 340, 340)
+                .addComponent(btnCerrarListado)
+                .addContainerGap(591, Short.MAX_VALUE))
+        );
+        frmListadoUsuariosLayout.setVerticalGroup(
+            frmListadoUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmListadoUsuariosLayout.createSequentialGroup()
+                .addContainerGap(477, Short.MAX_VALUE)
+                .addComponent(btnCerrarListado)
+                .addGap(119, 119, 119))
+        );
+
+        jPanel1.add(frmListadoUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 1000, 650));
+
+        frmClasificacion.setVisible(true);
+
+        btnCerrarClasificacion.setText("Cerrar");
+        btnCerrarClasificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarClasificacionActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout frmClasificacionLayout = new javax.swing.GroupLayout(frmClasificacion.getContentPane());
+        frmClasificacion.getContentPane().setLayout(frmClasificacionLayout);
+        frmClasificacionLayout.setHorizontalGroup(
+            frmClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frmClasificacionLayout.createSequentialGroup()
+                .addGap(340, 340, 340)
+                .addComponent(btnCerrarClasificacion)
+                .addContainerGap(591, Short.MAX_VALUE))
+        );
+        frmClasificacionLayout.setVerticalGroup(
+            frmClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmClasificacionLayout.createSequentialGroup()
+                .addContainerGap(477, Short.MAX_VALUE)
+                .addComponent(btnCerrarClasificacion)
+                .addGap(119, 119, 119))
+        );
+
+        jPanel1.add(frmClasificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 1000, 650));
 
         frmSalida.setVisible(true);
 
@@ -202,17 +273,17 @@ public class frmMain extends javax.swing.JFrame {
             .addGroup(frmSalidaLayout.createSequentialGroup()
                 .addGap(340, 340, 340)
                 .addComponent(btnCerrarSalida)
-                .addContainerGap(361, Short.MAX_VALUE))
+                .addContainerGap(591, Short.MAX_VALUE))
         );
         frmSalidaLayout.setVerticalGroup(
             frmSalidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmSalidaLayout.createSequentialGroup()
-                .addContainerGap(387, Short.MAX_VALUE)
+                .addContainerGap(477, Short.MAX_VALUE)
                 .addComponent(btnCerrarSalida)
                 .addGap(119, 119, 119))
         );
 
-        jPanel1.add(frmSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 770, 560));
+        jPanel1.add(frmSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 1000, 650));
 
         frmRegistro.setVisible(true);
 
@@ -235,12 +306,12 @@ public class frmMain extends javax.swing.JFrame {
         frmRegistroLayout.setVerticalGroup(
             frmRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmRegistroLayout.createSequentialGroup()
-                .addContainerGap(424, Short.MAX_VALUE)
+                .addContainerGap(514, Short.MAX_VALUE)
                 .addComponent(btnCerrarRegistro)
                 .addGap(82, 82, 82))
         );
 
-        jPanel1.add(frmRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 770, 560));
+        jPanel1.add(frmRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 1000, 650));
 
         frmProveedores.setVisible(true);
 
@@ -258,17 +329,17 @@ public class frmMain extends javax.swing.JFrame {
             .addGroup(frmProveedoresLayout.createSequentialGroup()
                 .addGap(326, 326, 326)
                 .addComponent(btnCerrarProveedores)
-                .addContainerGap(375, Short.MAX_VALUE))
+                .addContainerGap(605, Short.MAX_VALUE))
         );
         frmProveedoresLayout.setVerticalGroup(
             frmProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmProveedoresLayout.createSequentialGroup()
-                .addContainerGap(410, Short.MAX_VALUE)
+                .addContainerGap(500, Short.MAX_VALUE)
                 .addComponent(btnCerrarProveedores)
                 .addGap(96, 96, 96))
         );
 
-        jPanel1.add(frmProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 770, 560));
+        jPanel1.add(frmProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 1000, 650));
 
         frmHistorial.setVisible(true);
 
@@ -288,7 +359,7 @@ public class frmMain extends javax.swing.JFrame {
             .addGroup(frmHistorialLayout.createSequentialGroup()
                 .addGap(340, 340, 340)
                 .addComponent(btnCerrarHistorial)
-                .addContainerGap(361, Short.MAX_VALUE))
+                .addContainerGap(591, Short.MAX_VALUE))
             .addGroup(frmHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(frmHistorialLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -298,7 +369,7 @@ public class frmMain extends javax.swing.JFrame {
         frmHistorialLayout.setVerticalGroup(
             frmHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmHistorialLayout.createSequentialGroup()
-                .addContainerGap(387, Short.MAX_VALUE)
+                .addContainerGap(477, Short.MAX_VALUE)
                 .addComponent(btnCerrarHistorial)
                 .addGap(119, 119, 119))
             .addGroup(frmHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,10 +379,10 @@ public class frmMain extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        jPanel1.add(frmHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 770, 560));
+        jPanel1.add(frmHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 1000, 650));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/FMainMenu.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 625));
+        fontImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/FMainMenu.png"))); // NOI18N
+        jPanel1.add(fontImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1230, 720));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -324,13 +395,15 @@ public class frmMain extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jPanel1.getAccessibleContext().setAccessibleName("");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void slideIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_slideIconMouseClicked
 
         if ( x == 230 ) {
-            jPanel2.setSize(230, 560);
+            slideBar.setSize(230, 650);
             Thread th = new Thread() {
                 @Override
                 public void run(){
@@ -339,9 +412,9 @@ public class frmMain extends javax.swing.JFrame {
                         for ( int i = 230; i >= 0; i--){
                             cont++;
                             Thread.sleep(1);
-                            jPanel2.setSize(i, 560);
+                            slideBar.setSize(i, 650);
                             try {
-                                activeFrame.setSize(770 + cont, 560);
+                                activeFrame.setSize(770 + cont, 650);
                                 activeFrame.setLocation(i, 70);
                             } catch (Exception e) {
                             }
@@ -355,7 +428,7 @@ public class frmMain extends javax.swing.JFrame {
             th.start();
             x=0;
         } else if( x == 0 ){
-            jPanel2.setSize(x, 560);
+            slideBar.setSize(x, 650);
             Thread th = new Thread(){
                 @Override
                 public void run(){
@@ -364,9 +437,9 @@ public class frmMain extends javax.swing.JFrame {
                         for (int i = 0; i <= x; i++){
                             cont++;
                             Thread.sleep(1);
-                            jPanel2.setSize(i, 560);
+                            slideBar.setSize(i, 650);
                             try {
-                                activeFrame.setSize((770 + x) - cont, 560);
+                                activeFrame.setSize((770 + x) - cont, 650);
                                 activeFrame.setLocation(i, 70);
                             } catch (Exception e) {
                             }
@@ -379,15 +452,15 @@ public class frmMain extends javax.swing.JFrame {
             th.start();
             x = 230;
         }
-    }//GEN-LAST:event_jLabel3MouseClicked
+    }//GEN-LAST:event_slideIconMouseClicked
 
-    private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
-        labelcolor(jLabel3);
-    }//GEN-LAST:event_jLabel3MouseEntered
+    private void slideIconMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_slideIconMouseEntered
+        labelcolor(slideIcon);
+    }//GEN-LAST:event_slideIconMouseEntered
 
-    private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
-        resetlabelcolor(jLabel3);
-    }//GEN-LAST:event_jLabel3MouseExited
+    private void slideIconMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_slideIconMouseExited
+        resetlabelcolor(slideIcon);
+    }//GEN-LAST:event_slideIconMouseExited
 
     private void btnCerrarRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarRegistroActionPerformed
         frmRegistro.setVisible(false);
@@ -404,6 +477,14 @@ public class frmMain extends javax.swing.JFrame {
     private void btnCerrarHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarHistorialActionPerformed
         frmHistorial.setVisible(false);
     }//GEN-LAST:event_btnCerrarHistorialActionPerformed
+
+    private void btnCerrarClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarClasificacionActionPerformed
+        frmClasificacion.setVisible(false);
+    }//GEN-LAST:event_btnCerrarClasificacionActionPerformed
+
+    private void btnCerrarListadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarListadoActionPerformed
+        frmListadoUsuarios.setVisible(false);
+    }//GEN-LAST:event_btnCerrarListadoActionPerformed
 
     public void setActiveFrame(JInternalFrame frame) {
         this.activeFrame = frame;
@@ -447,24 +528,27 @@ public class frmMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCerrarClasificacion;
     private javax.swing.JButton btnCerrarHistorial;
+    private javax.swing.JButton btnCerrarListado;
     private javax.swing.JButton btnCerrarProveedores;
     private javax.swing.JButton btnCerrarRegistro;
     private javax.swing.JButton btnCerrarSalida;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JLabel fontImage;
+    private javax.swing.JInternalFrame frmClasificacion;
     private javax.swing.JInternalFrame frmHistorial;
+    private javax.swing.JInternalFrame frmListadoUsuarios;
     private javax.swing.JInternalFrame frmProveedores;
     private javax.swing.JInternalFrame frmRegistro;
     private javax.swing.JInternalFrame frmSalida;
     private javax.swing.JLabel gg;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -472,14 +556,15 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JPanel panelClasificacion;
     private javax.swing.JPanel panelDetalle;
-    private javax.swing.JPanel panelInspeccion;
     private javax.swing.JPanel panelListadoUsuarios;
     private javax.swing.JPanel panelProveedores;
     private javax.swing.JPanel panelRegistro;
     private javax.swing.JPanel panelSalida;
+    private javax.swing.JPanel slideBar;
+    private javax.swing.JLabel slideIcon;
     // End of variables declaration//GEN-END:variables
     private void labelcolor(JLabel label){
         label.setBackground(new java.awt.Color(53,162,107));
@@ -493,8 +578,8 @@ public class frmMain extends javax.swing.JFrame {
         return panelDetalle;
     }
 
-    public javax.swing.JPanel getPanelInspeccion() {
-        return panelInspeccion;
+    public javax.swing.JPanel getPanelClasificacion() {
+        return panelClasificacion;
     }
 
     public javax.swing.JPanel getPanelListadoUsuarios() {
@@ -527,6 +612,14 @@ public class frmMain extends javax.swing.JFrame {
 
     public javax.swing.JInternalFrame getFrmHistorial() {
         return frmHistorial;
+    }
+
+    public javax.swing.JInternalFrame getFrmClasificacion() {
+        return frmClasificacion;
+    }
+
+    public javax.swing.JInternalFrame getFrmListadoUsuarios() {
+        return frmListadoUsuarios;
     }
     
     

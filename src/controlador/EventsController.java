@@ -26,18 +26,20 @@ public class EventsController implements MouseListener{
     
     public final void events() {
        menu.getPanelDetalle().addMouseListener(this);
-       menu.getPanelInspeccion().addMouseListener(this);
+       menu.getPanelClasificacion().addMouseListener(this);
        menu.getPanelListadoUsuarios().addMouseListener(this);
        menu.getPanelProveedores().addMouseListener(this);
        menu.getPanelRegistro().addMouseListener(this);
        menu.getPanelSalida().addMouseListener(this);
     }
     
-    void closeActivePanels() {
+    public void closeActiveFrames() {
         menu.getFrmRegistro().setVisible(false);
         menu.getFrmSalida().setVisible(false);
         menu.getFrmProveedores().setVisible(false);
         menu.getFrmHistorial().setVisible(false);
+        menu.getFrmClasificacion().setVisible(false);
+        menu.getFrmListadoUsuarios().setVisible(false);
     }
     
     @Override
@@ -45,32 +47,35 @@ public class EventsController implements MouseListener{
         Object evt = me.getSource();
         
         if(evt.equals(menu.getPanelDetalle())) {
-            System.out.println("Panel detalle");
-            closeActivePanels();
+            closeActiveFrames();
             menu.getFrmHistorial().setVisible(true);
             menu.setActiveFrame(menu.getFrmHistorial());
         }
-        else if(evt.equals(menu.getPanelInspeccion())){
-            System.out.println("Panel inspeccion");
+        else if(evt.equals(menu.getPanelClasificacion())){
+            closeActiveFrames();
+            menu.getFrmClasificacion().setVisible(true);
+            menu.setActiveFrame(menu.getFrmListadoUsuarios());
         }
         else if(evt.equals(menu.getPanelListadoUsuarios())){
-            System.out.println("Panel listado de usuarios");
+            closeActiveFrames();
+            menu.getFrmListadoUsuarios().setVisible(true);
+            menu.setActiveFrame(menu.getFrmListadoUsuarios());
         }
         else if(evt.equals(menu.getPanelProveedores())){
-            System.out.println("Panel proveedores");
-            closeActivePanels();
+            
+            closeActiveFrames();
             menu.getFrmProveedores().setVisible(true);
             menu.setActiveFrame(menu.getFrmProveedores());
         }
         else if(evt.equals(menu.getPanelRegistro())){
-            System.out.println("Panel registro");
-            closeActivePanels();
+            
+            closeActiveFrames();
             menu.getFrmRegistro().setVisible(true);
             menu.setActiveFrame(menu.getFrmRegistro());
         }
         else if(evt.equals(menu.getPanelSalida())){
-            System.out.println("Panel salida");
-            closeActivePanels();
+            
+            closeActiveFrames();
             menu.getFrmSalida().setVisible(true);
             menu.setActiveFrame(menu.getFrmSalida());
         }
@@ -95,8 +100,8 @@ public class EventsController implements MouseListener{
         if(evt.equals(menu.getPanelDetalle())) {
             changePanelColor(menu.getPanelDetalle(), new Color(53,162,107));
         }
-        else if(evt.equals(menu.getPanelInspeccion())){
-            changePanelColor(menu.getPanelInspeccion(), new Color(53,162,107));
+        else if(evt.equals(menu.getPanelClasificacion())){
+            changePanelColor(menu.getPanelClasificacion(), new Color(53,162,107));
         }
         else if(evt.equals(menu.getPanelListadoUsuarios())){
             changePanelColor(menu.getPanelListadoUsuarios(), new Color(53,162,107));
@@ -119,8 +124,8 @@ public class EventsController implements MouseListener{
         if(evt.equals(menu.getPanelDetalle())) {
             changePanelColor(menu.getPanelDetalle(), new Color(54,70,78));
         }
-        else if(evt.equals(menu.getPanelInspeccion())){
-            changePanelColor(menu.getPanelInspeccion(), new Color(54,70,78));
+        else if(evt.equals(menu.getPanelClasificacion())){
+            changePanelColor(menu.getPanelClasificacion(), new Color(54,70,78));
         }
         else if(evt.equals(menu.getPanelListadoUsuarios())){
             changePanelColor(menu.getPanelListadoUsuarios(), new Color(54,70,78));
