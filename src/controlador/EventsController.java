@@ -30,12 +30,10 @@ public class EventsController implements MouseListener{
        menu.getPanelListadoUsuarios().addMouseListener(this);
        menu.getPanelProveedores().addMouseListener(this);
        menu.getPanelRegistro().addMouseListener(this);
-       menu.getPanelSalida().addMouseListener(this);
     }
     
     public void closeActiveFrames() {
         menu.getFrmRegistro().setVisible(false);
-        menu.getFrmSalida().setVisible(false);
         menu.getFrmProveedores().setVisible(false);
         menu.getFrmHistorial().setVisible(false);
         menu.getFrmClasificacion().setVisible(false);
@@ -73,12 +71,6 @@ public class EventsController implements MouseListener{
             menu.getFrmRegistro().setVisible(true);
             menu.setActiveFrame(menu.getFrmRegistro());
         }
-        else if(evt.equals(menu.getPanelSalida())){
-            
-            closeActiveFrames();
-            menu.getFrmSalida().setVisible(true);
-            menu.setActiveFrame(menu.getFrmSalida());
-        }
         
     }
 
@@ -112,9 +104,7 @@ public class EventsController implements MouseListener{
         else if(evt.equals(menu.getPanelRegistro())){
             changePanelColor(menu.getPanelRegistro(), new Color(53,162,107));
         }
-        else if(evt.equals(menu.getPanelSalida())){
-            changePanelColor(menu.getPanelSalida(), new Color(53,162,107));
-        }
+
     }
 
     @Override
@@ -136,9 +126,7 @@ public class EventsController implements MouseListener{
         else if(evt.equals(menu.getPanelRegistro())){
             changePanelColor(menu.getPanelRegistro(), new Color(54,70,78));
         }
-        else if(evt.equals(menu.getPanelSalida())){
-            changePanelColor(menu.getPanelSalida(), new Color(54,70,78));
-        }
+
     }
     
     private void changePanelColor(JPanel panel, Color color) {
