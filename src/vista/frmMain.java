@@ -414,7 +414,7 @@ public class frmMain extends javax.swing.JFrame {
                             Thread.sleep(1);
                             slideBar.setSize(i, 650);
                             try {
-                                activeFrame.setSize(770 + cont, 650);
+                                activeFrame.setSize(1000 + cont, 650);
                                 activeFrame.setLocation(i, 70);
                             } catch (Exception e) {
                             }
@@ -439,7 +439,7 @@ public class frmMain extends javax.swing.JFrame {
                             Thread.sleep(1);
                             slideBar.setSize(i, 650);
                             try {
-                                activeFrame.setSize((770 + x) - cont, 650);
+                                activeFrame.setSize((1000 + x) - cont, 650);
                                 activeFrame.setLocation(i, 70);
                             } catch (Exception e) {
                             }
