@@ -54,7 +54,7 @@ public class EventsController implements MouseListener{
         else if(evt.equals(menu.getPanelClasificacion())){
             closeActiveFrames();
             menu.getFrmClasificacion().setVisible(true);
-            menu.setActiveFrame(menu.getFrmListadoUsuarios());
+            menu.setActiveFrame(menu.getFrmClasificacion());
         }
         else if(evt.equals(menu.getPanelListadoUsuarios())){
             closeActiveFrames();
