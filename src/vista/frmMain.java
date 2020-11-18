@@ -31,6 +31,8 @@ public class frmMain extends javax.swing.JFrame {
         frmRegistro.setVisible(false);
         frmSalida.setVisible(false);
         frmProveedores.setVisible(false);
+        frmClasificacion.setVisible(false);
+        frmLisUsuario.setVisible(false);
         frmHistorial.setVisible(false);
         frmClasificacion.setVisible(false);
         frmListadoUsuarios.setVisible(false);
