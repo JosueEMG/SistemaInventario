@@ -21,12 +21,8 @@ public class Usuario {
     private String nombre_tipo;
     
     // Constructor for create a new user
-    public Usuario(String nombre, int dni, String contraseña, String correo, int id_tipo) {
-        this.nombre = nombre;
-        this.dni = dni;
-        this.contraseña = contraseña;
-        this.correo = correo;
-        this.id_tipo = id_tipo;
+    public Usuario() {
+
     }
 
     // Constructor for show the users

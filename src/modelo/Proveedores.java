@@ -1,6 +1,8 @@
 
 package modelo;
 
+import controlador.ProveedoresController;
+
 public class Proveedores {
     private int id_proveedores;
     private String nombre_proveedores;
@@ -20,5 +22,5 @@ public class Proveedores {
     public void setNombre_proveedores(String nombre_proveedores) {
         this.nombre_proveedores = nombre_proveedores;
     }
-    
+  
 }
