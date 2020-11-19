@@ -74,7 +74,11 @@ public class frmMain extends javax.swing.JFrame {
         frmClasificacion = new javax.swing.JInternalFrame();
         btnCerrarClasificacion = new javax.swing.JButton();
         frmProductos = new javax.swing.JInternalFrame();
+        jPanel2 = new javax.swing.JPanel();
         btnCerrarRegistro = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
         frmProveedores = new javax.swing.JInternalFrame();
         btnCerrarProveedores = new javax.swing.JButton();
         frmHistorial = new javax.swing.JInternalFrame();
@@ -221,7 +225,7 @@ public class frmMain extends javax.swing.JFrame {
         frmCategoriasLayout.setVerticalGroup(
             frmCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmCategoriasLayout.createSequentialGroup()
-                .addContainerGap(557, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCerrarCategoria)
                 .addGap(119, 119, 119))
         );
@@ -286,28 +290,47 @@ public class frmMain extends javax.swing.JFrame {
 
         frmProductos.setVisible(true);
 
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setLayout(null);
+
         btnCerrarRegistro.setText("Cerrar");
         btnCerrarRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCerrarRegistroActionPerformed(evt);
             }
         });
+        jPanel2.add(btnCerrarRegistro);
+        btnCerrarRegistro.setBounds(540, 650, 100, 40);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel2.add(jScrollPane1);
+        jScrollPane1.setBounds(20, 140, 1100, 500);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/FMainMenu.png"))); // NOI18N
+        jPanel2.add(jLabel1);
+        jLabel1.setBounds(0, 0, 1500, 800);
 
         javax.swing.GroupLayout frmProductosLayout = new javax.swing.GroupLayout(frmProductos.getContentPane());
         frmProductos.getContentPane().setLayout(frmProductosLayout);
         frmProductosLayout.setHorizontalGroup(
             frmProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmProductosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCerrarRegistro)
-                .addGap(344, 344, 344))
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1148, Short.MAX_VALUE)
         );
         frmProductosLayout.setVerticalGroup(
             frmProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmProductosLayout.createSequentialGroup()
-                .addContainerGap(594, Short.MAX_VALUE)
-                .addComponent(btnCerrarRegistro)
-                .addGap(82, 82, 82))
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
         );
 
         jPanel1.add(frmProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 1150, 730));
@@ -546,6 +569,7 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JInternalFrame frmProductos;
     private javax.swing.JInternalFrame frmProveedores;
     private javax.swing.JLabel gg;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -559,7 +583,10 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JPanel panelCategorias;
     private javax.swing.JPanel panelClasificacion;
     private javax.swing.JPanel panelDetalle;
