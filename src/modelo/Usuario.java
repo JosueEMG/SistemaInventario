@@ -22,7 +22,6 @@ public class Usuario {
     
     // Constructor for create a new user
     public Usuario() {
-
     }
 
     // Constructor for show the users
