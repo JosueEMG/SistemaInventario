@@ -104,4 +104,74 @@ public class UsuarioController {
             }
         }
     }
+    
+    public int userVerify(String dni, String passWord) {
+        Connection conn = null;
+        String userPassWord = "";
+        int id = 0;
+        int userId = 0;
+        try {
+            conn = MySQLConexion.getConexion();
+            String sql = "select id, contraseña from usuario where DNI = ?";
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setString(1, dni);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                id = rs.getInt(1);
+                userPassWord = rs.getString(2);
+            }
+            if (userPassWord.equals(passWord)) {
+                userId = id;
+            }
+            else {
+                userId = 0;
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (Exception e2) {
+            }
+        }
+        return userId;
+    }
+    
+    public Usuario getUsuario(int id) {
+        Usuario u = null;
+        Connection conn = null;
+
+        try {
+            conn = MySQLConexion.getConexion();
+            String sql = "select nombre, dni , correo, t.nombre_tipo \n" +
+            "from usuario u inner join tipo_usuario t \n" +
+            "on u.id_tipo = t.id_tipo where id = ?;";
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+            //llenar el arraylist con la clase entidad
+            if (rs.next()) {
+                u = new Usuario();
+                u.setNombre(rs.getString(1));
+                u.setDni(rs.getInt(2));
+                u.setCorreo(rs.getString(3));
+                u.setNombre_tipo(rs.getString(4));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (Exception e2) {
+            }
+        }
+        return u;
+    }
 }
