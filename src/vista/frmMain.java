@@ -69,21 +69,64 @@ public class frmMain extends javax.swing.JFrame {
         slideIcon = new javax.swing.JLabel();
         frmCategorias = new javax.swing.JInternalFrame();
         btnCerrarCategoria = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jLabel26 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
         frmListadoUsuarios = new javax.swing.JInternalFrame();
         btnCerrarListado = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTable6 = new javax.swing.JTable();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
         frmClasificacion = new javax.swing.JInternalFrame();
         btnCerrarClasificacion = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jTextField2 = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        jLabel20 = new javax.swing.JLabel();
         frmProductos = new javax.swing.JInternalFrame();
         jPanel2 = new javax.swing.JPanel();
+        btnBuscaProduc = new javax.swing.JButton();
+        btnIngProduc = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        txtBuscarProduc = new javax.swing.JTextField();
+        btnModProduc = new javax.swing.JButton();
+        btnElimProduc = new javax.swing.JButton();
         btnCerrarRegistro = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        TablaProducto = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         frmProveedores = new javax.swing.JInternalFrame();
         btnCerrarProveedores = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jButton3 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         frmHistorial = new javax.swing.JInternalFrame();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable5 = new javax.swing.JTable();
         btnCerrarHistorial = new javax.swing.JButton();
-        gg = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
         fontImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -205,86 +248,208 @@ public class frmMain extends javax.swing.JFrame {
         jPanel1.add(slideIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 40, -1));
 
         frmCategorias.setVisible(true);
+        frmCategorias.getContentPane().setLayout(null);
 
+        btnCerrarCategoria.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         btnCerrarCategoria.setText("Cerrar");
         btnCerrarCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCerrarCategoriaActionPerformed(evt);
             }
         });
+        frmCategorias.getContentPane().add(btnCerrarCategoria);
+        btnCerrarCategoria.setBounds(680, 570, 100, 36);
 
-        javax.swing.GroupLayout frmCategoriasLayout = new javax.swing.GroupLayout(frmCategorias.getContentPane());
-        frmCategorias.getContentPane().setLayout(frmCategoriasLayout);
-        frmCategoriasLayout.setHorizontalGroup(
-            frmCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(frmCategoriasLayout.createSequentialGroup()
-                .addGap(340, 340, 340)
-                .addComponent(btnCerrarCategoria)
-                .addContainerGap(741, Short.MAX_VALUE))
-        );
-        frmCategoriasLayout.setVerticalGroup(
-            frmCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmCategoriasLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCerrarCategoria)
-                .addGap(119, 119, 119))
-        );
+        jButton11.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        jButton11.setText("Agregar Categoria");
+        frmCategorias.getContentPane().add(jButton11);
+        jButton11.setBounds(350, 570, 200, 36);
+
+        jLabel26.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        jLabel26.setText("Mantenimiento de Categoria");
+        frmCategorias.getContentPane().add(jLabel26);
+        jLabel26.setBounds(410, 80, 322, 32);
+
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Id Categoria", "Nombre de Categoria"
+            }
+        ));
+        jScrollPane4.setViewportView(jTable4);
+
+        frmCategorias.getContentPane().add(jScrollPane4);
+        jScrollPane4.setBounds(300, 150, 570, 360);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/FMainMenu.png"))); // NOI18N
+        frmCategorias.getContentPane().add(jLabel5);
+        jLabel5.setBounds(0, -20, 1150, 730);
 
         jPanel1.add(frmCategorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 1150, 730));
 
         frmListadoUsuarios.setVisible(true);
+        frmListadoUsuarios.getContentPane().setLayout(null);
 
+        btnCerrarListado.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         btnCerrarListado.setText("Cerrar");
         btnCerrarListado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCerrarListadoActionPerformed(evt);
             }
         });
+        frmListadoUsuarios.getContentPane().add(btnCerrarListado);
+        btnCerrarListado.setBounds(960, 580, 120, 36);
 
-        javax.swing.GroupLayout frmListadoUsuariosLayout = new javax.swing.GroupLayout(frmListadoUsuarios.getContentPane());
-        frmListadoUsuarios.getContentPane().setLayout(frmListadoUsuariosLayout);
-        frmListadoUsuariosLayout.setHorizontalGroup(
-            frmListadoUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(frmListadoUsuariosLayout.createSequentialGroup()
-                .addGap(340, 340, 340)
-                .addComponent(btnCerrarListado)
-                .addContainerGap(741, Short.MAX_VALUE))
-        );
-        frmListadoUsuariosLayout.setVerticalGroup(
-            frmListadoUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmListadoUsuariosLayout.createSequentialGroup()
-                .addContainerGap(557, Short.MAX_VALUE)
-                .addComponent(btnCerrarListado)
-                .addGap(119, 119, 119))
-        );
+        jTable6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jTable6.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Codigo", "Nombre del Usuario", "DNI", "Nombre de Tipo"
+            }
+        ));
+        jScrollPane5.setViewportView(jTable6);
+
+        frmListadoUsuarios.getContentPane().add(jScrollPane5);
+        jScrollPane5.setBounds(240, 210, 740, 310);
+
+        jButton7.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        jButton7.setText("Eliminar Usuario");
+        frmListadoUsuarios.getContentPane().add(jButton7);
+        jButton7.setBounds(690, 580, 200, 36);
+
+        jButton8.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        jButton8.setText("Editar Usuario");
+        frmListadoUsuarios.getContentPane().add(jButton8);
+        jButton8.setBounds(420, 580, 180, 36);
+
+        jButton9.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        jButton9.setText("Agregar Usuario");
+        frmListadoUsuarios.getContentPane().add(jButton9);
+        jButton9.setBounds(150, 580, 200, 36);
+
+        jButton10.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        jButton10.setText("Buscar");
+        frmListadoUsuarios.getContentPane().add(jButton10);
+        jButton10.setBounds(770, 145, 100, 36);
+
+        jLabel24.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel24.setText("Buscar Usuario:");
+        frmListadoUsuarios.getContentPane().add(jLabel24);
+        jLabel24.setBounds(380, 150, 120, 16);
+
+        jLabel25.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        jLabel25.setText("Mantenimiento de Usuario");
+        frmListadoUsuarios.getContentPane().add(jLabel25);
+        jLabel25.setBounds(490, 50, 330, 50);
+        frmListadoUsuarios.getContentPane().add(jTextField4);
+        jTextField4.setBounds(540, 150, 190, 24);
+
+        jLabel19.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/FMainMenu.png"))); // NOI18N
+        frmListadoUsuarios.getContentPane().add(jLabel19);
+        jLabel19.setBounds(0, -20, 1150, 730);
 
         jPanel1.add(frmListadoUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 1150, 730));
 
         frmClasificacion.setVisible(true);
+        frmClasificacion.getContentPane().setLayout(null);
 
+        btnCerrarClasificacion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         btnCerrarClasificacion.setText("Cerrar");
         btnCerrarClasificacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCerrarClasificacionActionPerformed(evt);
             }
         });
+        frmClasificacion.getContentPane().add(btnCerrarClasificacion);
+        btnCerrarClasificacion.setBounds(530, 640, 100, 36);
 
-        javax.swing.GroupLayout frmClasificacionLayout = new javax.swing.GroupLayout(frmClasificacion.getContentPane());
-        frmClasificacion.getContentPane().setLayout(frmClasificacionLayout);
-        frmClasificacionLayout.setHorizontalGroup(
-            frmClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(frmClasificacionLayout.createSequentialGroup()
-                .addGap(340, 340, 340)
-                .addComponent(btnCerrarClasificacion)
-                .addContainerGap(741, Short.MAX_VALUE))
-        );
-        frmClasificacionLayout.setVerticalGroup(
-            frmClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmClasificacionLayout.createSequentialGroup()
-                .addContainerGap(557, Short.MAX_VALUE)
-                .addComponent(btnCerrarClasificacion)
-                .addGap(119, 119, 119))
-        );
+        jButton5.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        jButton5.setText("Buscar");
+        frmClasificacion.getContentPane().add(jButton5);
+        jButton5.setBounds(980, 85, 76, 36);
+
+        jLabel21.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        jLabel21.setText("Seleccione Tipo de Producto:");
+        frmClasificacion.getContentPane().add(jLabel21);
+        jLabel21.setBounds(140, 90, 210, 16);
+
+        jLabel22.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        jLabel22.setText("Buscar Producto:");
+        frmClasificacion.getContentPane().add(jLabel22);
+        jLabel22.setBounds(620, 90, 118, 20);
+
+        jComboBox1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        frmClasificacion.getContentPane().add(jComboBox1);
+        jComboBox1.setBounds(380, 85, 150, 30);
+        frmClasificacion.getContentPane().add(jTextField2);
+        jTextField2.setBounds(750, 90, 190, 24);
+
+        jTable3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Id Producto", "Nombre Producto", "Stock", "Precio/Unidad", "Fecha Ingreso", "Fecha Vencimiento", "Nombre Proveedor", "Nombre Usuario"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable3);
+
+        frmClasificacion.getContentPane().add(jScrollPane3);
+        jScrollPane3.setBounds(50, 160, 1060, 450);
+
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/FMainMenu.png"))); // NOI18N
+        frmClasificacion.getContentPane().add(jLabel20);
+        jLabel20.setBounds(0, -20, 1150, 730);
 
         jPanel1.add(frmClasificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 1150, 730));
 
@@ -293,6 +458,40 @@ public class frmMain extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.setLayout(null);
 
+        btnBuscaProduc.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 15)); // NOI18N
+        btnBuscaProduc.setText("Buscar");
+        jPanel2.add(btnBuscaProduc);
+        btnBuscaProduc.setBounds(710, 105, 100, 32);
+
+        btnIngProduc.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 15)); // NOI18N
+        btnIngProduc.setText("Ingresar Producto");
+        jPanel2.add(btnIngProduc);
+        btnIngProduc.setBounds(120, 640, 210, 32);
+
+        jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Buscar Producto:");
+        jPanel2.add(jLabel2);
+        jLabel2.setBounds(320, 110, 160, 22);
+        jPanel2.add(txtBuscarProduc);
+        txtBuscarProduc.setBounds(480, 110, 200, 24);
+
+        btnModProduc.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 15)); // NOI18N
+        btnModProduc.setText("Modificar Producto");
+        jPanel2.add(btnModProduc);
+        btnModProduc.setBounds(380, 640, 210, 32);
+
+        btnElimProduc.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 15)); // NOI18N
+        btnElimProduc.setText("Eliminar Producto");
+        btnElimProduc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnElimProducMouseEntered(evt);
+            }
+        });
+        jPanel2.add(btnElimProduc);
+        btnElimProduc.setBounds(630, 640, 210, 32);
+
+        btnCerrarRegistro.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 15)); // NOI18N
         btnCerrarRegistro.setText("Cerrar");
         btnCerrarRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -300,27 +499,34 @@ public class frmMain extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btnCerrarRegistro);
-        btnCerrarRegistro.setBounds(540, 650, 100, 40);
+        btnCerrarRegistro.setBounds(880, 640, 120, 32);
 
+        jTable1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Id Producto", "Nombre Producto", "Stock", "Precio/Unidad", "Fecha Ingreso", "Fecha Vencimiento", "Nombre Proveedor", "Nombre Usuario"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        TablaProducto.setViewportView(jTable1);
 
-        jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 140, 1100, 500);
+        jPanel2.add(TablaProducto);
+        TablaProducto.setBounds(50, 160, 1060, 450);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/FMainMenu.png"))); // NOI18N
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(0, 0, 1500, 800);
+        jLabel1.setBounds(-30, 0, 1500, 800);
 
         javax.swing.GroupLayout frmProductosLayout = new javax.swing.GroupLayout(frmProductos.getContentPane());
         frmProductos.getContentPane().setLayout(frmProductosLayout);
@@ -336,70 +542,141 @@ public class frmMain extends javax.swing.JFrame {
         jPanel1.add(frmProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 1150, 730));
 
         frmProveedores.setVisible(true);
+        frmProveedores.getContentPane().setLayout(null);
 
+        btnCerrarProveedores.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         btnCerrarProveedores.setText("Cerrar");
         btnCerrarProveedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCerrarProveedoresActionPerformed(evt);
             }
         });
+        frmProveedores.getContentPane().add(btnCerrarProveedores);
+        btnCerrarProveedores.setBounds(890, 600, 100, 36);
 
-        javax.swing.GroupLayout frmProveedoresLayout = new javax.swing.GroupLayout(frmProveedores.getContentPane());
-        frmProveedores.getContentPane().setLayout(frmProveedoresLayout);
-        frmProveedoresLayout.setHorizontalGroup(
-            frmProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(frmProveedoresLayout.createSequentialGroup()
-                .addGap(326, 326, 326)
-                .addComponent(btnCerrarProveedores)
-                .addContainerGap(755, Short.MAX_VALUE))
-        );
-        frmProveedoresLayout.setVerticalGroup(
-            frmProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmProveedoresLayout.createSequentialGroup()
-                .addContainerGap(580, Short.MAX_VALUE)
-                .addComponent(btnCerrarProveedores)
-                .addGap(96, 96, 96))
-        );
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Id Proveedores", "Nombre de Proveedores"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        frmProveedores.getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(210, 180, 730, 340);
+
+        jButton3.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        jButton3.setText("Actualizar Proveedor");
+        frmProveedores.getContentPane().add(jButton3);
+        jButton3.setBounds(370, 600, 200, 36);
+
+        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        jButton1.setText("Registrar Proveedor");
+        frmProveedores.getContentPane().add(jButton1);
+        jButton1.setBounds(110, 600, 200, 36);
+
+        jButton2.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        jButton2.setText("Eliminar Proveedor");
+        frmProveedores.getContentPane().add(jButton2);
+        jButton2.setBounds(630, 600, 200, 36);
+
+        jButton4.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        jButton4.setText("Buscar");
+        frmProveedores.getContentPane().add(jButton4);
+        jButton4.setBounds(710, 94, 100, 36);
+
+        jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        jLabel4.setText("Buscar Proveedor:");
+        frmProveedores.getContentPane().add(jLabel4);
+        jLabel4.setBounds(300, 100, 127, 20);
+        frmProveedores.getContentPane().add(jTextField1);
+        jTextField1.setBounds(450, 100, 240, 24);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/FMainMenu.png"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        frmProveedores.getContentPane().add(jLabel3);
+        jLabel3.setBounds(0, -20, 1150, 730);
 
         jPanel1.add(frmProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 1150, 730));
 
         frmHistorial.setVisible(true);
+        frmHistorial.getContentPane().setLayout(null);
 
+        jTable5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Id Historial", "Fecha de Salida", "Cantidad ", "Id Producto"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable5);
+
+        frmHistorial.getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(100, 130, 970, 460);
+
+        btnCerrarHistorial.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         btnCerrarHistorial.setText("Cerrar");
+        btnCerrarHistorial.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCerrarHistorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCerrarHistorialActionPerformed(evt);
             }
         });
+        frmHistorial.getContentPane().add(btnCerrarHistorial);
+        btnCerrarHistorial.setBounds(540, 620, 100, 36);
 
-        gg.setText("hola");
+        jLabel23.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        jLabel23.setText("Buscar Historial:");
+        frmHistorial.getContentPane().add(jLabel23);
+        jLabel23.setBounds(340, 70, 120, 20);
 
-        javax.swing.GroupLayout frmHistorialLayout = new javax.swing.GroupLayout(frmHistorial.getContentPane());
-        frmHistorial.getContentPane().setLayout(frmHistorialLayout);
-        frmHistorialLayout.setHorizontalGroup(
-            frmHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(frmHistorialLayout.createSequentialGroup()
-                .addGap(340, 340, 340)
-                .addComponent(btnCerrarHistorial)
-                .addContainerGap(741, Short.MAX_VALUE))
-            .addGroup(frmHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(frmHistorialLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(gg)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        frmHistorialLayout.setVerticalGroup(
-            frmHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmHistorialLayout.createSequentialGroup()
-                .addContainerGap(557, Short.MAX_VALUE)
-                .addComponent(btnCerrarHistorial)
-                .addGap(119, 119, 119))
-            .addGroup(frmHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(frmHistorialLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(gg)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        jButton6.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        jButton6.setText("Buscar");
+        frmHistorial.getContentPane().add(jButton6);
+        jButton6.setBounds(740, 65, 100, 36);
+        frmHistorial.getContentPane().add(jTextField3);
+        jTextField3.setBounds(500, 70, 200, 24);
+        frmHistorial.getContentPane().add(jLabel18);
+        jLabel18.setBounds(0, -20, 1800, 730);
 
         jPanel1.add(frmHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 1150, 730));
 
@@ -512,6 +789,10 @@ public class frmMain extends javax.swing.JFrame {
         frmCategorias.setVisible(false);
     }//GEN-LAST:event_btnCerrarCategoriaActionPerformed
 
+    private void btnElimProducMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnElimProducMouseEntered
+      
+    }//GEN-LAST:event_btnElimProducMouseEntered
+
     public void setActiveFrame(JInternalFrame frame) {
         this.activeFrame = frame;
     }
@@ -554,12 +835,17 @@ public class frmMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane TablaProducto;
+    private javax.swing.JButton btnBuscaProduc;
     private javax.swing.JButton btnCerrarCategoria;
     private javax.swing.JButton btnCerrarClasificacion;
     private javax.swing.JButton btnCerrarHistorial;
     private javax.swing.JButton btnCerrarListado;
     private javax.swing.JButton btnCerrarProveedores;
     private javax.swing.JButton btnCerrarRegistro;
+    private javax.swing.JButton btnElimProduc;
+    private javax.swing.JButton btnIngProduc;
+    private javax.swing.JButton btnModProduc;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel fontImage;
     private javax.swing.JInternalFrame frmCategorias;
@@ -568,7 +854,18 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JInternalFrame frmListadoUsuarios;
     private javax.swing.JInternalFrame frmProductos;
     private javax.swing.JInternalFrame frmProveedores;
-    private javax.swing.JLabel gg;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -578,6 +875,19 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -586,7 +896,20 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable4;
+    private javax.swing.JTable jTable5;
+    private javax.swing.JTable jTable6;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JPanel panelCategorias;
     private javax.swing.JPanel panelClasificacion;
     private javax.swing.JPanel panelDetalle;
@@ -595,6 +918,7 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JPanel panelProveedores;
     private javax.swing.JPanel slideBar;
     private javax.swing.JLabel slideIcon;
+    private javax.swing.JTextField txtBuscarProduc;
     // End of variables declaration//GEN-END:variables
     private void labelcolor(JLabel label){
         label.setBackground(new java.awt.Color(53,162,107));
