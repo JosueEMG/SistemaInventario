@@ -32,6 +32,7 @@ public class frmMain extends javax.swing.JFrame {
         frmHistorial.setVisible(false);
         frmClasificacion.setVisible(false);
         frmListadoUsuarios.setVisible(false);
+        frmCategorias.setVisible(false);
     }
 
     /**
@@ -47,6 +48,9 @@ public class frmMain extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         slideBar = new javax.swing.JPanel();
+        panelCategorias = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
         panelRegistro = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -63,6 +67,8 @@ public class frmMain extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         slideIcon = new javax.swing.JLabel();
+        frmCategorias = new javax.swing.JInternalFrame();
+        btnCerrarCategoria = new javax.swing.JButton();
         frmListadoUsuarios = new javax.swing.JInternalFrame();
         btnCerrarListado = new javax.swing.JButton();
         frmClasificacion = new javax.swing.JInternalFrame();
@@ -89,6 +95,20 @@ public class frmMain extends javax.swing.JFrame {
 
         slideBar.setBackground(new java.awt.Color(54, 70, 78));
         slideBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panelCategorias.setBackground(new java.awt.Color(54, 70, 78));
+        panelCategorias.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-increase-23.png"))); // NOI18N
+        panelCategorias.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 4, 40, 30));
+
+        jLabel17.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setText("Mantenimiento de Categorias");
+        panelCategorias.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 270, 20));
+
+        slideBar.add(panelCategorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 350, 40));
 
         panelRegistro.setBackground(new java.awt.Color(54, 70, 78));
         panelRegistro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -130,7 +150,7 @@ public class frmMain extends javax.swing.JFrame {
         jLabel11.setText("Historial de Productos");
         panelDetalle.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 270, 20));
 
-        slideBar.add(panelDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 350, 40));
+        slideBar.add(panelDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 350, 40));
 
         panelClasificacion.setBackground(new java.awt.Color(54, 70, 78));
         panelClasificacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -179,6 +199,34 @@ public class frmMain extends javax.swing.JFrame {
             }
         });
         jPanel1.add(slideIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 40, -1));
+
+        frmCategorias.setVisible(true);
+
+        btnCerrarCategoria.setText("Cerrar");
+        btnCerrarCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarCategoriaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout frmCategoriasLayout = new javax.swing.GroupLayout(frmCategorias.getContentPane());
+        frmCategorias.getContentPane().setLayout(frmCategoriasLayout);
+        frmCategoriasLayout.setHorizontalGroup(
+            frmCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frmCategoriasLayout.createSequentialGroup()
+                .addGap(340, 340, 340)
+                .addComponent(btnCerrarCategoria)
+                .addContainerGap(741, Short.MAX_VALUE))
+        );
+        frmCategoriasLayout.setVerticalGroup(
+            frmCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmCategoriasLayout.createSequentialGroup()
+                .addContainerGap(557, Short.MAX_VALUE)
+                .addComponent(btnCerrarCategoria)
+                .addGap(119, 119, 119))
+        );
+
+        jPanel1.add(frmCategorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 1150, 730));
 
         frmListadoUsuarios.setVisible(true);
 
@@ -437,6 +485,10 @@ public class frmMain extends javax.swing.JFrame {
         frmListadoUsuarios.setVisible(false);
     }//GEN-LAST:event_btnCerrarListadoActionPerformed
 
+    private void btnCerrarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarCategoriaActionPerformed
+        frmCategorias.setVisible(false);
+    }//GEN-LAST:event_btnCerrarCategoriaActionPerformed
+
     public void setActiveFrame(JInternalFrame frame) {
         this.activeFrame = frame;
     }
@@ -479,6 +531,7 @@ public class frmMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCerrarCategoria;
     private javax.swing.JButton btnCerrarClasificacion;
     private javax.swing.JButton btnCerrarHistorial;
     private javax.swing.JButton btnCerrarListado;
@@ -486,6 +539,7 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JButton btnCerrarRegistro;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel fontImage;
+    private javax.swing.JInternalFrame frmCategorias;
     private javax.swing.JInternalFrame frmClasificacion;
     private javax.swing.JInternalFrame frmHistorial;
     private javax.swing.JInternalFrame frmListadoUsuarios;
@@ -498,12 +552,15 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JPanel panelCategorias;
     private javax.swing.JPanel panelClasificacion;
     private javax.swing.JPanel panelDetalle;
     private javax.swing.JPanel panelListadoUsuarios;
@@ -558,6 +615,14 @@ public class frmMain extends javax.swing.JFrame {
 
     public javax.swing.JInternalFrame getFrmListadoUsuarios() {
         return frmListadoUsuarios;
+    }
+
+    public javax.swing.JInternalFrame getFrmCategorias() {
+        return frmCategorias;
+    }
+
+    public javax.swing.JPanel getPanelCategorias() {
+        return panelCategorias;
     }
     
     
