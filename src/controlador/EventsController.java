@@ -29,12 +29,12 @@ public class EventsController implements MouseListener{
        menu.getPanelClasificacion().addMouseListener(this);
        menu.getPanelListadoUsuarios().addMouseListener(this);
        menu.getPanelProveedores().addMouseListener(this);
-       menu.getPanelRegistro().addMouseListener(this);
+       menu.getPanelProductos().addMouseListener(this);
        menu.getPanelCategorias().addMouseListener(this);
     }
     
     public void closeActiveFrames() {
-        menu.getFrmRegistro().setVisible(false);
+        menu.getFrmProductos().setVisible(false);
         menu.getFrmProveedores().setVisible(false);
         menu.getFrmHistorial().setVisible(false);
         menu.getFrmClasificacion().setVisible(false);
@@ -67,11 +67,11 @@ public class EventsController implements MouseListener{
             menu.getFrmProveedores().setVisible(true);
             menu.setActiveFrame(menu.getFrmProveedores());
         }
-        else if(evt.equals(menu.getPanelRegistro())){
+        else if(evt.equals(menu.getPanelProductos())){
             
             closeActiveFrames();
-            menu.getFrmRegistro().setVisible(true);
-            menu.setActiveFrame(menu.getFrmRegistro());
+            menu.getFrmProductos().setVisible(true);
+            menu.setActiveFrame(menu.getFrmProductos());
         }
         else if(evt.equals(menu.getPanelCategorias())){
             
@@ -109,8 +109,8 @@ public class EventsController implements MouseListener{
         else if(evt.equals(menu.getPanelProveedores())){
             changePanelColor(menu.getPanelProveedores(), new Color(53,162,107));
         }
-        else if(evt.equals(menu.getPanelRegistro())){
-            changePanelColor(menu.getPanelRegistro(), new Color(53,162,107));
+        else if(evt.equals(menu.getPanelProductos())){
+            changePanelColor(menu.getPanelProductos(), new Color(53,162,107));
         }
         else if(evt.equals(menu.getPanelCategorias())){
             changePanelColor(menu.getPanelCategorias(), new Color(53,162,107));
@@ -134,8 +134,8 @@ public class EventsController implements MouseListener{
         else if(evt.equals(menu.getPanelProveedores())){
             changePanelColor(menu.getPanelProveedores(), new Color(54,70,78));
         }
-        else if(evt.equals(menu.getPanelRegistro())){
-            changePanelColor(menu.getPanelRegistro(), new Color(54,70,78));
+        else if(evt.equals(menu.getPanelProductos())){
+            changePanelColor(menu.getPanelProductos(), new Color(54,70,78));
         }
         else if(evt.equals(menu.getPanelCategorias())){
             changePanelColor(menu.getPanelCategorias(), new Color(54,70,78));
