@@ -68,13 +68,14 @@ public class frmMain extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         slideIcon = new javax.swing.JLabel();
         frmCategorias = new javax.swing.JInternalFrame();
+        jPanel3 = new javax.swing.JPanel();
         btnCerrarCategoria = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         jLabel26 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
-        jLabel5 = new javax.swing.JLabel();
         frmListadoUsuarios = new javax.swing.JInternalFrame();
+        jPanel4 = new javax.swing.JPanel();
         btnCerrarListado = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable6 = new javax.swing.JTable();
@@ -85,8 +86,8 @@ public class frmMain extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
-        jLabel19 = new javax.swing.JLabel();
         frmClasificacion = new javax.swing.JInternalFrame();
+        jPanel5 = new javax.swing.JPanel();
         btnCerrarClasificacion = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
@@ -95,7 +96,6 @@ public class frmMain extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
-        jLabel20 = new javax.swing.JLabel();
         frmProductos = new javax.swing.JInternalFrame();
         jPanel2 = new javax.swing.JPanel();
         btnBuscaProduc = new javax.swing.JButton();
@@ -107,8 +107,8 @@ public class frmMain extends javax.swing.JFrame {
         btnCerrarRegistro = new javax.swing.JButton();
         TablaProducto = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
         frmProveedores = new javax.swing.JInternalFrame();
+        jPanel6 = new javax.swing.JPanel();
         btnCerrarProveedores = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -118,15 +118,14 @@ public class frmMain extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         frmHistorial = new javax.swing.JInternalFrame();
+        jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable5 = new javax.swing.JTable();
         btnCerrarHistorial = new javax.swing.JButton();
         jLabel23 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         jTextField3 = new javax.swing.JTextField();
-        jLabel18 = new javax.swing.JLabel();
         fontImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -248,7 +247,8 @@ public class frmMain extends javax.swing.JFrame {
         jPanel1.add(slideIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 40, -1));
 
         frmCategorias.setVisible(true);
-        frmCategorias.getContentPane().setLayout(null);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         btnCerrarCategoria.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         btnCerrarCategoria.setText("Cerrar");
@@ -257,18 +257,12 @@ public class frmMain extends javax.swing.JFrame {
                 btnCerrarCategoriaActionPerformed(evt);
             }
         });
-        frmCategorias.getContentPane().add(btnCerrarCategoria);
-        btnCerrarCategoria.setBounds(680, 570, 100, 36);
 
         jButton11.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jButton11.setText("Agregar Categoria");
-        frmCategorias.getContentPane().add(jButton11);
-        jButton11.setBounds(350, 570, 200, 36);
 
         jLabel26.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         jLabel26.setText("Mantenimiento de Categoria");
-        frmCategorias.getContentPane().add(jLabel26);
-        jLabel26.setBounds(410, 80, 322, 32);
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -300,17 +294,59 @@ public class frmMain extends javax.swing.JFrame {
         ));
         jScrollPane4.setViewportView(jTable4);
 
-        frmCategorias.getContentPane().add(jScrollPane4);
-        jScrollPane4.setBounds(300, 150, 570, 360);
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1148, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(110, 110, 110)
+                            .addComponent(jLabel26))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(50, 50, 50)
+                            .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(130, 130, 130)
+                            .addComponent(btnCerrarCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 708, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel26)
+                    .addGap(38, 38, 38)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(60, 60, 60)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButton11)
+                        .addComponent(btnCerrarCategoria))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/FMainMenu.png"))); // NOI18N
-        frmCategorias.getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, -20, 1150, 730);
+        javax.swing.GroupLayout frmCategoriasLayout = new javax.swing.GroupLayout(frmCategorias.getContentPane());
+        frmCategorias.getContentPane().setLayout(frmCategoriasLayout);
+        frmCategoriasLayout.setHorizontalGroup(
+            frmCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        frmCategoriasLayout.setVerticalGroup(
+            frmCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         jPanel1.add(frmCategorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 1150, 730));
 
         frmListadoUsuarios.setVisible(true);
-        frmListadoUsuarios.getContentPane().setLayout(null);
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setLayout(null);
 
         btnCerrarListado.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         btnCerrarListado.setText("Cerrar");
@@ -319,7 +355,7 @@ public class frmMain extends javax.swing.JFrame {
                 btnCerrarListadoActionPerformed(evt);
             }
         });
-        frmListadoUsuarios.getContentPane().add(btnCerrarListado);
+        jPanel4.add(btnCerrarListado);
         btnCerrarListado.setBounds(960, 580, 120, 36);
 
         jTable6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -347,50 +383,58 @@ public class frmMain extends javax.swing.JFrame {
         ));
         jScrollPane5.setViewportView(jTable6);
 
-        frmListadoUsuarios.getContentPane().add(jScrollPane5);
+        jPanel4.add(jScrollPane5);
         jScrollPane5.setBounds(240, 210, 740, 310);
 
         jButton7.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jButton7.setText("Eliminar Usuario");
-        frmListadoUsuarios.getContentPane().add(jButton7);
+        jPanel4.add(jButton7);
         jButton7.setBounds(690, 580, 200, 36);
 
         jButton8.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jButton8.setText("Editar Usuario");
-        frmListadoUsuarios.getContentPane().add(jButton8);
+        jPanel4.add(jButton8);
         jButton8.setBounds(420, 580, 180, 36);
 
         jButton9.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jButton9.setText("Agregar Usuario");
-        frmListadoUsuarios.getContentPane().add(jButton9);
+        jPanel4.add(jButton9);
         jButton9.setBounds(150, 580, 200, 36);
 
         jButton10.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jButton10.setText("Buscar");
-        frmListadoUsuarios.getContentPane().add(jButton10);
+        jPanel4.add(jButton10);
         jButton10.setBounds(770, 145, 100, 36);
 
         jLabel24.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel24.setText("Buscar Usuario:");
-        frmListadoUsuarios.getContentPane().add(jLabel24);
+        jPanel4.add(jLabel24);
         jLabel24.setBounds(380, 150, 120, 16);
 
         jLabel25.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         jLabel25.setText("Mantenimiento de Usuario");
-        frmListadoUsuarios.getContentPane().add(jLabel25);
+        jPanel4.add(jLabel25);
         jLabel25.setBounds(490, 50, 330, 50);
-        frmListadoUsuarios.getContentPane().add(jTextField4);
+        jPanel4.add(jTextField4);
         jTextField4.setBounds(540, 150, 190, 24);
 
-        jLabel19.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/FMainMenu.png"))); // NOI18N
-        frmListadoUsuarios.getContentPane().add(jLabel19);
-        jLabel19.setBounds(0, -20, 1150, 730);
+        javax.swing.GroupLayout frmListadoUsuariosLayout = new javax.swing.GroupLayout(frmListadoUsuarios.getContentPane());
+        frmListadoUsuarios.getContentPane().setLayout(frmListadoUsuariosLayout);
+        frmListadoUsuariosLayout.setHorizontalGroup(
+            frmListadoUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 1148, Short.MAX_VALUE)
+        );
+        frmListadoUsuariosLayout.setVerticalGroup(
+            frmListadoUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+        );
 
         jPanel1.add(frmListadoUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 1150, 730));
 
         frmClasificacion.setVisible(true);
-        frmClasificacion.getContentPane().setLayout(null);
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setLayout(null);
 
         btnCerrarClasificacion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         btnCerrarClasificacion.setText("Cerrar");
@@ -399,29 +443,29 @@ public class frmMain extends javax.swing.JFrame {
                 btnCerrarClasificacionActionPerformed(evt);
             }
         });
-        frmClasificacion.getContentPane().add(btnCerrarClasificacion);
+        jPanel5.add(btnCerrarClasificacion);
         btnCerrarClasificacion.setBounds(530, 640, 100, 36);
 
         jButton5.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jButton5.setText("Buscar");
-        frmClasificacion.getContentPane().add(jButton5);
+        jPanel5.add(jButton5);
         jButton5.setBounds(980, 85, 76, 36);
 
         jLabel21.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jLabel21.setText("Seleccione Tipo de Producto:");
-        frmClasificacion.getContentPane().add(jLabel21);
+        jPanel5.add(jLabel21);
         jLabel21.setBounds(140, 90, 210, 16);
 
         jLabel22.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jLabel22.setText("Buscar Producto:");
-        frmClasificacion.getContentPane().add(jLabel22);
+        jPanel5.add(jLabel22);
         jLabel22.setBounds(620, 90, 118, 20);
 
         jComboBox1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        frmClasificacion.getContentPane().add(jComboBox1);
+        jPanel5.add(jComboBox1);
         jComboBox1.setBounds(380, 85, 150, 30);
-        frmClasificacion.getContentPane().add(jTextField2);
+        jPanel5.add(jTextField2);
         jTextField2.setBounds(750, 90, 190, 24);
 
         jTable3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -444,18 +488,25 @@ public class frmMain extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTable3);
 
-        frmClasificacion.getContentPane().add(jScrollPane3);
+        jPanel5.add(jScrollPane3);
         jScrollPane3.setBounds(50, 160, 1060, 450);
 
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/FMainMenu.png"))); // NOI18N
-        frmClasificacion.getContentPane().add(jLabel20);
-        jLabel20.setBounds(0, -20, 1150, 730);
+        javax.swing.GroupLayout frmClasificacionLayout = new javax.swing.GroupLayout(frmClasificacion.getContentPane());
+        frmClasificacion.getContentPane().setLayout(frmClasificacionLayout);
+        frmClasificacionLayout.setHorizontalGroup(
+            frmClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 1148, Short.MAX_VALUE)
+        );
+        frmClasificacionLayout.setVerticalGroup(
+            frmClasificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+        );
 
         jPanel1.add(frmClasificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 1150, 730));
 
         frmProductos.setVisible(true);
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(null);
 
         btnBuscaProduc.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 15)); // NOI18N
@@ -524,25 +575,23 @@ public class frmMain extends javax.swing.JFrame {
         jPanel2.add(TablaProducto);
         TablaProducto.setBounds(50, 160, 1060, 450);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/FMainMenu.png"))); // NOI18N
-        jPanel2.add(jLabel1);
-        jLabel1.setBounds(-30, 0, 1500, 800);
-
         javax.swing.GroupLayout frmProductosLayout = new javax.swing.GroupLayout(frmProductos.getContentPane());
         frmProductos.getContentPane().setLayout(frmProductosLayout);
         frmProductosLayout.setHorizontalGroup(
             frmProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1148, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1150, Short.MAX_VALUE)
         );
         frmProductosLayout.setVerticalGroup(
             frmProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
         );
 
         jPanel1.add(frmProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 1150, 730));
 
         frmProveedores.setVisible(true);
-        frmProveedores.getContentPane().setLayout(null);
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setLayout(null);
 
         btnCerrarProveedores.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         btnCerrarProveedores.setText("Cerrar");
@@ -551,7 +600,7 @@ public class frmMain extends javax.swing.JFrame {
                 btnCerrarProveedoresActionPerformed(evt);
             }
         });
-        frmProveedores.getContentPane().add(btnCerrarProveedores);
+        jPanel6.add(btnCerrarProveedores);
         btnCerrarProveedores.setBounds(890, 600, 100, 36);
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -585,45 +634,53 @@ public class frmMain extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        frmProveedores.getContentPane().add(jScrollPane2);
+        jPanel6.add(jScrollPane2);
         jScrollPane2.setBounds(210, 180, 730, 340);
 
         jButton3.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jButton3.setText("Actualizar Proveedor");
-        frmProveedores.getContentPane().add(jButton3);
+        jPanel6.add(jButton3);
         jButton3.setBounds(370, 600, 200, 36);
 
         jButton1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jButton1.setText("Registrar Proveedor");
-        frmProveedores.getContentPane().add(jButton1);
+        jPanel6.add(jButton1);
         jButton1.setBounds(110, 600, 200, 36);
 
         jButton2.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jButton2.setText("Eliminar Proveedor");
-        frmProveedores.getContentPane().add(jButton2);
+        jPanel6.add(jButton2);
         jButton2.setBounds(630, 600, 200, 36);
 
         jButton4.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jButton4.setText("Buscar");
-        frmProveedores.getContentPane().add(jButton4);
+        jPanel6.add(jButton4);
         jButton4.setBounds(710, 94, 100, 36);
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jLabel4.setText("Buscar Proveedor:");
-        frmProveedores.getContentPane().add(jLabel4);
+        jPanel6.add(jLabel4);
         jLabel4.setBounds(300, 100, 127, 20);
-        frmProveedores.getContentPane().add(jTextField1);
+        jPanel6.add(jTextField1);
         jTextField1.setBounds(450, 100, 240, 24);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/FMainMenu.png"))); // NOI18N
-        jLabel3.setText("jLabel3");
-        frmProveedores.getContentPane().add(jLabel3);
-        jLabel3.setBounds(0, -20, 1150, 730);
+        javax.swing.GroupLayout frmProveedoresLayout = new javax.swing.GroupLayout(frmProveedores.getContentPane());
+        frmProveedores.getContentPane().setLayout(frmProveedoresLayout);
+        frmProveedoresLayout.setHorizontalGroup(
+            frmProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 1148, Short.MAX_VALUE)
+        );
+        frmProveedoresLayout.setVerticalGroup(
+            frmProveedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+        );
 
         jPanel1.add(frmProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 1150, 730));
 
         frmHistorial.setVisible(true);
-        frmHistorial.getContentPane().setLayout(null);
+
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel7.setLayout(null);
 
         jTable5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTable5.setModel(new javax.swing.table.DefaultTableModel(
@@ -650,7 +707,7 @@ public class frmMain extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable5);
 
-        frmHistorial.getContentPane().add(jScrollPane1);
+        jPanel7.add(jScrollPane1);
         jScrollPane1.setBounds(100, 130, 970, 460);
 
         btnCerrarHistorial.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
@@ -661,22 +718,31 @@ public class frmMain extends javax.swing.JFrame {
                 btnCerrarHistorialActionPerformed(evt);
             }
         });
-        frmHistorial.getContentPane().add(btnCerrarHistorial);
+        jPanel7.add(btnCerrarHistorial);
         btnCerrarHistorial.setBounds(540, 620, 100, 36);
 
         jLabel23.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jLabel23.setText("Buscar Historial:");
-        frmHistorial.getContentPane().add(jLabel23);
+        jPanel7.add(jLabel23);
         jLabel23.setBounds(340, 70, 120, 20);
 
         jButton6.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jButton6.setText("Buscar");
-        frmHistorial.getContentPane().add(jButton6);
+        jPanel7.add(jButton6);
         jButton6.setBounds(740, 65, 100, 36);
-        frmHistorial.getContentPane().add(jTextField3);
+        jPanel7.add(jTextField3);
         jTextField3.setBounds(500, 70, 200, 24);
-        frmHistorial.getContentPane().add(jLabel18);
-        jLabel18.setBounds(0, -20, 1800, 730);
+
+        javax.swing.GroupLayout frmHistorialLayout = new javax.swing.GroupLayout(frmHistorial.getContentPane());
+        frmHistorial.getContentPane().setLayout(frmHistorialLayout);
+        frmHistorialLayout.setHorizontalGroup(
+            frmHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 1150, Short.MAX_VALUE)
+        );
+        frmHistorialLayout.setVerticalGroup(
+            frmHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
+        );
 
         jPanel1.add(frmHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 1150, 730));
 
@@ -866,7 +932,6 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -875,25 +940,25 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
