@@ -5,12 +5,17 @@ public class Productos {
     private int id_producto;
     private String nombre_producto;
     private double precio;
+    private int stock;
+    private String Nombre_categoria;
+    private String Nombre_proveedores;
+    private String Nombre;
     private String fecha_ingreso;
+    private String fecha_vencimiento;
     private int id_categoria;
     private int id_proveedores;
     private int id_detalle;
     private int id_usuario;
-
+    
     public int getId_producto() {
         return id_producto;
     }
@@ -74,6 +79,44 @@ public class Productos {
     public void setId_usuario(int id_usuario) {
         this.id_usuario = id_usuario;
     }
-    
-    
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public String getNombre_categoria() {
+        return Nombre_categoria;
+    }
+
+    public void setNombre_categoria(String Nombre_categoria) {
+        this.Nombre_categoria = Nombre_categoria;
+    }
+
+    public String getNombre_proveedores() {
+        return Nombre_proveedores;
+    }
+
+    public void setNombre_proveedores(String Nombre_proveedores) {
+        this.Nombre_proveedores = Nombre_proveedores;
+    }
+
+    public String getNombre() {
+        return Nombre;
+    }
+
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
+    }
+
+    public String getFecha_vencimiento() {
+        return fecha_vencimiento;
+    }
+
+    public void setFecha_vencimiento(String fecha_vencimiento) {
+        this.fecha_vencimiento = fecha_vencimiento;
+    }
 }
