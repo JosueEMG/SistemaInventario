@@ -32,15 +32,15 @@
           </Group>
           <Group type="102" attributes="0">
               <EmptySpace min="100" pref="100" max="-2" attributes="0"/>
-              <Component id="jTextField1" min="-2" pref="270" max="-2" attributes="0"/>
+              <Component id="txtContraseña" min="-2" pref="270" max="-2" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
               <EmptySpace min="320" pref="320" max="-2" attributes="0"/>
-              <Component id="jButton2" min="-2" pref="100" max="-2" attributes="0"/>
+              <Component id="btnCerrar" min="-2" pref="100" max="-2" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
               <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" pref="150" max="-2" attributes="0"/>
+              <Component id="btnContraseña" min="-2" pref="150" max="-2" attributes="0"/>
           </Group>
           <Component id="jLabel1" min="-2" pref="461" max="-2" attributes="0"/>
       </Group>
@@ -53,36 +53,42 @@
           </Group>
           <Group type="102" attributes="0">
               <EmptySpace min="70" pref="70" max="-2" attributes="0"/>
-              <Component id="jTextField1" min="-2" pref="30" max="-2" attributes="0"/>
+              <Component id="txtContraseña" min="-2" pref="30" max="-2" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
               <EmptySpace min="120" pref="120" max="-2" attributes="0"/>
-              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+              <Component id="btnCerrar" min="-2" max="-2" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
               <EmptySpace min="120" pref="120" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="btnContraseña" min="-2" max="-2" attributes="0"/>
           </Group>
           <Component id="jLabel1" min="-2" pref="169" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnContrase&#xf1;a">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Yu Gothic UI Semilight" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Eliminar Usuario"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnContrase&#xf1;aActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="btnCerrar">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Yu Gothic UI Semilight" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cerrar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCerrarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
@@ -92,7 +98,7 @@
         <Property name="text" type="java.lang.String" value="Ingrese su Contrase&#xf1;a"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="txtContrase&#xf1;a">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>

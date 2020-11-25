@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
 import controlador.EventsController;
 import controlador.ProductoController;
 import controlador.HistorialController;
+import controlador.ProveedoresController;
+import controlador.UsuarioController;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,11 +35,15 @@ public class frmMain extends javax.swing.JFrame {
     ProductoController productoController = new ProductoController();
     CategoriaControlller categoriaController = new CategoriaControlller();
     HistorialController historialController = new HistorialController();
+    ProveedoresController proveedoresController = new ProveedoresController();
+    UsuarioController usuarioController = new UsuarioController();
 
     public frmMain() {
         initComponents();
         muestraCategoria();
         muestraHistorialProducto("");
+        tablaProveedores();
+        tablaUsuario();
         this.setLocationRelativeTo(null);
         view = new EventsController(this);
         closeAllFrames();
@@ -50,6 +56,26 @@ public class frmMain extends javax.swing.JFrame {
         llenarCbTipoProducto();
         tablaProducto();
 
+    }
+    
+    void tablaProveedores() {
+        String nombre = txtProveedor.getText();
+        DefaultTableModel dt = (DefaultTableModel) tabProveedores.getModel();
+        dt.setRowCount(0);
+        proveedoresController.listaProveedores(nombre).forEach((c) -> {
+            Object v[] = {c.getId_proveedores(), c.getNombre_proveedores()};
+            dt.addRow(v);
+        });
+    }
+
+    void tablaUsuario() {
+        String nombre = txtUsuario.getText();
+        DefaultTableModel dt = (DefaultTableModel) tabUsuario.getModel();
+        dt.setRowCount(0);
+        usuarioController.listaUsuarios(nombre).forEach((u) -> {
+            Object v[] = {u.getId(), u.getNombre(), u.getDni(), u.getNombre_tipo(), u.getCorreo()};
+            dt.addRow(v);
+        });
     }
 
     void showBossPanels() {
@@ -113,14 +139,14 @@ public class frmMain extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         btnCerrarListado = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable6 = new javax.swing.JTable();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        tabUsuario = new javax.swing.JTable();
+        btnEliminarUsuario = new javax.swing.JButton();
+        btnEditarUsuario = new javax.swing.JButton();
+        btnAgregarUsuario = new javax.swing.JButton();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
+        btnActualizarTabla = new javax.swing.JButton();
         frmClasificacion = new javax.swing.JInternalFrame();
         jPanel5 = new javax.swing.JPanel();
         btnCerrarClasificacion = new javax.swing.JButton();
@@ -142,13 +168,13 @@ public class frmMain extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         btnCerrarProveedores = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        tabProveedores = new javax.swing.JTable();
+        btnActualizar = new javax.swing.JButton();
+        btnRegistrar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtProveedor = new javax.swing.JTextField();
+        btnTabla = new javax.swing.JButton();
         frmHistorial = new javax.swing.JInternalFrame();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -428,8 +454,8 @@ public class frmMain extends javax.swing.JFrame {
         jPanel4.add(btnCerrarListado);
         btnCerrarListado.setBounds(960, 580, 120, 36);
 
-        jTable6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jTable6.setModel(new javax.swing.table.DefaultTableModel(
+        tabUsuario.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        tabUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -451,30 +477,40 @@ public class frmMain extends javax.swing.JFrame {
                 "Codigo", "Nombre del Usuario", "DNI", "Nombre de Tipo"
             }
         ));
-        jScrollPane5.setViewportView(jTable6);
+        jScrollPane5.setViewportView(tabUsuario);
 
         jPanel4.add(jScrollPane5);
         jScrollPane5.setBounds(240, 210, 740, 310);
 
-        jButton7.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
-        jButton7.setText("Eliminar Usuario");
-        jPanel4.add(jButton7);
-        jButton7.setBounds(690, 580, 200, 36);
+        btnEliminarUsuario.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        btnEliminarUsuario.setText("Eliminar Usuario");
+        btnEliminarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarUsuarioActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnEliminarUsuario);
+        btnEliminarUsuario.setBounds(690, 580, 200, 36);
 
-        jButton8.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
-        jButton8.setText("Editar Usuario");
-        jPanel4.add(jButton8);
-        jButton8.setBounds(420, 580, 180, 36);
+        btnEditarUsuario.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        btnEditarUsuario.setText("Editar Usuario");
+        btnEditarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarUsuarioActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnEditarUsuario);
+        btnEditarUsuario.setBounds(420, 580, 180, 36);
 
-        jButton9.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
-        jButton9.setText("Agregar Usuario");
-        jPanel4.add(jButton9);
-        jButton9.setBounds(150, 580, 200, 36);
-
-        jButton10.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
-        jButton10.setText("Buscar");
-        jPanel4.add(jButton10);
-        jButton10.setBounds(770, 145, 100, 36);
+        btnAgregarUsuario.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        btnAgregarUsuario.setText("Agregar Usuario");
+        btnAgregarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarUsuarioActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnAgregarUsuario);
+        btnAgregarUsuario.setBounds(150, 580, 200, 36);
 
         jLabel24.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel24.setText("Buscar Usuario:");
@@ -485,8 +521,23 @@ public class frmMain extends javax.swing.JFrame {
         jLabel25.setText("Mantenimiento de Usuario");
         jPanel4.add(jLabel25);
         jLabel25.setBounds(490, 50, 330, 50);
-        jPanel4.add(jTextField4);
-        jTextField4.setBounds(540, 150, 190, 24);
+
+        txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtUsuarioKeyTyped(evt);
+            }
+        });
+        jPanel4.add(txtUsuario);
+        txtUsuario.setBounds(540, 150, 190, 24);
+
+        btnActualizarTabla.setText("Actualizar Tabla");
+        btnActualizarTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarTablaActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnActualizarTabla);
+        btnActualizarTabla.setBounds(820, 140, 170, 32);
 
         javax.swing.GroupLayout frmListadoUsuariosLayout = new javax.swing.GroupLayout(frmListadoUsuarios.getContentPane());
         frmListadoUsuarios.getContentPane().setLayout(frmListadoUsuariosLayout);
@@ -690,7 +741,7 @@ public class frmMain extends javax.swing.JFrame {
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tabProveedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -717,37 +768,62 @@ public class frmMain extends javax.swing.JFrame {
                 "Id Proveedores", "Nombre de Proveedores"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tabProveedores);
 
         jPanel6.add(jScrollPane2);
         jScrollPane2.setBounds(210, 180, 730, 340);
 
-        jButton3.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
-        jButton3.setText("Actualizar Proveedor");
-        jPanel6.add(jButton3);
-        jButton3.setBounds(370, 600, 200, 36);
+        btnActualizar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        btnActualizar.setText("Actualizar Proveedor");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnActualizar);
+        btnActualizar.setBounds(370, 600, 200, 36);
 
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
-        jButton1.setText("Registrar Proveedor");
-        jPanel6.add(jButton1);
-        jButton1.setBounds(110, 600, 200, 36);
+        btnRegistrar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        btnRegistrar.setText("Registrar Proveedor");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnRegistrar);
+        btnRegistrar.setBounds(110, 600, 200, 36);
 
-        jButton2.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
-        jButton2.setText("Eliminar Proveedor");
-        jPanel6.add(jButton2);
-        jButton2.setBounds(630, 600, 200, 36);
-
-        jButton4.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
-        jButton4.setText("Buscar");
-        jPanel6.add(jButton4);
-        jButton4.setBounds(710, 94, 100, 36);
+        btnEliminar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        btnEliminar.setText("Eliminar Proveedor");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnEliminar);
+        btnEliminar.setBounds(630, 600, 200, 36);
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jLabel4.setText("Buscar Proveedor:");
         jPanel6.add(jLabel4);
         jLabel4.setBounds(300, 100, 127, 20);
-        jPanel6.add(jTextField1);
-        jTextField1.setBounds(450, 100, 240, 24);
+
+        txtProveedor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtProveedorKeyTyped(evt);
+            }
+        });
+        jPanel6.add(txtProveedor);
+        txtProveedor.setBounds(450, 100, 240, 24);
+
+        btnTabla.setText("Actualizar Tabla");
+        btnTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTablaActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnTabla);
+        btnTabla.setBounds(730, 100, 130, 32);
 
         javax.swing.GroupLayout frmProveedoresLayout = new javax.swing.GroupLayout(frmProveedores.getContentPane());
         frmProveedores.getContentPane().setLayout(frmProveedoresLayout);
@@ -1037,6 +1113,85 @@ public class frmMain extends javax.swing.JFrame {
         //  System.out.println(""+Nombre);
     }//GEN-LAST:event_btnEliminarCategoriaActionPerformed
 
+    private void btnTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTablaActionPerformed
+        tablaProveedores();
+    }//GEN-LAST:event_btnTablaActionPerformed
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        dgRegistrarProveedor.titulo = "Registrar Proveedor";
+        dgRegistrarProveedor pro = new dgRegistrarProveedor(this, true);
+        pro.setLocationRelativeTo(null);
+        pro.setVisible(true);
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        int fila = tabProveedores.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila");
+        } else {
+            dgRegistrarProveedor.codigo = Integer.parseInt(tabProveedores.getValueAt(fila, 0).toString());
+            dgRegistrarProveedor.nombre = tabProveedores.getValueAt(fila, 1).toString();
+            dgRegistrarProveedor.titulo = "Actualizar Proveedor";
+            dgRegistrarProveedor pro = new dgRegistrarProveedor(this, true);
+            pro.setLocationRelativeTo(null);
+            pro.setVisible(true);
+        }
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        int fila = tabProveedores.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila");
+        } else {
+            int codigo = (int) tabProveedores.getValueAt(fila, 0);
+            proveedoresController.eliminarProveedores(codigo);
+            tablaProveedores();
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void txtProveedorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProveedorKeyTyped
+        tablaProveedores();
+    }//GEN-LAST:event_txtProveedorKeyTyped
+
+    private void btnActualizarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarTablaActionPerformed
+        tablaUsuario();
+    }//GEN-LAST:event_btnActualizarTablaActionPerformed
+
+    private void txtUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyTyped
+         tablaUsuario();
+    }//GEN-LAST:event_txtUsuarioKeyTyped
+
+    private void btnAgregarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarUsuarioActionPerformed
+        dgRegistrarUsuario.titulo = "Registrar Usuario";
+        dgRegistrarUsuario dg = new dgRegistrarUsuario(this, true);
+        dg.setLocationRelativeTo(null);
+        dg.setVisible(true);
+    }//GEN-LAST:event_btnAgregarUsuarioActionPerformed
+
+    private void btnEditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarUsuarioActionPerformed
+        int fila = tabUsuario.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fila");
+        } else {
+            dgRegistrarUsuario.titulo = "Actualizar Usuario";
+            dgRegistrarUsuario.codigo = Integer.parseInt(tabUsuario.getValueAt(fila, 0).toString());
+            dgRegistrarUsuario dg = new dgRegistrarUsuario(this, true);
+            dg.setLocationRelativeTo(null);
+            dg.setVisible(true);
+        }
+    }//GEN-LAST:event_btnEditarUsuarioActionPerformed
+
+    private void btnEliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarUsuarioActionPerformed
+        int fila = tabUsuario.getSelectedRow();
+        if(fila == -1){
+            JOptionPane.showMessageDialog(null, "Seleccione una fila");
+        }else{
+            dgEliminarUsuario.codigo = Integer.parseInt(tabUsuario.getValueAt(fila, 0).toString());
+            dgEliminarUsuario dg = new dgEliminarUsuario(this, true);
+            dg.setVisible(true);
+        }    
+    }//GEN-LAST:event_btnEliminarUsuarioActionPerformed
+
     public void setActiveFrame(JInternalFrame frame) {
         this.activeFrame = frame;
     }
@@ -1140,6 +1295,9 @@ public class frmMain extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Actualizar;
     private javax.swing.JScrollPane TablaProducto;
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnActualizarTabla;
+    private javax.swing.JButton btnAgregarUsuario;
     private javax.swing.JButton btnBuscarHistorial;
     private javax.swing.JButton btnCerrarCategoria;
     private javax.swing.JButton btnCerrarClasificacion;
@@ -1147,10 +1305,15 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JButton btnCerrarListado;
     private javax.swing.JButton btnCerrarProveedores;
     private javax.swing.JButton btnCerrarRegistro;
+    private javax.swing.JButton btnEditarUsuario;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnEliminarCategoria;
+    private javax.swing.JButton btnEliminarUsuario;
     private javax.swing.JButton btnIngProduc;
     private javax.swing.JButton btnModProduc;
+    private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnRetirarProducto;
+    private javax.swing.JButton btnTabla;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbTipoProducto;
     private javax.swing.JLabel fontImage;
@@ -1160,15 +1323,7 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JInternalFrame frmListadoUsuarios;
     private javax.swing.JInternalFrame frmProductos;
     private javax.swing.JInternalFrame frmProveedores;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1201,10 +1356,6 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JPanel panelCategorias;
     private javax.swing.JPanel panelClasificacion;
     private javax.swing.JPanel panelDetalle;
@@ -1213,11 +1364,15 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JPanel panelProveedores;
     private javax.swing.JPanel slideBar;
     private javax.swing.JLabel slideIcon;
+    private javax.swing.JTable tabProveedores;
+    private javax.swing.JTable tabUsuario;
     private javax.swing.JTable tablaCategoria;
     private javax.swing.JTable tablaHistorialProducto;
     private javax.swing.JTable tablaProducto;
     private javax.swing.JTable tableClasificacionProducto;
     private javax.swing.JTextField txtBuscarProducto;
+    private javax.swing.JTextField txtProveedor;
+    private javax.swing.JTextField txtUsuario;
     private javax.swing.JTextField txtidHistorial;
     // End of variables declaration//GEN-END:variables
     private void labelcolor(JLabel label) {

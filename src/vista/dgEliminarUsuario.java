@@ -5,12 +5,18 @@
  */
 package vista;
 
+import controlador.UsuarioController;
+import javax.swing.JOptionPane;
+import modelo.Usuario;
+
 /**
  *
  * @author geanl
  */
 public class dgEliminarUsuario extends javax.swing.JDialog {
 
+    UsuarioController usuarioController = new UsuarioController();
+    public static int codigo;
     /**
      * Creates new form dgEliminarUsuario
      */
@@ -29,20 +35,30 @@ public class dgEliminarUsuario extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnContraseña = new javax.swing.JButton();
+        btnCerrar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtContraseña = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setSize(new java.awt.Dimension(463, 196));
 
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
-        jButton1.setText("Eliminar Usuario");
+        btnContraseña.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        btnContraseña.setText("Eliminar Usuario");
+        btnContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContraseñaActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
-        jButton2.setText("Cerrar");
+        btnCerrar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        btnCerrar.setText("Cerrar");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
         jLabel3.setText("Ingrese su Contraseña");
@@ -58,13 +74,13 @@ public class dgEliminarUsuario extends javax.swing.JDialog {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(100, 100, 100)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(320, 320, 320)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
@@ -74,18 +90,33 @@ public class dgEliminarUsuario extends javax.swing.JDialog {
                 .addComponent(jLabel3))
             .addGroup(layout.createSequentialGroup()
                 .addGap(70, 70, 70)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(120, 120, 120)
-                .addComponent(jButton2))
+                .addComponent(btnCerrar))
             .addGroup(layout.createSequentialGroup()
                 .addGap(120, 120, 120)
-                .addComponent(jButton1))
+                .addComponent(btnContraseña))
             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContraseñaActionPerformed
+        String clave = txtContraseña.getText();
+        Usuario u = usuarioController.getUsuario(1);
+        if(clave.equals(u.getContraseña())){
+            usuarioController.eliminarUsuarios(codigo);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Ingrese una contraseña correcta");
+        }
+    }//GEN-LAST:event_btnContraseñaActionPerformed
+
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCerrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -130,10 +161,10 @@ public class dgEliminarUsuario extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnCerrar;
+    private javax.swing.JButton btnContraseña;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtContraseña;
     // End of variables declaration//GEN-END:variables
 }

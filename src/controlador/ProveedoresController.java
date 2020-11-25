@@ -19,22 +19,37 @@ import modelo.Proveedores;
 public class ProveedoresController {
     
     
-    public List<Proveedores> listaProveedores() {
+    public List<Proveedores> listaProveedores(String nombre) {
         List<Proveedores> lis = new ArrayList<>();
         Connection conn = null;
 
         try {
-            conn = MySQLConexion.getConexion();
-            String sql = "select Id_proveedores, Nombre_proveedores from proveedores";
-            PreparedStatement st = conn.prepareStatement(sql);
-            //st.setInt(1, id);
-            ResultSet rs = st.executeQuery();
-            //llenar el arraylist con la clase entidad
-            while (rs.next()) {
-                Proveedores p = new Proveedores();
-                p.setId_proveedores(rs.getInt(1));
-                p.setNombre_proveedores(rs.getString(2));
-                lis.add(p);
+            if (nombre != null) {
+                conn = MySQLConexion.getConexion();
+                String sql = "select Id_proveedores, Nombre_proveedores from proveedores where Nombre_proveedores like ?";
+                PreparedStatement st = conn.prepareStatement(sql);
+                st.setString(1, "%"+nombre+"%");
+                ResultSet rs = st.executeQuery();
+                //llenar el arraylist con la clase entidad
+                while (rs.next()) {
+                    Proveedores p = new Proveedores();
+                    p.setId_proveedores(rs.getInt(1));
+                    p.setNombre_proveedores(rs.getString(2));
+                    lis.add(p);
+                }
+            } else {
+                conn = MySQLConexion.getConexion();
+                String sql = "select Id_proveedores, Nombre_proveedores from proveedores";
+                PreparedStatement st = conn.prepareStatement(sql);
+                //st.setInt(1, id);
+                ResultSet rs = st.executeQuery();
+                //llenar el arraylist con la clase entidad
+                while (rs.next()) {
+                    Proveedores p = new Proveedores();
+                    p.setId_proveedores(rs.getInt(1));
+                    p.setNombre_proveedores(rs.getString(2));
+                    lis.add(p);
+                }
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -58,6 +73,30 @@ public class ProveedoresController {
             String sql = "insert into proveedores (Nombre_proveedores) values (?)";
             PreparedStatement st = conn.prepareStatement(sql);
             st.setString(1, p.getNombre_proveedores());
+            st.executeUpdate();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (Exception e2) {
+            }
+        }
+    }
+    
+    public void actualizarProveedores(String nombre, int id) {
+        Connection conn = null;
+
+        try {
+            conn = MySQLConexion.getConexion();
+            String sql = "Update proveedores set Nombre_proveedores=? where Id_proveedores=?";
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setString(1, nombre);
+            st.setInt(2, id);
             st.executeUpdate();
 
         } catch (Exception ex) {

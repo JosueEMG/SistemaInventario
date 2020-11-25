@@ -4,13 +4,17 @@
  * and open the template in the editor.
  */
 package vista;
-
+import controlador.UsuarioController;
+import modelo.Usuario;
 /**
  *
  * @author geanl
  */
 public class dgRegistrarUsuario extends javax.swing.JDialog {
 
+    UsuarioController usuarioController = new UsuarioController();
+    public static String titulo;
+    public static int codigo;
     /**
      * Creates new form dgRegistrarUsuario
      */
@@ -18,6 +22,14 @@ public class dgRegistrarUsuario extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
+        labelTitulo.setText(titulo);
+        if(titulo.equals("Actualizar Usuario")){
+           Usuario u = usuarioController.getUsuario(codigo);
+           txtNombre.setText(u.getNombre());
+           txtDNI.setText(""+u.getDni());
+           txtContraseña.setText(u.getContraseña());
+           txtCorreo.setText(u.getCorreo());
+        }
     }
 
     /**
@@ -29,32 +41,42 @@ public class dgRegistrarUsuario extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnAceptar = new javax.swing.JButton();
+        btnCerrar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        labelTitulo = new javax.swing.JLabel();
+        txtDNI = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        txtContraseña = new javax.swing.JTextField();
+        txtCorreo = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setSize(new java.awt.Dimension(450, 380));
         getContentPane().setLayout(null);
 
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton1.setText("Agregar");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(60, 300, 150, 35);
+        btnAceptar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnAceptar.setText("Aceptar");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnAceptar);
+        btnAceptar.setBounds(60, 300, 150, 35);
 
-        jButton2.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
-        jButton2.setText("Cerrar");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(260, 300, 130, 36);
+        btnCerrar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        btnCerrar.setText("Cerrar");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnCerrar);
+        btnCerrar.setBounds(260, 300, 130, 36);
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jLabel2.setText("Ingrese su DNI:");
@@ -76,18 +98,18 @@ public class dgRegistrarUsuario extends javax.swing.JDialog {
         getContentPane().add(jLabel5);
         jLabel5.setBounds(50, 100, 150, 16);
 
-        jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        jLabel6.setText("Registrar Usuario");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(125, 30, 200, 40);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(250, 135, 140, 24);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(250, 95, 140, 24);
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(250, 175, 140, 24);
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(250, 215, 140, 24);
+        labelTitulo.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        labelTitulo.setText("Registrar Usuario");
+        getContentPane().add(labelTitulo);
+        labelTitulo.setBounds(125, 30, 200, 40);
+        getContentPane().add(txtDNI);
+        txtDNI.setBounds(250, 135, 140, 24);
+        getContentPane().add(txtNombre);
+        txtNombre.setBounds(250, 95, 140, 24);
+        getContentPane().add(txtContraseña);
+        txtContraseña.setBounds(250, 175, 140, 24);
+        getContentPane().add(txtCorreo);
+        txtCorreo.setBounds(250, 215, 140, 24);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/FMainMenu.png"))); // NOI18N
         jLabel1.setText("C");
@@ -96,6 +118,26 @@ public class dgRegistrarUsuario extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        if(titulo.equals("Registrar Usuario")){
+            Usuario usuario = new Usuario();
+            usuario.setNombre(txtNombre.getText());
+            usuario.setDni(Integer.parseInt(txtDNI.getText()));
+            usuario.setContraseña(txtContraseña.getText());
+            usuario.setCorreo(txtCorreo.getText());
+            usuarioController.añadirUsuarios(usuario);
+            this.dispose();
+        }
+        if(titulo.equals("Actualizar Usuario")){
+            usuarioController.actualizarUsuario(txtNombre.getText(), Integer.parseInt(txtDNI.getText()), txtContraseña.getText(), txtCorreo.getText(), codigo);
+            this.dispose();
+        }
+    }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCerrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,17 +182,17 @@ public class dgRegistrarUsuario extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnCerrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel labelTitulo;
+    private javax.swing.JTextField txtContraseña;
+    private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtDNI;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

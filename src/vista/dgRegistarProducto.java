@@ -31,7 +31,6 @@ public class dgRegistarProducto extends javax.swing.JDialog {
         initComponents();
         this.setLocationRelativeTo(null);
         llenarCbCategoria();
-        llenarCbProveedor();
         switch (opcion) {
             case 1: modificarPorducto(); break;
             case 2: agregarProducto(); break;
@@ -288,12 +287,7 @@ public class dgRegistarProducto extends javax.swing.JDialog {
         });
     }
     
-    void llenarCbProveedor() {
-        cbProveedor.removeAllItems();
-        proveedorController.listaProveedores().forEach((p)->{
-            cbProveedor.addItem(p.getNombre_proveedores());
-        });
-    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

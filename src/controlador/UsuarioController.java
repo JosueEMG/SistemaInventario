@@ -20,25 +20,43 @@ import util.MySQLConexion;
 public class UsuarioController {
     
     
-    public List<Usuario> listaUsuarios() {
+    public List<Usuario> listaUsuarios(String nombre) {
         List<Usuario> lis = new ArrayList<>();
         Connection conn = null;
 
         try {
-            conn = MySQLConexion.getConexion();
-            String sql = "select Id, Nombre, DNI, Correo, Nombre_tipo from usuario u inner join tipo_usuario t where u.Id_tipo=t.Id_tipo";
-            PreparedStatement st = conn.prepareStatement(sql);
-            //st.setInt(1, id);
-            ResultSet rs = st.executeQuery();
-            //llenar el arraylist con la clase entidad
-            while (rs.next()) {
-                Usuario p = new Usuario();
-                p.setId(rs.getInt(1));
-                p.setNombre(rs.getString(2));
-                p.setDni(rs.getInt(3));
-                p.setCorreo(rs.getString(4));
-                p.setNombre_tipo(rs.getString(5));
-                lis.add(p);
+            if (nombre != null) {
+                conn = MySQLConexion.getConexion();
+                String sql = "select Id, Nombre, DNI, Correo, Nombre_tipo from usuario u inner join tipo_usuario t where u.Id_tipo=t.Id_tipo and Nombre like ?";
+                PreparedStatement st = conn.prepareStatement(sql);
+                st.setString(1, "%"+nombre+"%");
+                ResultSet rs = st.executeQuery();
+                //llenar el arraylist con la clase entidad
+                while (rs.next()) {
+                    Usuario p = new Usuario();
+                    p.setId(rs.getInt(1));
+                    p.setNombre(rs.getString(2));
+                    p.setDni(rs.getInt(3));
+                    p.setCorreo(rs.getString(4));
+                    p.setNombre_tipo(rs.getString(5));
+                    lis.add(p);
+                }
+            } else {
+                conn = MySQLConexion.getConexion();
+                String sql = "select Id, Nombre, DNI, Correo, Nombre_tipo from usuario u inner join tipo_usuario t where u.Id_tipo=t.Id_tipo";
+                PreparedStatement st = conn.prepareStatement(sql);
+                //st.setInt(1, id);
+                ResultSet rs = st.executeQuery();
+                //llenar el arraylist con la clase entidad
+                while (rs.next()) {
+                    Usuario p = new Usuario();
+                    p.setId(rs.getInt(1));
+                    p.setNombre(rs.getString(2));
+                    p.setDni(rs.getInt(3));
+                    p.setCorreo(rs.getString(4));
+                    p.setNombre_tipo(rs.getString(5));
+                    lis.add(p);
+                }
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -146,9 +164,9 @@ public class UsuarioController {
 
         try {
             conn = MySQLConexion.getConexion();
-            String sql = "select nombre, dni , correo, t.nombre_tipo, u.id_tipo \n" +
-            "from usuario u inner join tipo_usuario t \n" +
-            "on u.id_tipo = t.id_tipo where id = ?;";
+            String sql = "select nombre, dni ,contraseña, correo, t.nombre_tipo, u.id_tipo \n"
+                    + "from usuario u inner join tipo_usuario t \n"
+                    + "on u.id_tipo = t.id_tipo where id = ?;";
             PreparedStatement st = conn.prepareStatement(sql);
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
@@ -157,9 +175,10 @@ public class UsuarioController {
                 u = new Usuario();
                 u.setNombre(rs.getString(1));
                 u.setDni(rs.getInt(2));
-                u.setCorreo(rs.getString(3));
-                u.setNombre_tipo(rs.getString(4));
-                u.setId_tipo(rs.getInt(5));
+                u.setContraseña(rs.getString(3));
+                u.setCorreo(rs.getString(4));
+                u.setNombre_tipo(rs.getString(5));
+                u.setId_tipo(rs.getInt(6));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -173,5 +192,32 @@ public class UsuarioController {
             }
         }
         return u;
+    }
+    
+    public void actualizarUsuario(String nombre, int dni, String contra, String correo, int id) {
+        Connection conn = null;
+
+        try {
+            conn = MySQLConexion.getConexion();
+            String sql = "Update usuario set Nombre=?, DNI=?, Contraseña=?, Correo=? where Id=?";
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setString(1, nombre);
+            st.setInt(2, dni);
+            st.setString(3, contra);
+            st.setString(4, correo);
+            st.setInt(5, id);
+            st.executeUpdate();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (Exception e2) {
+            }
+        }
     }
 }

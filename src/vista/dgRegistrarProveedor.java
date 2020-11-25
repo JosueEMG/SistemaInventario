@@ -5,12 +5,20 @@
  */
 package vista;
 
+import javax.swing.JOptionPane;
+import controlador.ProveedoresController;
+import modelo.Proveedores;
 /**
  *
  * @author geanl
  */
 public class dgRegistrarProveedor extends javax.swing.JDialog {
 
+    ProveedoresController proveedoresController = new ProveedoresController();
+    Proveedores proveedores = new Proveedores();
+    public static String nombre;
+    public static String titulo;
+    public static int codigo;
     /**
      * Creates new form dgRegistrarProveedor
      */
@@ -18,6 +26,10 @@ public class dgRegistrarProveedor extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
+        labelTitulo.setText(titulo);
+        if(titulo.equals("Actualizar Proveedor")){
+            txtNombreProveedor.setText(nombre);
+        }
     }
 
     /**
@@ -31,10 +43,10 @@ public class dgRegistrarProveedor extends javax.swing.JDialog {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        labelTitulo = new javax.swing.JLabel();
+        txtNombreProveedor = new javax.swing.JTextField();
+        btnAceptar = new javax.swing.JButton();
+        btnCerrar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/FMainMenu.png"))); // NOI18N
@@ -48,22 +60,31 @@ public class dgRegistrarProveedor extends javax.swing.JDialog {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(20, 100, 236, 20);
 
-        jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
-        jLabel3.setText("Registrar Producto");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(180, 40, 144, 22);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(280, 100, 200, 24);
+        labelTitulo.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        getContentPane().add(labelTitulo);
+        labelTitulo.setBounds(180, 40, 0, 0);
+        getContentPane().add(txtNombreProveedor);
+        txtNombreProveedor.setBounds(280, 100, 200, 24);
 
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
-        jButton1.setText("Agregar Proveedor");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(60, 180, 200, 36);
+        btnAceptar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        btnAceptar.setText("Aceptar");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnAceptar);
+        btnAceptar.setBounds(60, 180, 160, 36);
 
-        jButton2.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
-        jButton2.setText("Cerrar");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(350, 180, 100, 36);
+        btnCerrar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        btnCerrar.setText("Cerrar");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnCerrar);
+        btnCerrar.setBounds(350, 180, 100, 36);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/FMainMenu.png"))); // NOI18N
         getContentPane().add(jLabel4);
@@ -71,6 +92,27 @@ public class dgRegistrarProveedor extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        if (titulo.equals("Registrar Proveedor")) {
+            if (txtNombreProveedor.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Ingrese un nombre valido");
+            } else {
+                String nombre = txtNombreProveedor.getText();
+                proveedores.setNombre_proveedores(nombre);
+                proveedoresController.añadirProveedores(proveedores);
+                this.dispose();
+            }
+        }
+        if(titulo.equals("Actualizar Proveedor")){
+            proveedoresController.actualizarProveedores(txtNombreProveedor.getText(), codigo);
+            this.dispose();
+        }
+    }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCerrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -115,12 +157,12 @@ public class dgRegistrarProveedor extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnCerrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel labelTitulo;
+    private javax.swing.JTextField txtNombreProveedor;
     // End of variables declaration//GEN-END:variables
 }
