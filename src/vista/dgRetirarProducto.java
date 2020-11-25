@@ -9,12 +9,10 @@ package vista;
  *
  * @author geanl
  */
-public class dgEliminarProducto extends javax.swing.JDialog {
+public class dgRetirarProducto extends javax.swing.JDialog {
 
-    /**
-     * Creates new form dgEliminarProducto
-     */
-    public dgEliminarProducto(java.awt.Frame parent, boolean modal) {
+    static int idProducto;
+    public dgRetirarProducto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
@@ -29,23 +27,33 @@ public class dgEliminarProducto extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnEliminarProductos = new javax.swing.JButton();
+        btnRetirarPorducto = new javax.swing.JButton();
         btnCerrarEliminarProducto = new javax.swing.JButton();
+        txtNumeroProducto = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setSize(new java.awt.Dimension(463, 196));
 
-        btnEliminarProductos.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
-        btnEliminarProductos.setText("Eliminar");
+        btnRetirarPorducto.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        btnRetirarPorducto.setText("Retirar");
+        btnRetirarPorducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRetirarPorductoActionPerformed(evt);
+            }
+        });
 
         btnCerrarEliminarProducto.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         btnCerrarEliminarProducto.setText("Cerrar");
+        btnCerrarEliminarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarEliminarProductoActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
-        jLabel3.setText("Ingrese su Contraseña");
+        jLabel3.setText("Ingrese cantidad de producto");
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/FMainMenu.png"))); // NOI18N
 
@@ -54,30 +62,29 @@ public class dgEliminarProducto extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(btnEliminarProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(120, 120, 120)
+                .addComponent(txtNumeroProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(310, 310, 310)
                 .addComponent(btnCerrarEliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(150, 150, 150)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60)
+                .addComponent(btnRetirarPorducto, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(jLabel3))
             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addComponent(btnEliminarProductos))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(80, 80, 80)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txtNumeroProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(btnCerrarEliminarProducto))
             .addGroup(layout.createSequentialGroup()
                 .addGap(130, 130, 130)
-                .addComponent(btnCerrarEliminarProducto))
+                .addComponent(btnRetirarPorducto))
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel3))
@@ -86,6 +93,14 @@ public class dgEliminarProducto extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRetirarPorductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarPorductoActionPerformed
+        System.out.print(idProducto);
+    }//GEN-LAST:event_btnRetirarPorductoActionPerformed
+
+    private void btnCerrarEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarEliminarProductoActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCerrarEliminarProductoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -104,20 +119,21 @@ public class dgEliminarProducto extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(dgEliminarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dgRetirarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(dgEliminarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dgRetirarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(dgEliminarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dgRetirarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(dgEliminarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(dgRetirarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                dgEliminarProducto dialog = new dgEliminarProducto(new javax.swing.JFrame(), true);
+                dgRetirarProducto dialog = new dgRetirarProducto(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -131,9 +147,9 @@ public class dgEliminarProducto extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarEliminarProducto;
-    private javax.swing.JButton btnEliminarProductos;
+    private javax.swing.JButton btnRetirarPorducto;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtNumeroProducto;
     // End of variables declaration//GEN-END:variables
 }

@@ -1090,7 +1090,10 @@ public class frmMain extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Por favor, seleccione un producto de la tabla");
             }
             else {
-                
+                int idProducto = Integer.parseInt(tablaProducto.getValueAt(f, 0).toString());
+                dgRetirarProducto.idProducto = idProducto;
+                dgRetirarProducto dg = new dgRetirarProducto(this, true);
+                dg.setVisible(true);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Hubo un error al momento de seleccionar: "+e.getMessage());
