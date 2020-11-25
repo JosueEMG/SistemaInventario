@@ -965,6 +965,7 @@ public class frmMain extends javax.swing.JFrame {
             else{
                 int idProducto = (int)tablaProducto.getValueAt(f, 0);
                 dgRegistarProducto.idProducto = idProducto;
+                dgRegistarProducto.opcion = 2;
                 dgRegistarProducto dg = new dgRegistarProducto(this, true);
                 dg.getLbTitulo().setText("Ingresar Porducto");
                 dg.setVisible(true);
@@ -984,6 +985,7 @@ public class frmMain extends javax.swing.JFrame {
             else {
                 int idProducto = (int)tablaProducto.getValueAt(f, 0);
                 dgRegistarProducto.idProducto = idProducto;
+                dgRegistarProducto.opcion = 1;
                 dgRegistarProducto dg = new dgRegistarProducto(this, true);
                 dg.getLbTitulo().setText("Modificar Porducto");
                 dg.setVisible(true);

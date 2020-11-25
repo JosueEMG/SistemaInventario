@@ -7,6 +7,12 @@ package vista;
 import controlador.ProductoController;
 import controlador.ProveedoresController;
 import controlador.CategoriaControlller;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import modelo.Productos;
 /**
  *
  * @author geanl
@@ -14,18 +20,43 @@ import controlador.CategoriaControlller;
 public class dgRegistarProducto extends javax.swing.JDialog {
 
     static int idProducto; 
+    static int opcion;
     ProductoController productoController = new ProductoController();
     CategoriaControlller categoriaController = new CategoriaControlller();
     ProveedoresController proveedorController = new ProveedoresController();
-    public dgRegistarProducto(java.awt.Frame parent, boolean modal) {
+    SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
+    
+    public dgRegistarProducto(java.awt.Frame parent, boolean modal) throws ParseException {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
         llenarCbCategoria();
         llenarCbProveedor();
-        System.out.println(idProducto);
+        switch (opcion) {
+            case 1: modificarPorducto(); break;
+            case 2: agregarProducto(); break;
+        }
+        
     }
 
+    void agregarProducto() {
+        btnAgreProducto.setVisible(true);
+        btnModificarProducto.setVisible(false);
+    }
+    
+    void modificarPorducto() throws ParseException {
+        
+        btnAgreProducto.setVisible(false);
+        btnModificarProducto.setVisible(true);
+        Productos p = productoController.getProducto(idProducto);
+        txtNombreProducto.setText(p.getNombre_producto());
+        txtPrecioProducto.setText(""+p.getPrecio());
+        txtStock.setText(""+p.getStock());
+        cbCategoria.setSelectedItem(p.getNombre_producto());
+        cbProveedor.setSelectedItem(p.getNombre_proveedores());
+        dateFechaIngreso.setDate(sd.parse(p.getFecha_ingreso()));
+        dateFechaSalida.setDate(sd.parse(p.getFecha_vencimiento()));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,8 +82,9 @@ public class dgRegistarProducto extends javax.swing.JDialog {
         cbCategoria = new javax.swing.JComboBox<>();
         txtNombreProducto = new javax.swing.JTextField();
         txtPrecioProducto = new javax.swing.JTextField();
-        txtCategoria = new javax.swing.JTextField();
-        btnAgreProduc = new javax.swing.JButton();
+        txtStock = new javax.swing.JTextField();
+        btnAgreProducto = new javax.swing.JButton();
+        btnModificarProducto = new javax.swing.JButton();
         btnCerrarReg = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -126,17 +158,26 @@ public class dgRegistarProducto extends javax.swing.JDialog {
         txtNombreProducto.setBounds(300, 80, 160, 24);
         getContentPane().add(txtPrecioProducto);
         txtPrecioProducto.setBounds(300, 120, 160, 24);
-        getContentPane().add(txtCategoria);
-        txtCategoria.setBounds(300, 320, 160, 24);
+        getContentPane().add(txtStock);
+        txtStock.setBounds(300, 320, 160, 24);
 
-        btnAgreProduc.setText("Agregar Producto");
-        btnAgreProduc.addActionListener(new java.awt.event.ActionListener() {
+        btnAgreProducto.setText("Agregar Producto");
+        btnAgreProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgreProducActionPerformed(evt);
+                btnAgreProductoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAgreProduc);
-        btnAgreProduc.setBounds(80, 420, 150, 32);
+        getContentPane().add(btnAgreProducto);
+        btnAgreProducto.setBounds(80, 420, 150, 32);
+
+        btnModificarProducto.setText("Modificar Producto");
+        btnModificarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarProductoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnModificarProducto);
+        btnModificarProducto.setBounds(80, 420, 150, 32);
 
         btnCerrarReg.setText("Cerrar");
         btnCerrarReg.addActionListener(new java.awt.event.ActionListener() {
@@ -154,13 +195,17 @@ public class dgRegistarProducto extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAgreProducActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgreProducActionPerformed
+    private void btnAgreProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgreProductoActionPerformed
         
-    }//GEN-LAST:event_btnAgreProducActionPerformed
+    }//GEN-LAST:event_btnAgreProductoActionPerformed
 
     private void btnCerrarRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarRegActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCerrarRegActionPerformed
+
+    private void btnModificarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModificarProductoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,7 +250,12 @@ public class dgRegistarProducto extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                dgRegistarProducto dialog = new dgRegistarProducto(new javax.swing.JFrame(), true);
+                dgRegistarProducto dialog = null;
+                try {
+                    dialog = new dgRegistarProducto(new javax.swing.JFrame(), true);
+                } catch (ParseException ex) {
+                    Logger.getLogger(dgRegistarProducto.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -218,8 +268,9 @@ public class dgRegistarProducto extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgreProduc;
+    private javax.swing.JButton btnAgreProducto;
     private javax.swing.JButton btnCerrarReg;
+    private javax.swing.JButton btnModificarProducto;
     private javax.swing.JComboBox<String> cbCategoria;
     private javax.swing.JComboBox<String> cbProveedor;
     private com.toedter.calendar.JDateChooser dateFechaIngreso;
@@ -235,9 +286,9 @@ public class dgRegistarProducto extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField txtCategoria;
     private javax.swing.JTextField txtNombreProducto;
     private javax.swing.JTextField txtPrecioProducto;
+    private javax.swing.JTextField txtStock;
     // End of variables declaration//GEN-END:variables
 
     public javax.swing.JLabel getLbTitulo() {
