@@ -37,6 +37,7 @@ public class frmMain extends javax.swing.JFrame {
     public frmMain() {
         initComponents();
         muestraCategoria();
+        muestraHistorialProducto("");
         this.setLocationRelativeTo(null);
         view = new EventsController(this);
         closeAllFrames();
