@@ -50,6 +50,35 @@ public class CategoriaControlller {
         return lis;
     }
     
+    public int getIdCategoria(String nombre) {
+        int idCategoria = 0;
+        Connection conn = null;
+
+        try {
+            conn = MySQLConexion.getConexion();
+            String sql = "select id_categoria from categoria where nombre_categoria = ?;";
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setString(1, nombre);
+            ResultSet rs = st.executeQuery();
+            //llenar el arraylist con la clase entidad
+            while (rs.next()) {
+                idCategoria = rs.getInt(1);
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (Exception e2) {
+            }
+        }
+        return idCategoria;
+    }
+    
     public void addCategoria(String nombre) {
         Connection conn = null;
 

@@ -119,9 +119,7 @@ public class frmMain extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         btnCerrarClasificacion = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
         cbTipoProducto = new javax.swing.JComboBox<>();
-        txtBuscarProducto = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         tableClasificacionProducto = new javax.swing.JTable();
         frmProductos = new javax.swing.JInternalFrame();
@@ -507,12 +505,7 @@ public class frmMain extends javax.swing.JFrame {
         jLabel21.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jLabel21.setText("Seleccione Tipo de Producto:");
         jPanel5.add(jLabel21);
-        jLabel21.setBounds(140, 90, 210, 16);
-
-        jLabel22.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
-        jLabel22.setText("Buscar Producto:");
-        jPanel5.add(jLabel22);
-        jLabel22.setBounds(750, 90, 118, 20);
+        jLabel21.setBounds(400, 100, 210, 16);
 
         cbTipoProducto.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         cbTipoProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -522,15 +515,7 @@ public class frmMain extends javax.swing.JFrame {
             }
         });
         jPanel5.add(cbTipoProducto);
-        cbTipoProducto.setBounds(380, 85, 150, 30);
-
-        txtBuscarProducto.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtBuscarProductoKeyTyped(evt);
-            }
-        });
-        jPanel5.add(txtBuscarProducto);
-        txtBuscarProducto.setBounds(880, 90, 230, 24);
+        cbTipoProducto.setBounds(620, 90, 150, 30);
 
         tableClasificacionProducto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         tableClasificacionProducto.setModel(new javax.swing.table.DefaultTableModel(
@@ -933,17 +918,12 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnElimProducMouseEntered
 
     private void cbTipoProductoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbTipoProductoItemStateChanged
-        try {
-            int tipo = Integer.parseInt((cbTipoProducto.getSelectedItem().toString()).substring(0, 1));
-            tablaClasificacionProducto(tipo);
+        try { 
+            tablaClasificacionProducto(categoriaController.getIdCategoria(cbTipoProducto.getSelectedItem().toString()));
         } catch (Exception e) {
         }
 
     }//GEN-LAST:event_cbTipoProductoItemStateChanged
-
-    private void txtBuscarProductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarProductoKeyTyped
-        buscarTablaClasificacionProducto(txtBuscarProducto.getText());
-    }//GEN-LAST:event_txtBuscarProductoKeyTyped
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
 
@@ -967,7 +947,7 @@ public class frmMain extends javax.swing.JFrame {
     public void llevarCbTipoProducto() {
         cbTipoProducto.removeAllItems();
         categoriaController.listadoCategoria().forEach((categoria) -> {
-            cbTipoProducto.addItem(categoria.getId_categoria() + " - " + categoria.getNombre_Categoria());
+            cbTipoProducto.addItem(categoria.getNombre_Categoria());
         });
     }
 
@@ -1084,7 +1064,6 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
@@ -1124,7 +1103,6 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JTable tablaHistorialProducto;
     private javax.swing.JTable tableClasificacionProducto;
     private javax.swing.JTextField txtBuscarProduc;
-    private javax.swing.JTextField txtBuscarProducto;
     private javax.swing.JTextField txtidHistorial;
     // End of variables declaration//GEN-END:variables
     private void labelcolor(JLabel label) {
