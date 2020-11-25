@@ -5,11 +5,17 @@
  */
 package vista;
 
+import modelo.Categoria;
+import controlador.CategoriaControlller;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author geanl
  */
 public class dgResgistrarCategoria extends javax.swing.JDialog {
+
+    CategoriaControlller cat = new CategoriaControlller();
 
     /**
      * Creates new form dgResgistrarCategoria
@@ -30,7 +36,7 @@ public class dgResgistrarCategoria extends javax.swing.JDialog {
 
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        NombreCategoria = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -48,11 +54,16 @@ public class dgResgistrarCategoria extends javax.swing.JDialog {
         jLabel2.setText("Ingrese el Nueva Categoria:");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(40, 90, 200, 20);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(280, 90, 200, 24);
+        getContentPane().add(NombreCategoria);
+        NombreCategoria.setBounds(280, 90, 200, 24);
 
         jButton1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jButton1.setText("Agregar Categoria");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1);
         jButton1.setBounds(40, 150, 200, 36);
 
@@ -67,6 +78,20 @@ public class dgResgistrarCategoria extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        if (NombreCategoria.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Ingrese el Nombre de Una categoria");
+        } else {
+            cat.addCategoria(NombreCategoria.getText());
+            /* frmMain frm = new frmMain();
+            frm.muestraCategoria();
+            frm.setVisible(true);*/
+            this.dispose();
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -111,11 +136,11 @@ public class dgResgistrarCategoria extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField NombreCategoria;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

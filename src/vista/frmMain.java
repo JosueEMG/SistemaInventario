@@ -13,6 +13,7 @@ import controlador.ProductoController;
 import javax.swing.JInternalFrame;
 import javax.swing.table.DefaultTableModel;
 import modelo.Usuario;
+import modelo.Categoria;
 
 /**
  *
@@ -26,8 +27,10 @@ public class frmMain extends javax.swing.JFrame {
     static Usuario user;
     ProductoController productoController = new ProductoController();
     CategoriaControlller categoriaController = new CategoriaControlller();
+
     public frmMain() {
         initComponents();
+        muestraCategoria();
         this.setLocationRelativeTo(null);
         view = new EventsController(this);
         closeAllFrames();
@@ -40,14 +43,14 @@ public class frmMain extends javax.swing.JFrame {
         llevarCbTipoProducto();
 
     }
-    
+
     void showBossPanels() {
         panelCategorias.setVisible(true);
         panelProveedores.setVisible(true);
         panelListadoUsuarios.setVisible(true);
 
     }
-    
+
     void closeAllFrames() {
         frmProductos.setVisible(false);
         frmProveedores.setVisible(false);
@@ -95,7 +98,8 @@ public class frmMain extends javax.swing.JFrame {
         jButton11 = new javax.swing.JButton();
         jLabel26 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        tablaCategoria = new javax.swing.JTable();
+        Actualizar = new javax.swing.JButton();
         frmListadoUsuarios = new javax.swing.JInternalFrame();
         jPanel4 = new javax.swing.JPanel();
         btnCerrarListado = new javax.swing.JButton();
@@ -283,11 +287,16 @@ public class frmMain extends javax.swing.JFrame {
 
         jButton11.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jButton11.setText("Agregar Categoria");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
 
         jLabel26.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         jLabel26.setText("Mantenimiento de Categoria");
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        tablaCategoria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -315,13 +324,31 @@ public class frmMain extends javax.swing.JFrame {
                 "Id Categoria", "Nombre de Categoria"
             }
         ));
-        jScrollPane4.setViewportView(jTable4);
+        jScrollPane4.setViewportView(tablaCategoria);
+
+        Actualizar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        Actualizar.setText("Actualizar");
+        Actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActualizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1148, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(284, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(262, 262, 262)
+                        .addComponent(btnCerrarCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(290, 290, 290))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(Actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(459, 459, 459))))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -329,35 +356,36 @@ public class frmMain extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createSequentialGroup()
                             .addGap(110, 110, 110)
                             .addComponent(jLabel26))
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addGap(50, 50, 50)
-                            .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(130, 130, 130)
-                            .addComponent(btnCerrarCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 708, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(517, Short.MAX_VALUE)
+                .addComponent(Actualizar)
+                .addGap(32, 32, 32)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCerrarCategoria)
+                    .addComponent(jButton11))
+                .addGap(87, 87, 87))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(jLabel26)
                     .addGap(38, 38, 38)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(60, 60, 60)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton11)
-                        .addComponent(btnCerrarCategoria))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 187, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout frmCategoriasLayout = new javax.swing.GroupLayout(frmCategorias.getContentPane());
         frmCategorias.getContentPane().setLayout(frmCategoriasLayout);
         frmCategoriasLayout.setHorizontalGroup(
             frmCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmCategoriasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         frmCategoriasLayout.setVerticalGroup(
             frmCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -808,14 +836,14 @@ public class frmMain extends javax.swing.JFrame {
 
     private void slideIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_slideIconMouseClicked
 
-        if ( x == 350 ) {
+        if (x == 350) {
             slideBar.setSize(350, 730);
             Thread th = new Thread() {
                 @Override
-                public void run(){
+                public void run() {
                     try {
-                        int cont = 0 ;
-                        for ( int i = 350; i >= 0; i--){
+                        int cont = 0;
+                        for (int i = 350; i >= 0; i--) {
                             cont++;
                             Thread.sleep(1);
                             slideBar.setSize(i, 730);
@@ -824,7 +852,7 @@ public class frmMain extends javax.swing.JFrame {
                                 activeFrame.setLocation(i, 70);
                             } catch (Exception e) {
                             }
-                 
+
                         }
                     } catch (Exception e) {
                         JOptionPane.showMessageDialog(null, e);
@@ -832,15 +860,15 @@ public class frmMain extends javax.swing.JFrame {
                 }
             };
             th.start();
-            x=0;
-        } else if( x == 0 ){
+            x = 0;
+        } else if (x == 0) {
             slideBar.setSize(x, 730);
-            Thread th = new Thread(){
+            Thread th = new Thread() {
                 @Override
-                public void run(){
+                public void run() {
                     try {
-                        int cont = 0 ;
-                        for (int i = 0; i <= x; i++){
+                        int cont = 0;
+                        for (int i = 0; i <= x; i++) {
                             cont++;
                             Thread.sleep(1);
                             slideBar.setSize(i, 730);
@@ -893,7 +921,7 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarCategoriaActionPerformed
 
     private void btnElimProducMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnElimProducMouseEntered
-      
+
     }//GEN-LAST:event_btnElimProducMouseEntered
 
     private void cbTipoProductoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbTipoProductoItemStateChanged
@@ -902,42 +930,62 @@ public class frmMain extends javax.swing.JFrame {
             tablaClasificacionProducto(tipo);
         } catch (Exception e) {
         }
-        
+
     }//GEN-LAST:event_cbTipoProductoItemStateChanged
 
     private void txtBuscarProductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarProductoKeyTyped
         buscarTablaClasificacionProducto(txtBuscarProducto.getText());
     }//GEN-LAST:event_txtBuscarProductoKeyTyped
 
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+
+        dgResgistrarCategoria dg = new dgResgistrarCategoria(this, true);
+        dg.setVisible(true);
+
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
+        muestraCategoria();
+    }//GEN-LAST:event_ActualizarActionPerformed
+
     public void setActiveFrame(JInternalFrame frame) {
         this.activeFrame = frame;
     }
-    
+
     public void llevarCbTipoProducto() {
         cbTipoProducto.removeAllItems();
-        categoriaController.listadoCategoria().forEach((categoria)->{
+        categoriaController.listadoCategoria().forEach((categoria) -> {
             cbTipoProducto.addItem(categoria.getId_categoria() + " - " + categoria.getNombre_Categoria());
         });
     }
-    
+
     public void tablaClasificacionProducto(int tipo) {
-        DefaultTableModel dt = (DefaultTableModel)tableClasificacionProducto.getModel();
+        DefaultTableModel dt = (DefaultTableModel) tableClasificacionProducto.getModel();
         dt.setRowCount(0);
-        productoController.listaProductoxCategoria(tipo).forEach((producto)->{
+        productoController.listaProductoxCategoria(tipo).forEach((producto) -> {
             Object v[] = {producto.getId_producto(), producto.getNombre_producto(), producto.getStock(), producto.getPrecio(), producto.getFecha_ingreso(), producto.getFecha_vencimiento(), producto.getNombre_proveedores(), producto.getNombre()};
             dt.addRow(v);
         });
     }
-    
+
     public void buscarTablaClasificacionProducto(String nombre) {
-        DefaultTableModel dt = (DefaultTableModel)tableClasificacionProducto.getModel();
+        DefaultTableModel dt = (DefaultTableModel) tableClasificacionProducto.getModel();
         dt.setRowCount(0);
-        productoController.listaProductoxNombre(nombre).forEach((producto)->{
+        productoController.listaProductoxNombre(nombre).forEach((producto) -> {
             Object v[] = {producto.getId_producto(), producto.getNombre_producto(), producto.getStock(), producto.getPrecio(), producto.getFecha_ingreso(), producto.getFecha_vencimiento(), producto.getNombre_proveedores(), producto.getNombre()};
             dt.addRow(v);
         });
     }
-    
+
+    public void muestraCategoria() {
+        DefaultTableModel dt = (DefaultTableModel) tablaCategoria.getModel();
+        dt.setRowCount(0);
+        for (Categoria x : categoriaController.listadoCategoria()) {
+            Object v[] = {x.getId_categoria(), x.getNombre_Categoria()};
+            dt.addRow(v);
+        }
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -974,6 +1022,7 @@ public class frmMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Actualizar;
     private javax.swing.JScrollPane TablaProducto;
     private javax.swing.JButton btnBuscaProduc;
     private javax.swing.JButton btnCerrarCategoria;
@@ -1039,7 +1088,6 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
     private javax.swing.JTextField jTextField1;
@@ -1053,18 +1101,19 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JPanel panelProveedores;
     private javax.swing.JPanel slideBar;
     private javax.swing.JLabel slideIcon;
+    private javax.swing.JTable tablaCategoria;
     private javax.swing.JTable tableClasificacionProducto;
     private javax.swing.JTextField txtBuscarProduc;
     private javax.swing.JTextField txtBuscarProducto;
     // End of variables declaration//GEN-END:variables
-    private void labelcolor(JLabel label){
-        label.setBackground(new java.awt.Color(53,162,107));
+    private void labelcolor(JLabel label) {
+        label.setBackground(new java.awt.Color(53, 162, 107));
     }
-   
-    private void resetlabelcolor(JLabel label){
-        label.setBackground(new java.awt.Color(54,70,78));
+
+    private void resetlabelcolor(JLabel label) {
+        label.setBackground(new java.awt.Color(54, 70, 78));
     }
-    
+
     public javax.swing.JPanel getPanelDetalle() {
         return panelDetalle;
     }
@@ -1112,7 +1161,5 @@ public class frmMain extends javax.swing.JFrame {
     public javax.swing.JPanel getPanelProductos() {
         return panelProductos;
     }
-    
-    
 
 }
