@@ -11,6 +11,9 @@ import javax.swing.JOptionPane;
 import controlador.EventsController;
 import controlador.ProductoController;
 import controlador.HistorialController;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JInternalFrame;
 import javax.swing.table.DefaultTableModel;
 import modelo.Usuario;
@@ -970,22 +973,16 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarHistorialActionPerformed
 
     private void btnIngProducActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngProducActionPerformed
+
+        dgRegistarProducto.opcion = 2;
+        dgRegistarProducto dg = null;
         try {
-            int f = tablaProducto.getSelectedRow();
-            if (f == -1) {
-                JOptionPane.showMessageDialog(null, "Por favor, seleccione un producto de la tabla");
-            }
-            else{
-                int idProducto = (int)tablaProducto.getValueAt(f, 0);
-                dgRegistarProducto.idProducto = idProducto;
-                dgRegistarProducto.opcion = 2;
-                dgRegistarProducto dg = new dgRegistarProducto(this, true);
-                dg.getLbTitulo().setText("Ingresar Porducto");
-                dg.setVisible(true);
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Hubo un error al momento de seleccionar: "+e.getMessage());
+            dg = new dgRegistarProducto(this, true);
+        } catch (ParseException ex) {
+            Logger.getLogger(frmMain.class.getName()).log(Level.SEVERE, null, ex);
         }
+        dg.getLbTitulo().setText("Ingresar Porducto");
+        dg.setVisible(true);
     }//GEN-LAST:event_btnIngProducActionPerformed
 
     private void btnModProducActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModProducActionPerformed
