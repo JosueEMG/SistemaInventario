@@ -1143,9 +1143,14 @@ public class frmMain extends javax.swing.JFrame {
         if (fila == -1) {
             JOptionPane.showMessageDialog(null, "Seleccione una fila");
         } else {
-            int codigo = (int) tabProveedores.getValueAt(fila, 0);
+            dgEliminarUsuario.nro=2;
+            dgEliminarUsuario.codigo = Integer.parseInt(tabProveedores.getValueAt(fila, 0).toString());
+            dgEliminarUsuario dg = new dgEliminarUsuario(this, true);
+            dg.setVisible(true);
+            
+            /*int codigo = (int) tabProveedores.getValueAt(fila, 0);
             proveedoresController.eliminarProveedores(codigo);
-            tablaProveedores();
+            tablaProveedores();*/
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
@@ -1186,6 +1191,7 @@ public class frmMain extends javax.swing.JFrame {
         if(fila == -1){
             JOptionPane.showMessageDialog(null, "Seleccione una fila");
         }else{
+            dgEliminarUsuario.nro=1;
             dgEliminarUsuario.codigo = Integer.parseInt(tabUsuario.getValueAt(fila, 0).toString());
             dgEliminarUsuario dg = new dgEliminarUsuario(this, true);
             dg.setVisible(true);

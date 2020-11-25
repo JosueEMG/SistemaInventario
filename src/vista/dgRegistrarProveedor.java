@@ -53,18 +53,11 @@ public class dgRegistrarProveedor extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setSize(new java.awt.Dimension(510, 470));
-        getContentPane().setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jLabel2.setText("Ingrese el Nombre del Proveedor:");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(20, 100, 236, 20);
 
         labelTitulo.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
-        getContentPane().add(labelTitulo);
-        labelTitulo.setBounds(180, 40, 0, 0);
-        getContentPane().add(txtNombreProveedor);
-        txtNombreProveedor.setBounds(280, 100, 200, 24);
 
         btnAceptar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         btnAceptar.setText("Aceptar");
@@ -73,8 +66,6 @@ public class dgRegistrarProveedor extends javax.swing.JDialog {
                 btnAceptarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAceptar);
-        btnAceptar.setBounds(60, 180, 160, 36);
 
         btnCerrar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         btnCerrar.setText("Cerrar");
@@ -83,12 +74,45 @@ public class dgRegistrarProveedor extends javax.swing.JDialog {
                 btnCerrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCerrar);
-        btnCerrar.setBounds(350, 180, 100, 36);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/FMainMenu.png"))); // NOI18N
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 0, 510, 270);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(170, 170, 170)
+                .addComponent(labelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(280, 280, 280)
+                .addComponent(txtNombreProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(160, 160, 160)
+                .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel2))
+            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(labelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(txtNombreProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAceptar)
+                    .addComponent(btnCerrar)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(jLabel2))
+            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

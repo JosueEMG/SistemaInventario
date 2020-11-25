@@ -6,6 +6,7 @@
 package vista;
 
 import controlador.UsuarioController;
+import controlador.ProveedoresController;
 import javax.swing.JOptionPane;
 import modelo.Usuario;
 
@@ -16,7 +17,9 @@ import modelo.Usuario;
 public class dgEliminarUsuario extends javax.swing.JDialog {
 
     UsuarioController usuarioController = new UsuarioController();
+    ProveedoresController proveedoresController = new ProveedoresController();
     public static int codigo;
+    public static int nro;
     /**
      * Creates new form dgEliminarUsuario
      */
@@ -107,8 +110,14 @@ public class dgEliminarUsuario extends javax.swing.JDialog {
         String clave = txtContraseña.getText();
         Usuario u = usuarioController.getUsuario(1);
         if(clave.equals(u.getContraseña())){
-            usuarioController.eliminarUsuarios(codigo);
-            this.dispose();
+            if(nro==1){
+                usuarioController.eliminarUsuarios(codigo);
+                this.dispose();
+            }
+            if(nro==2){
+                proveedoresController.eliminarProveedores(codigo);
+                this.dispose();
+            }
         }else{
             JOptionPane.showMessageDialog(null, "Ingrese una contraseña correcta");
         }
