@@ -4,19 +4,26 @@
  * and open the template in the editor.
  */
 package vista;
-
+import controlador.ProductoController;
+import controlador.ProveedoresController;
+import controlador.CategoriaControlller;
 /**
  *
  * @author geanl
  */
 public class dgRegistarProducto extends javax.swing.JDialog {
 
-    /**
-     * Creates new form dgRegistarProducto
-     */
+    static int idProducto; 
+    ProductoController productoController = new ProductoController();
+    CategoriaControlller categoriaController = new CategoriaControlller();
+    ProveedoresController proveedorController = new ProveedoresController();
     public dgRegistarProducto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
+        llenarCbCategoria();
+        llenarCbProveedor();
+        System.out.println(idProducto);
     }
 
     /**
@@ -38,13 +45,13 @@ public class dgRegistarProducto extends javax.swing.JDialog {
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        dateFechaIngreso = new com.toedter.calendar.JDateChooser();
+        dateFechaSalida = new com.toedter.calendar.JDateChooser();
+        cbProveedor = new javax.swing.JComboBox<>();
+        cbCategoria = new javax.swing.JComboBox<>();
+        txtNombreProducto = new javax.swing.JTextField();
+        txtPrecioProducto = new javax.swing.JTextField();
+        txtCategoria = new javax.swing.JTextField();
         btnAgreProduc = new javax.swing.JButton();
         btnCerrarReg = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -52,6 +59,9 @@ public class dgRegistarProducto extends javax.swing.JDialog {
         jLabel9.setText("jLabel9");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setModal(true);
+        setPreferredSize(new java.awt.Dimension(717, 532));
+        setResizable(false);
         setSize(new java.awt.Dimension(717, 532));
         getContentPane().setLayout(null);
 
@@ -95,26 +105,29 @@ public class dgRegistarProducto extends javax.swing.JDialog {
         getContentPane().add(jLabel10);
         jLabel10.setBounds(280, 30, 200, 25);
 
-        jLabel11.setText("Añadir Imagen del Producto");
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-male-user-23.png"))); // NOI18N
         jLabel11.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 48))); // NOI18N
         getContentPane().add(jLabel11);
         jLabel11.setBounds(510, 100, 170, 220);
-        getContentPane().add(jDateChooser1);
-        jDateChooser1.setBounds(300, 160, 160, 29);
-        getContentPane().add(jDateChooser2);
-        jDateChooser2.setBounds(300, 200, 160, 29);
+        getContentPane().add(dateFechaIngreso);
+        dateFechaIngreso.setBounds(300, 160, 160, 32);
+        getContentPane().add(dateFechaSalida);
+        dateFechaSalida.setBounds(300, 200, 160, 32);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(300, 240, 160, 26);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(300, 80, 160, 24);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(300, 120, 160, 24);
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(300, 320, 160, 24);
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(300, 280, 160, 24);
+        cbProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(cbProveedor);
+        cbProveedor.setBounds(300, 280, 160, 26);
+
+        cbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(cbCategoria);
+        cbCategoria.setBounds(300, 240, 160, 26);
+        getContentPane().add(txtNombreProducto);
+        txtNombreProducto.setBounds(300, 80, 160, 24);
+        getContentPane().add(txtPrecioProducto);
+        txtPrecioProducto.setBounds(300, 120, 160, 24);
+        getContentPane().add(txtCategoria);
+        txtCategoria.setBounds(300, 320, 160, 24);
 
         btnAgreProduc.setText("Agregar Producto");
         btnAgreProduc.addActionListener(new java.awt.event.ActionListener() {
@@ -126,6 +139,11 @@ public class dgRegistarProducto extends javax.swing.JDialog {
         btnAgreProduc.setBounds(80, 420, 150, 32);
 
         btnCerrarReg.setText("Cerrar");
+        btnCerrarReg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarRegActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnCerrarReg);
         btnCerrarReg.setBounds(500, 420, 100, 32);
 
@@ -137,12 +155,29 @@ public class dgRegistarProducto extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgreProducActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgreProducActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnAgreProducActionPerformed
+
+    private void btnCerrarRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarRegActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCerrarRegActionPerformed
 
     /**
      * @param args the command line arguments
      */
+    void llenarCbCategoria() {
+        cbCategoria.removeAllItems();
+        categoriaController.listadoCategoria().forEach((p)->{
+            cbCategoria.addItem(p.getNombre_Categoria());
+        });
+    }
+    
+    void llenarCbProveedor() {
+        cbProveedor.removeAllItems();
+        proveedorController.listaProveedores().forEach((p)->{
+            cbProveedor.addItem(p.getNombre_proveedores());
+        });
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -185,9 +220,10 @@ public class dgRegistarProducto extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgreProduc;
     private javax.swing.JButton btnCerrarReg;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private javax.swing.JComboBox<String> cbCategoria;
+    private javax.swing.JComboBox<String> cbProveedor;
+    private com.toedter.calendar.JDateChooser dateFechaIngreso;
+    private com.toedter.calendar.JDateChooser dateFechaSalida;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -199,9 +235,12 @@ public class dgRegistarProducto extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField txtCategoria;
+    private javax.swing.JTextField txtNombreProducto;
+    private javax.swing.JTextField txtPrecioProducto;
     // End of variables declaration//GEN-END:variables
+
+    public javax.swing.JLabel getLbTitulo() {
+        return jLabel10;
+    }
 }

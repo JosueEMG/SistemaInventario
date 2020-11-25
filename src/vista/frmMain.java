@@ -44,6 +44,7 @@ public class frmMain extends javax.swing.JFrame {
             showBossPanels();
         }
         llevarCbTipoProducto();
+        tablaProducto();
 
     }
 
@@ -124,15 +125,14 @@ public class frmMain extends javax.swing.JFrame {
         tableClasificacionProducto = new javax.swing.JTable();
         frmProductos = new javax.swing.JInternalFrame();
         jPanel2 = new javax.swing.JPanel();
-        btnBuscaProduc = new javax.swing.JButton();
         btnIngProduc = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        txtBuscarProduc = new javax.swing.JTextField();
+        txtBuscarProducto = new javax.swing.JTextField();
         btnModProduc = new javax.swing.JButton();
         btnElimProduc = new javax.swing.JButton();
         btnCerrarRegistro = new javax.swing.JButton();
         TablaProducto = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaProducto = new javax.swing.JTable();
         frmProveedores = new javax.swing.JInternalFrame();
         jPanel6 = new javax.swing.JPanel();
         btnCerrarProveedores = new javax.swing.JButton();
@@ -560,13 +560,13 @@ public class frmMain extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(null);
 
-        btnBuscaProduc.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 15)); // NOI18N
-        btnBuscaProduc.setText("Buscar");
-        jPanel2.add(btnBuscaProduc);
-        btnBuscaProduc.setBounds(710, 105, 100, 32);
-
         btnIngProduc.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 15)); // NOI18N
         btnIngProduc.setText("Ingresar Producto");
+        btnIngProduc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngProducActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnIngProduc);
         btnIngProduc.setBounds(120, 640, 210, 32);
 
@@ -574,12 +574,23 @@ public class frmMain extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Buscar Producto:");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(320, 110, 160, 22);
-        jPanel2.add(txtBuscarProduc);
-        txtBuscarProduc.setBounds(480, 110, 200, 24);
+        jLabel2.setBounds(390, 110, 160, 22);
+
+        txtBuscarProducto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBuscarProductoKeyTyped(evt);
+            }
+        });
+        jPanel2.add(txtBuscarProducto);
+        txtBuscarProducto.setBounds(550, 110, 200, 24);
 
         btnModProduc.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 15)); // NOI18N
         btnModProduc.setText("Modificar Producto");
+        btnModProduc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModProducActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnModProduc);
         btnModProduc.setBounds(380, 640, 210, 32);
 
@@ -588,6 +599,11 @@ public class frmMain extends javax.swing.JFrame {
         btnElimProduc.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnElimProducMouseEntered(evt);
+            }
+        });
+        btnElimProduc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnElimProducActionPerformed(evt);
             }
         });
         jPanel2.add(btnElimProduc);
@@ -603,8 +619,8 @@ public class frmMain extends javax.swing.JFrame {
         jPanel2.add(btnCerrarRegistro);
         btnCerrarRegistro.setBounds(880, 640, 120, 32);
 
-        jTable1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaProducto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        tablaProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -621,7 +637,7 @@ public class frmMain extends javax.swing.JFrame {
                 "Id Producto", "Nombre Producto", "Stock", "Precio/Unidad", "Fecha Ingreso", "Fecha Vencimiento", "Nombre Proveedor", "Nombre Usuario"
             }
         ));
-        TablaProducto.setViewportView(jTable1);
+        TablaProducto.setViewportView(tablaProducto);
 
         jPanel2.add(TablaProducto);
         TablaProducto.setBounds(50, 160, 1060, 450);
@@ -940,6 +956,63 @@ public class frmMain extends javax.swing.JFrame {
         muestraHistorialProducto(txtidHistorial.getText());
     }//GEN-LAST:event_btnBuscarHistorialActionPerformed
 
+    private void btnIngProducActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngProducActionPerformed
+        try {
+            int f = tablaProducto.getSelectedRow();
+            if (f == -1) {
+                JOptionPane.showMessageDialog(null, "Por favor, seleccione un producto de la tabla");
+            }
+            else{
+                int idProducto = (int)tablaProducto.getValueAt(f, 0);
+                dgRegistarProducto.idProducto = idProducto;
+                dgRegistarProducto dg = new dgRegistarProducto(this, true);
+                dg.getLbTitulo().setText("Ingresar Porducto");
+                dg.setVisible(true);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Hubo un error al momento de seleccionar: "+e.getMessage());
+        }
+    }//GEN-LAST:event_btnIngProducActionPerformed
+
+    private void btnModProducActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModProducActionPerformed
+            
+        try {
+            int f = tablaProducto.getSelectedRow();
+            if (f == -1) {
+                JOptionPane.showMessageDialog(null, "Por favor, seleccione un producto de la tabla");
+            }
+            else {
+                int idProducto = (int)tablaProducto.getValueAt(f, 0);
+                dgRegistarProducto.idProducto = idProducto;
+                dgRegistarProducto dg = new dgRegistarProducto(this, true);
+                dg.getLbTitulo().setText("Modificar Porducto");
+                dg.setVisible(true);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Hubo un error al momento de seleccionar: "+e.getMessage());
+        }
+        
+    }//GEN-LAST:event_btnModProducActionPerformed
+
+    private void btnElimProducActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElimProducActionPerformed
+        try {
+            int f = tablaProducto.getSelectedRow();
+            if (f == -1) {
+                JOptionPane.showMessageDialog(null, "Por favor, seleccione un producto de la tabla");
+            }
+            else {
+                
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Hubo un error al momento de seleccionar: "+e.getMessage());
+        }
+        
+    }//GEN-LAST:event_btnElimProducActionPerformed
+
+    private void txtBuscarProductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarProductoKeyTyped
+        tablaProductoByNombre(txtBuscarProducto.getText());
+    }//GEN-LAST:event_txtBuscarProductoKeyTyped
+
     public void setActiveFrame(JInternalFrame frame) {
         this.activeFrame = frame;
     }
@@ -955,6 +1028,24 @@ public class frmMain extends javax.swing.JFrame {
         DefaultTableModel dt = (DefaultTableModel) tableClasificacionProducto.getModel();
         dt.setRowCount(0);
         productoController.listaProductoxCategoria(tipo).forEach((producto) -> {
+            Object v[] = {producto.getId_producto(), producto.getNombre_producto(), producto.getStock(), producto.getPrecio(), producto.getFecha_ingreso(), producto.getFecha_vencimiento(), producto.getNombre_proveedores(), producto.getNombre()};
+            dt.addRow(v);
+        });
+    }
+    
+    public void tablaProducto() {
+        DefaultTableModel dt = (DefaultTableModel) tablaProducto.getModel();
+        dt.setRowCount(0);
+        productoController.listaProducto().forEach((producto) -> {
+            Object v[] = {producto.getId_producto(), producto.getNombre_producto(), producto.getStock(), producto.getPrecio(), producto.getFecha_ingreso(), producto.getFecha_vencimiento(), producto.getNombre_proveedores(), producto.getNombre()};
+            dt.addRow(v);
+        });
+    }
+    
+    public void tablaProductoByNombre(String nombre) {
+        DefaultTableModel dt = (DefaultTableModel) tablaProducto.getModel();
+        dt.setRowCount(0);
+        productoController.listaProductoxNombre(nombre).forEach((producto) -> {
             Object v[] = {producto.getId_producto(), producto.getNombre_producto(), producto.getStock(), producto.getPrecio(), producto.getFecha_ingreso(), producto.getFecha_vencimiento(), producto.getNombre_proveedores(), producto.getNombre()};
             dt.addRow(v);
         });
@@ -1025,7 +1116,6 @@ public class frmMain extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Actualizar;
     private javax.swing.JScrollPane TablaProducto;
-    private javax.swing.JButton btnBuscaProduc;
     private javax.swing.JButton btnBuscarHistorial;
     private javax.swing.JButton btnCerrarCategoria;
     private javax.swing.JButton btnCerrarClasificacion;
@@ -1086,7 +1176,6 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable6;
     private javax.swing.JTextField jTextField1;
@@ -1101,8 +1190,9 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JLabel slideIcon;
     private javax.swing.JTable tablaCategoria;
     private javax.swing.JTable tablaHistorialProducto;
+    private javax.swing.JTable tablaProducto;
     private javax.swing.JTable tableClasificacionProducto;
-    private javax.swing.JTextField txtBuscarProduc;
+    private javax.swing.JTextField txtBuscarProducto;
     private javax.swing.JTextField txtidHistorial;
     // End of variables declaration//GEN-END:variables
     private void labelcolor(JLabel label) {
