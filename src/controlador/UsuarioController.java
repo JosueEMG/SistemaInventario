@@ -146,7 +146,7 @@ public class UsuarioController {
 
         try {
             conn = MySQLConexion.getConexion();
-            String sql = "select nombre, dni , correo, t.nombre_tipo \n" +
+            String sql = "select nombre, dni , correo, t.nombre_tipo, u.id_tipo \n" +
             "from usuario u inner join tipo_usuario t \n" +
             "on u.id_tipo = t.id_tipo where id = ?;";
             PreparedStatement st = conn.prepareStatement(sql);
@@ -159,6 +159,7 @@ public class UsuarioController {
                 u.setDni(rs.getInt(2));
                 u.setCorreo(rs.getString(3));
                 u.setNombre_tipo(rs.getString(4));
+                u.setId_tipo(rs.getInt(5));
             }
         } catch (Exception ex) {
             ex.printStackTrace();

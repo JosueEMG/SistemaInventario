@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import controlador.EventsController;
 import javax.swing.JInternalFrame;
+import modelo.Usuario;
 
 /**
  *
@@ -19,11 +20,26 @@ public class frmMain extends javax.swing.JFrame {
     int x = 350;
     EventsController view;
     private JInternalFrame activeFrame;
+    static Usuario user;
     public frmMain() {
         initComponents();
         this.setLocationRelativeTo(null);
         view = new EventsController(this);
         closeAllFrames();
+        panelCategorias.setVisible(false);
+        panelProveedores.setVisible(false);
+        panelListadoUsuarios.setVisible(false);
+        if (user.getId_tipo() == 1) {
+            showBossPanels();
+        }
+
+    }
+    
+    void showBossPanels() {
+        panelCategorias.setVisible(true);
+        panelProveedores.setVisible(true);
+        panelListadoUsuarios.setVisible(true);
+
     }
     
     void closeAllFrames() {
@@ -182,7 +198,7 @@ public class frmMain extends javax.swing.JFrame {
         jLabel9.setText("Mantenimiento de Proveedores");
         panelProveedores.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 290, 20));
 
-        slideBar.add(panelProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 350, 40));
+        slideBar.add(panelProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 350, 40));
 
         panelDetalle.setBackground(new java.awt.Color(54, 70, 78));
         panelDetalle.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -196,7 +212,7 @@ public class frmMain extends javax.swing.JFrame {
         jLabel11.setText("Historial de Productos");
         panelDetalle.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 270, 20));
 
-        slideBar.add(panelDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 350, 40));
+        slideBar.add(panelDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 350, 40));
 
         panelClasificacion.setBackground(new java.awt.Color(54, 70, 78));
         panelClasificacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -210,7 +226,7 @@ public class frmMain extends javax.swing.JFrame {
         jLabel13.setText("Clasificación de Productos");
         panelClasificacion.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 270, 20));
 
-        slideBar.add(panelClasificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 350, 40));
+        slideBar.add(panelClasificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 350, 40));
 
         panelListadoUsuarios.setBackground(new java.awt.Color(54, 70, 78));
         panelListadoUsuarios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -246,6 +262,8 @@ public class frmMain extends javax.swing.JFrame {
         });
         jPanel1.add(slideIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 40, -1));
 
+        frmCategorias.setClosable(true);
+        frmCategorias.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         frmCategorias.setVisible(true);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -343,6 +361,8 @@ public class frmMain extends javax.swing.JFrame {
 
         jPanel1.add(frmCategorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 1150, 730));
 
+        frmListadoUsuarios.setClosable(true);
+        frmListadoUsuarios.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         frmListadoUsuarios.setVisible(true);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -431,6 +451,8 @@ public class frmMain extends javax.swing.JFrame {
 
         jPanel1.add(frmListadoUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 1150, 730));
 
+        frmClasificacion.setClosable(true);
+        frmClasificacion.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         frmClasificacion.setVisible(true);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -504,6 +526,8 @@ public class frmMain extends javax.swing.JFrame {
 
         jPanel1.add(frmClasificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 1150, 730));
 
+        frmProductos.setClosable(true);
+        frmProductos.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         frmProductos.setVisible(true);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -588,6 +612,8 @@ public class frmMain extends javax.swing.JFrame {
 
         jPanel1.add(frmProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 1150, 730));
 
+        frmProveedores.setClosable(true);
+        frmProveedores.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         frmProveedores.setVisible(true);
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
@@ -677,6 +703,8 @@ public class frmMain extends javax.swing.JFrame {
 
         jPanel1.add(frmProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 1150, 730));
 
+        frmHistorial.setClosable(true);
+        frmHistorial.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         frmHistorial.setVisible(true);
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));

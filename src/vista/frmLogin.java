@@ -4,18 +4,19 @@
  * and open the template in the editor.
  */
 package vista;
-
+import controlador.UsuarioController;
+import modelo.Usuario;
+import javax.swing.JOptionPane;
 /**
  *
  * @author geanl
  */
 public class frmLogin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form frmLogin
-     */
+    UsuarioController userController = new UsuarioController();
     public frmLogin() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -28,35 +29,24 @@ public class frmLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtDni = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtContrasena = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
         jLabel1.setText("Sistema de Inventario");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(160, 40, 167, 22);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(257, 94, 170, 24);
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jLabel2.setText("Ingrese su DNI:");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(50, 100, 140, 20);
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jLabel3.setText("Ingrese su Contraseña:");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(50, 140, 160, 20);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(257, 136, 170, 24);
 
         jButton1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jButton1.setText("Ingresar");
@@ -65,23 +55,87 @@ public class frmLogin extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(100, 210, 100, 36);
 
         jButton2.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jButton2.setText("Cerrar");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(302, 210, 100, 36);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/FMainMenu.png"))); // NOI18N
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 0, 490, 300);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addComponent(jLabel1))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(257, 257, 257)
+                .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jLabel3)
+                .addGap(47, 47, 47)
+                .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(102, 102, 102)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel1)
+                .addGap(32, 32, 32)
+                .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel3))
+                    .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(jLabel2))
+            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
+        try {
+            String contrasena = txtContrasena.getText();
+            String dni = txtDni.getText();
+            int id = userController.userVerify(dni, contrasena);
+
+            if (contrasena.equals("") && dni.equals("")) {
+                JOptionPane.showMessageDialog(null, "Ingrese datos a todos los campos");
+            }
+            else if (id == 0) {
+                JOptionPane.showMessageDialog(null, "Los datos de usuario son incorrectos");
+            }
+            else{
+                Usuario user = userController.getUsuario(id);
+                frmMain.user = user;
+                frmMain frm = new frmMain();
+                frm.setVisible(true);
+                this.dispose();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Hubo un error al momento de ingresar al sistema: " + e.getMessage());
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -126,7 +180,7 @@ public class frmLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField txtContrasena;
+    private javax.swing.JTextField txtDni;
     // End of variables declaration//GEN-END:variables
 }

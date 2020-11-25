@@ -189,7 +189,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="80" width="350" height="40"/>
+                  <AbsoluteConstraints x="0" y="280" width="350" height="40"/>
                 </Constraint>
               </Constraints>
 
@@ -236,7 +236,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="280" width="350" height="40"/>
+                  <AbsoluteConstraints x="0" y="130" width="350" height="40"/>
                 </Constraint>
               </Constraints>
 
@@ -283,7 +283,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="130" width="350" height="40"/>
+                  <AbsoluteConstraints x="0" y="80" width="350" height="40"/>
                 </Constraint>
               </Constraints>
 
@@ -398,6 +398,8 @@
         </Component>
         <Container class="javax.swing.JInternalFrame" name="frmCategorias">
           <Properties>
+            <Property name="closable" type="boolean" value="true"/>
+            <Property name="defaultCloseOperation" type="int" value="1"/>
             <Property name="visible" type="boolean" value="true"/>
           </Properties>
           <Constraints>
@@ -551,6 +553,8 @@
         </Container>
         <Container class="javax.swing.JInternalFrame" name="frmListadoUsuarios">
           <Properties>
+            <Property name="closable" type="boolean" value="true"/>
+            <Property name="defaultCloseOperation" type="int" value="1"/>
             <Property name="visible" type="boolean" value="true"/>
           </Properties>
           <Constraints>
@@ -721,6 +725,8 @@
         </Container>
         <Container class="javax.swing.JInternalFrame" name="frmClasificacion">
           <Properties>
+            <Property name="closable" type="boolean" value="true"/>
+            <Property name="defaultCloseOperation" type="int" value="1"/>
             <Property name="visible" type="boolean" value="true"/>
           </Properties>
           <Constraints>
@@ -879,6 +885,8 @@
         </Container>
         <Container class="javax.swing.JInternalFrame" name="frmProductos">
           <Properties>
+            <Property name="closable" type="boolean" value="true"/>
+            <Property name="defaultCloseOperation" type="int" value="1"/>
             <Property name="visible" type="boolean" value="true"/>
           </Properties>
           <Constraints>
@@ -1046,6 +1054,8 @@
         </Container>
         <Container class="javax.swing.JInternalFrame" name="frmProveedores">
           <Properties>
+            <Property name="closable" type="boolean" value="true"/>
+            <Property name="defaultCloseOperation" type="int" value="1"/>
             <Property name="visible" type="boolean" value="true"/>
           </Properties>
           <Constraints>
@@ -1203,6 +1213,8 @@
         </Container>
         <Container class="javax.swing.JInternalFrame" name="frmHistorial">
           <Properties>
+            <Property name="closable" type="boolean" value="true"/>
+            <Property name="defaultCloseOperation" type="int" value="1"/>
             <Property name="visible" type="boolean" value="true"/>
           </Properties>
           <Constraints>
