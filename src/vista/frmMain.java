@@ -129,7 +129,7 @@ public class frmMain extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtBuscarProducto = new javax.swing.JTextField();
         btnModProduc = new javax.swing.JButton();
-        btnElimProduc = new javax.swing.JButton();
+        btnRetirarProducto = new javax.swing.JButton();
         btnCerrarRegistro = new javax.swing.JButton();
         TablaProducto = new javax.swing.JScrollPane();
         tablaProducto = new javax.swing.JTable();
@@ -594,20 +594,20 @@ public class frmMain extends javax.swing.JFrame {
         jPanel2.add(btnModProduc);
         btnModProduc.setBounds(380, 640, 210, 32);
 
-        btnElimProduc.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 15)); // NOI18N
-        btnElimProduc.setText("Eliminar Producto");
-        btnElimProduc.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnRetirarProducto.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 15)); // NOI18N
+        btnRetirarProducto.setText("Retirar Producto");
+        btnRetirarProducto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnElimProducMouseEntered(evt);
+                btnRetirarProductoMouseEntered(evt);
             }
         });
-        btnElimProduc.addActionListener(new java.awt.event.ActionListener() {
+        btnRetirarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnElimProducActionPerformed(evt);
+                btnRetirarProductoActionPerformed(evt);
             }
         });
-        jPanel2.add(btnElimProduc);
-        btnElimProduc.setBounds(630, 640, 210, 32);
+        jPanel2.add(btnRetirarProducto);
+        btnRetirarProducto.setBounds(630, 640, 210, 32);
 
         btnCerrarRegistro.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 15)); // NOI18N
         btnCerrarRegistro.setText("Cerrar");
@@ -929,9 +929,9 @@ public class frmMain extends javax.swing.JFrame {
         frmCategorias.setVisible(false);
     }//GEN-LAST:event_btnCerrarCategoriaActionPerformed
 
-    private void btnElimProducMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnElimProducMouseEntered
+    private void btnRetirarProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRetirarProductoMouseEntered
 
-    }//GEN-LAST:event_btnElimProducMouseEntered
+    }//GEN-LAST:event_btnRetirarProductoMouseEntered
 
     private void cbTipoProductoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbTipoProductoItemStateChanged
         try { 
@@ -996,7 +996,7 @@ public class frmMain extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnModProducActionPerformed
 
-    private void btnElimProducActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElimProducActionPerformed
+    private void btnRetirarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarProductoActionPerformed
         try {
             int f = tablaProducto.getSelectedRow();
             if (f == -1) {
@@ -1009,7 +1009,7 @@ public class frmMain extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Hubo un error al momento de seleccionar: "+e.getMessage());
         }
         
-    }//GEN-LAST:event_btnElimProducActionPerformed
+    }//GEN-LAST:event_btnRetirarProductoActionPerformed
 
     private void txtBuscarProductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarProductoKeyTyped
         tablaProductoByNombre(txtBuscarProducto.getText());
@@ -1125,9 +1125,9 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JButton btnCerrarListado;
     private javax.swing.JButton btnCerrarProveedores;
     private javax.swing.JButton btnCerrarRegistro;
-    private javax.swing.JButton btnElimProduc;
     private javax.swing.JButton btnIngProduc;
     private javax.swing.JButton btnModProduc;
+    private javax.swing.JButton btnRetirarProducto;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbTipoProducto;
     private javax.swing.JLabel fontImage;
