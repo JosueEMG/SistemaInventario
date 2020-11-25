@@ -437,7 +437,9 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jButton11" min="-2" pref="200" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="262" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Component id="btnEliminarCategoria" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                   <Component id="btnCerrarCategoria" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="290" max="-2" attributes="0"/>
                               </Group>
@@ -471,6 +473,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnCerrarCategoria" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButton11" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnEliminarCategoria" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
                       </Group>
@@ -572,6 +575,17 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ActualizarActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnEliminarCategoria">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Yu Gothic UI Semilight" size="14" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Eliminar Categoria"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarCategoriaActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -1261,8 +1275,9 @@
                           </Border>
                         </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="4" rowCount="15">
+                          <Table columnCount="5" rowCount="15">
                             <Column editable="true" title="Id Historial" type="java.lang.Object"/>
+                            <Column editable="true" title="Fecha de Ingreso" type="java.lang.Object"/>
                             <Column editable="true" title="Fecha de Salida" type="java.lang.Object"/>
                             <Column editable="true" title="Cantidad " type="java.lang.Object"/>
                             <Column editable="true" title="Nombre del Producto" type="java.lang.Object"/>

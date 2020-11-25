@@ -43,7 +43,7 @@ public class frmMain extends javax.swing.JFrame {
         if (user.getId_tipo() == 1) {
             showBossPanels();
         }
-        llevarCbTipoProducto();
+        llenarCbTipoProducto();
         tablaProducto();
 
     }
@@ -104,6 +104,7 @@ public class frmMain extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         tablaCategoria = new javax.swing.JTable();
         Actualizar = new javax.swing.JButton();
+        btnEliminarCategoria = new javax.swing.JButton();
         frmListadoUsuarios = new javax.swing.JInternalFrame();
         jPanel4 = new javax.swing.JPanel();
         btnCerrarListado = new javax.swing.JButton();
@@ -335,6 +336,14 @@ public class frmMain extends javax.swing.JFrame {
             }
         });
 
+        btnEliminarCategoria.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        btnEliminarCategoria.setText("Eliminar Categoria");
+        btnEliminarCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarCategoriaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -344,7 +353,9 @@ public class frmMain extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(262, 262, 262)
+                        .addGap(35, 35, 35)
+                        .addComponent(btnEliminarCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
                         .addComponent(btnCerrarCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(290, 290, 290))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
@@ -368,7 +379,8 @@ public class frmMain extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCerrarCategoria)
-                    .addComponent(jButton11))
+                    .addComponent(jButton11)
+                    .addComponent(btnEliminarCategoria))
                 .addGap(87, 87, 87))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
@@ -756,24 +768,24 @@ public class frmMain extends javax.swing.JFrame {
         tablaHistorialProducto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         tablaHistorialProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Id Historial", "Fecha de Salida", "Cantidad ", "Nombre del Producto"
+                "Id Historial", "Fecha de Ingreso", "Fecha de Salida", "Cantidad ", "Nombre del Producto"
             }
         ));
         jScrollPane1.setViewportView(tablaHistorialProducto);
@@ -950,6 +962,7 @@ public class frmMain extends javax.swing.JFrame {
 
     private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
         muestraCategoria();
+        llenarCbTipoProducto();
     }//GEN-LAST:event_ActualizarActionPerformed
 
     private void btnBuscarHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarHistorialActionPerformed
@@ -1015,11 +1028,22 @@ public class frmMain extends javax.swing.JFrame {
         tablaProductoByNombre(txtBuscarProducto.getText());
     }//GEN-LAST:event_txtBuscarProductoKeyTyped
 
+    private void btnEliminarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCategoriaActionPerformed
+       String Nombre;
+       tablaCategoria.getSelectedRow();
+       int col=1;
+       Nombre=(tablaCategoria.getValueAt(tablaCategoria.getSelectedRow(),col)).toString();
+       categoriaController.removeCategoria(Nombre);
+       muestraCategoria();
+       llenarCbTipoProducto();
+        //  System.out.println(""+Nombre);
+    }//GEN-LAST:event_btnEliminarCategoriaActionPerformed
+
     public void setActiveFrame(JInternalFrame frame) {
         this.activeFrame = frame;
     }
 
-    public void llevarCbTipoProducto() {
+    public void llenarCbTipoProducto() {
         cbTipoProducto.removeAllItems();
         categoriaController.listadoCategoria().forEach((categoria) -> {
             cbTipoProducto.addItem(categoria.getNombre_Categoria());
@@ -1075,7 +1099,7 @@ public class frmMain extends javax.swing.JFrame {
         DefaultTableModel dt = (DefaultTableModel) tablaHistorialProducto.getModel();
         dt.setRowCount(0);
         for (Historial x : historialController.listadoHistorial(nombre)) {
-            Object v[] = {x.getId_Historial(), x.getFecha_salida(),x.getCantidad(), x.getNombreProducto()};
+            Object v[] = {x.getId_Historial(),x.getFecha_entrada(), x.getFecha_salida(),x.getCantidad(), x.getNombreProducto()};
             dt.addRow(v);
         }
     }
@@ -1125,6 +1149,7 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JButton btnCerrarListado;
     private javax.swing.JButton btnCerrarProveedores;
     private javax.swing.JButton btnCerrarRegistro;
+    private javax.swing.JButton btnEliminarCategoria;
     private javax.swing.JButton btnIngProduc;
     private javax.swing.JButton btnModProduc;
     private javax.swing.JButton btnRetirarProducto;
