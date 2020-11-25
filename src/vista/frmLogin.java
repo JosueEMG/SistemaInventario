@@ -38,6 +38,8 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(0, 0, 160, 40));
+        setSize(new java.awt.Dimension(160, 40));
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
         jLabel1.setText("Sistema de Inventario");

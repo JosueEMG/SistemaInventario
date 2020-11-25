@@ -5,10 +5,13 @@
  */
 package vista;
 
+import controlador.CategoriaControlller;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import controlador.EventsController;
+import controlador.ProductoController;
 import javax.swing.JInternalFrame;
+import javax.swing.table.DefaultTableModel;
 import modelo.Usuario;
 
 /**
@@ -21,6 +24,8 @@ public class frmMain extends javax.swing.JFrame {
     EventsController view;
     private JInternalFrame activeFrame;
     static Usuario user;
+    ProductoController productoController = new ProductoController();
+    CategoriaControlller categoriaController = new CategoriaControlller();
     public frmMain() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -32,6 +37,7 @@ public class frmMain extends javax.swing.JFrame {
         if (user.getId_tipo() == 1) {
             showBossPanels();
         }
+        llevarCbTipoProducto();
 
     }
     
@@ -105,13 +111,12 @@ public class frmMain extends javax.swing.JFrame {
         frmClasificacion = new javax.swing.JInternalFrame();
         jPanel5 = new javax.swing.JPanel();
         btnCerrarClasificacion = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField2 = new javax.swing.JTextField();
+        cbTipoProducto = new javax.swing.JComboBox<>();
+        txtBuscarProducto = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tableClasificacionProducto = new javax.swing.JTable();
         frmProductos = new javax.swing.JInternalFrame();
         jPanel2 = new javax.swing.JPanel();
         btnBuscaProduc = new javax.swing.JButton();
@@ -468,11 +473,6 @@ public class frmMain extends javax.swing.JFrame {
         jPanel5.add(btnCerrarClasificacion);
         btnCerrarClasificacion.setBounds(530, 640, 100, 36);
 
-        jButton5.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
-        jButton5.setText("Buscar");
-        jPanel5.add(jButton5);
-        jButton5.setBounds(980, 85, 76, 36);
-
         jLabel21.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jLabel21.setText("Seleccione Tipo de Producto:");
         jPanel5.add(jLabel21);
@@ -481,17 +481,28 @@ public class frmMain extends javax.swing.JFrame {
         jLabel22.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         jLabel22.setText("Buscar Producto:");
         jPanel5.add(jLabel22);
-        jLabel22.setBounds(620, 90, 118, 20);
+        jLabel22.setBounds(750, 90, 118, 20);
 
-        jComboBox1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel5.add(jComboBox1);
-        jComboBox1.setBounds(380, 85, 150, 30);
-        jPanel5.add(jTextField2);
-        jTextField2.setBounds(750, 90, 190, 24);
+        cbTipoProducto.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        cbTipoProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbTipoProducto.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbTipoProductoItemStateChanged(evt);
+            }
+        });
+        jPanel5.add(cbTipoProducto);
+        cbTipoProducto.setBounds(380, 85, 150, 30);
 
-        jTable3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        txtBuscarProducto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBuscarProductoKeyTyped(evt);
+            }
+        });
+        jPanel5.add(txtBuscarProducto);
+        txtBuscarProducto.setBounds(880, 90, 230, 24);
+
+        tableClasificacionProducto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        tableClasificacionProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -508,7 +519,7 @@ public class frmMain extends javax.swing.JFrame {
                 "Id Producto", "Nombre Producto", "Stock", "Precio/Unidad", "Fecha Ingreso", "Fecha Vencimiento", "Nombre Proveedor", "Nombre Usuario"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(tableClasificacionProducto);
 
         jPanel5.add(jScrollPane3);
         jScrollPane3.setBounds(50, 160, 1060, 450);
@@ -787,9 +798,7 @@ public class frmMain extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel1.getAccessibleContext().setAccessibleName("");
@@ -887,12 +896,48 @@ public class frmMain extends javax.swing.JFrame {
       
     }//GEN-LAST:event_btnElimProducMouseEntered
 
+    private void cbTipoProductoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbTipoProductoItemStateChanged
+        try {
+            int tipo = Integer.parseInt((cbTipoProducto.getSelectedItem().toString()).substring(0, 1));
+            tablaClasificacionProducto(tipo);
+        } catch (Exception e) {
+        }
+        
+    }//GEN-LAST:event_cbTipoProductoItemStateChanged
+
+    private void txtBuscarProductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarProductoKeyTyped
+        buscarTablaClasificacionProducto(txtBuscarProducto.getText());
+    }//GEN-LAST:event_txtBuscarProductoKeyTyped
+
     public void setActiveFrame(JInternalFrame frame) {
         this.activeFrame = frame;
     }
-    /**
-     * @param args the command line arguments
-     */
+    
+    public void llevarCbTipoProducto() {
+        cbTipoProducto.removeAllItems();
+        categoriaController.listadoCategoria().forEach((categoria)->{
+            cbTipoProducto.addItem(categoria.getId_categoria() + " - " + categoria.getNombre_Categoria());
+        });
+    }
+    
+    public void tablaClasificacionProducto(int tipo) {
+        DefaultTableModel dt = (DefaultTableModel)tableClasificacionProducto.getModel();
+        dt.setRowCount(0);
+        productoController.listaProductoxCategoria(tipo).forEach((producto)->{
+            Object v[] = {producto.getId_producto(), producto.getNombre_producto(), producto.getStock(), producto.getPrecio(), producto.getFecha_ingreso(), producto.getFecha_vencimiento(), producto.getNombre_proveedores(), producto.getNombre()};
+            dt.addRow(v);
+        });
+    }
+    
+    public void buscarTablaClasificacionProducto(String nombre) {
+        DefaultTableModel dt = (DefaultTableModel)tableClasificacionProducto.getModel();
+        dt.setRowCount(0);
+        productoController.listaProductoxNombre(nombre).forEach((producto)->{
+            Object v[] = {producto.getId_producto(), producto.getNombre_producto(), producto.getStock(), producto.getPrecio(), producto.getFecha_ingreso(), producto.getFecha_vencimiento(), producto.getNombre_proveedores(), producto.getNombre()};
+            dt.addRow(v);
+        });
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -941,6 +986,7 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JButton btnIngProduc;
     private javax.swing.JButton btnModProduc;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cbTipoProducto;
     private javax.swing.JLabel fontImage;
     private javax.swing.JInternalFrame frmCategorias;
     private javax.swing.JInternalFrame frmClasificacion;
@@ -954,12 +1000,10 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -995,12 +1039,10 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JPanel panelCategorias;
@@ -1011,7 +1053,9 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JPanel panelProveedores;
     private javax.swing.JPanel slideBar;
     private javax.swing.JLabel slideIcon;
+    private javax.swing.JTable tableClasificacionProducto;
     private javax.swing.JTextField txtBuscarProduc;
+    private javax.swing.JTextField txtBuscarProducto;
     // End of variables declaration//GEN-END:variables
     private void labelcolor(JLabel label){
         label.setBackground(new java.awt.Color(53,162,107));
