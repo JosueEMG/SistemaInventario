@@ -10,10 +10,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import controlador.EventsController;
 import controlador.ProductoController;
+import controlador.HistorialController;
 import javax.swing.JInternalFrame;
 import javax.swing.table.DefaultTableModel;
 import modelo.Usuario;
 import modelo.Categoria;
+import modelo.Historial;
 
 /**
  *
@@ -27,6 +29,7 @@ public class frmMain extends javax.swing.JFrame {
     static Usuario user;
     ProductoController productoController = new ProductoController();
     CategoriaControlller categoriaController = new CategoriaControlller();
+    HistorialController historialController = new HistorialController();
 
     public frmMain() {
         initComponents();
@@ -146,11 +149,11 @@ public class frmMain extends javax.swing.JFrame {
         frmHistorial = new javax.swing.JInternalFrame();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
+        tablaHistorialProducto = new javax.swing.JTable();
         btnCerrarHistorial = new javax.swing.JButton();
         jLabel23 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
-        jTextField3 = new javax.swing.JTextField();
+        btnBuscarHistorial = new javax.swing.JButton();
+        txtidHistorial = new javax.swing.JTextField();
         fontImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -749,8 +752,8 @@ public class frmMain extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setLayout(null);
 
-        jTable5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+        tablaHistorialProducto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        tablaHistorialProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -769,10 +772,10 @@ public class frmMain extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Id Historial", "Fecha de Salida", "Cantidad ", "Id Producto"
+                "Id Historial", "Fecha de Salida", "Cantidad ", "Nombre del Producto"
             }
         ));
-        jScrollPane1.setViewportView(jTable5);
+        jScrollPane1.setViewportView(tablaHistorialProducto);
 
         jPanel7.add(jScrollPane1);
         jScrollPane1.setBounds(100, 130, 970, 460);
@@ -793,12 +796,17 @@ public class frmMain extends javax.swing.JFrame {
         jPanel7.add(jLabel23);
         jLabel23.setBounds(340, 70, 120, 20);
 
-        jButton6.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
-        jButton6.setText("Buscar");
-        jPanel7.add(jButton6);
-        jButton6.setBounds(740, 65, 100, 36);
-        jPanel7.add(jTextField3);
-        jTextField3.setBounds(500, 70, 200, 24);
+        btnBuscarHistorial.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        btnBuscarHistorial.setText("Buscar");
+        btnBuscarHistorial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarHistorialActionPerformed(evt);
+            }
+        });
+        jPanel7.add(btnBuscarHistorial);
+        btnBuscarHistorial.setBounds(740, 65, 100, 36);
+        jPanel7.add(txtidHistorial);
+        txtidHistorial.setBounds(500, 70, 200, 24);
 
         javax.swing.GroupLayout frmHistorialLayout = new javax.swing.GroupLayout(frmHistorial.getContentPane());
         frmHistorial.getContentPane().setLayout(frmHistorialLayout);
@@ -948,6 +956,10 @@ public class frmMain extends javax.swing.JFrame {
         muestraCategoria();
     }//GEN-LAST:event_ActualizarActionPerformed
 
+    private void btnBuscarHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarHistorialActionPerformed
+        muestraHistorialProducto(txtidHistorial.getText());
+    }//GEN-LAST:event_btnBuscarHistorialActionPerformed
+
     public void setActiveFrame(JInternalFrame frame) {
         this.activeFrame = frame;
     }
@@ -982,6 +994,15 @@ public class frmMain extends javax.swing.JFrame {
         dt.setRowCount(0);
         for (Categoria x : categoriaController.listadoCategoria()) {
             Object v[] = {x.getId_categoria(), x.getNombre_Categoria()};
+            dt.addRow(v);
+        }
+    }
+
+    public void muestraHistorialProducto(String nombre) {
+        DefaultTableModel dt = (DefaultTableModel) tablaHistorialProducto.getModel();
+        dt.setRowCount(0);
+        for (Historial x : historialController.listadoHistorial(nombre)) {
+            Object v[] = {x.getId_Historial(), x.getFecha_salida(),x.getCantidad(), x.getNombreProducto()};
             dt.addRow(v);
         }
     }
@@ -1025,6 +1046,7 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JButton Actualizar;
     private javax.swing.JScrollPane TablaProducto;
     private javax.swing.JButton btnBuscaProduc;
+    private javax.swing.JButton btnBuscarHistorial;
     private javax.swing.JButton btnCerrarCategoria;
     private javax.swing.JButton btnCerrarClasificacion;
     private javax.swing.JButton btnCerrarHistorial;
@@ -1049,7 +1071,6 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
@@ -1088,10 +1109,8 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JPanel panelCategorias;
     private javax.swing.JPanel panelClasificacion;
@@ -1102,9 +1121,11 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JPanel slideBar;
     private javax.swing.JLabel slideIcon;
     private javax.swing.JTable tablaCategoria;
+    private javax.swing.JTable tablaHistorialProducto;
     private javax.swing.JTable tableClasificacionProducto;
     private javax.swing.JTextField txtBuscarProduc;
     private javax.swing.JTextField txtBuscarProducto;
+    private javax.swing.JTextField txtidHistorial;
     // End of variables declaration//GEN-END:variables
     private void labelcolor(JLabel label) {
         label.setBackground(new java.awt.Color(53, 162, 107));
