@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -158,7 +159,7 @@ public class ProductoController {
                 p.setFecha_vencimiento(rs.getString(4));
                 p.setNombre_categoria(rs.getString(5));
                 p.setNombre_proveedores(rs.getString(6));
-                p.setStock(rs.getInt(3));
+                p.setStock(rs.getInt(7));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -241,5 +242,61 @@ public class ProductoController {
             }
         }
         return lis;
+    }
+    
+    public void anadirProducto(Productos p, int idUsuario) {
+        Connection conn = null;
+
+        try {
+            conn = MySQLConexion.getConexion();
+            String sql = "{call AdicionProducto(?,?,?,?,?,?,?,?)}";
+            CallableStatement st = conn.prepareCall(sql);
+            st.setString(1, p.getNombre_producto());
+            st.setInt(2, p.getStock());
+            st.setDouble(3, p.getPrecio());
+            st.setString(4, p.getFecha_ingreso());
+            st.setString(5, p.getFecha_vencimiento());
+            st.setInt(6, p.getId_categoria());
+            st.setInt(7, p.getId_proveedores());
+            st.setInt(8, idUsuario);
+            st.executeUpdate();
+            //llenar el arraylist con la clase entidad
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (Exception e2) {
+            }
+        }
+    }
+    
+    public void retirarProducto(int cantidad, int idProducto) {
+        Connection conn = null;
+
+        try {
+            conn = MySQLConexion.getConexion();
+            String sql = "{call RetiroProducto(?,?)}";
+            CallableStatement st = conn.prepareCall(sql);
+            st.setInt(1, cantidad);
+            st.setInt(2, idProducto);
+            st.executeUpdate();
+            //llenar el arraylist con la clase entidad
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (Exception e2) {
+            }
+        }
     }
 }

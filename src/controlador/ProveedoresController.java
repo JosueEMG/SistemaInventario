@@ -65,6 +65,37 @@ public class ProveedoresController {
         return lis;
     }
     
+    public List<Proveedores> listaProveedoresCB() {
+        List<Proveedores> lis = new ArrayList<>();
+        Connection conn = null;
+
+        try {
+                conn = MySQLConexion.getConexion();
+                String sql = "select Id_proveedores, Nombre_proveedores from proveedores";
+                PreparedStatement st = conn.prepareStatement(sql);
+                //st.setInt(1, id);
+                ResultSet rs = st.executeQuery();
+                //llenar el arraylist con la clase entidad
+                while (rs.next()) {
+                    Proveedores p = new Proveedores();
+                    p.setId_proveedores(rs.getInt(1));
+                    p.setNombre_proveedores(rs.getString(2));
+                    lis.add(p);
+                }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (Exception e2) {
+            }
+        }
+        return lis;
+    }
+    
     public void añadirProveedores(Proveedores p) {
         Connection conn = null;
 

@@ -26,7 +26,7 @@ public class HistorialController {
         try {
             if (nombre != null) {
                 conn = MySQLConexion.getConexion();
-                String sql = "select h.id_historial, p.fecha_ingreso, fecha_salida, cantidad, p.nombre_producto\n"
+                String sql = "select h.id_historial, p.fecha_ingreso, fecha_salida, cantidad, p.nombre_producto, estado\n"
                         + "from historial h inner join productos p\n"
                         + "on h.id_producto = p.id_producto and p.nombre_producto LIKE ?;";
                 PreparedStatement st = conn.prepareStatement(sql);
@@ -40,11 +40,12 @@ public class HistorialController {
                     h.setFecha_salida(rs.getString(3));
                     h.setCantidad(rs.getInt(4));
                     h.setNombreProducto(rs.getString(5));
+                    h.setEstado(rs.getString(6));
                     lis.add(h);
                 }
             } else {
                 conn = MySQLConexion.getConexion();
-                String sql = "select h.id_historial, p.fecha_ingreso, fecha_salida, cantidad, p.nombre_producto\n"
+                String sql = "select h.id_historial, p.fecha_ingreso, fecha_salida, cantidad, p.nombre_producto, estado \n"
                         + "from historial h inner join productos p\n"
                         + "on h.id_producto = p.id_producto";
                 PreparedStatement st = conn.prepareStatement(sql);
@@ -57,6 +58,7 @@ public class HistorialController {
                     h.setFecha_salida(rs.getString(3));
                     h.setCantidad(rs.getInt(4));
                     h.setNombreProducto(rs.getString(5));
+                    h.setEstado(rs.getString(6));
                     lis.add(h);
                 }
             }

@@ -17,6 +17,7 @@ public class Historial {
     private int Cantidad;
     private int Id_producto;
     private String nombreProducto;
+    private String estado;
 
     public int getId_producto() {
         return Id_producto;
@@ -64,6 +65,14 @@ public class Historial {
 
     public void setNombreProducto(String nombreProducto) {
         this.nombreProducto = nombreProducto;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
   

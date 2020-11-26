@@ -848,24 +848,24 @@ public class frmMain extends javax.swing.JFrame {
         tablaHistorialProducto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         tablaHistorialProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Id Historial", "Fecha de Ingreso", "Fecha de Salida", "Cantidad ", "Nombre del Producto"
+                "Id Historial", "Fecha de Ingreso", "Fecha de Salida", "Cantidad ", "Nombre del Producto", "Estado"
             }
         ));
         jScrollPane1.setViewportView(tablaHistorialProducto);
@@ -1058,7 +1058,7 @@ public class frmMain extends javax.swing.JFrame {
         } catch (ParseException ex) {
             Logger.getLogger(frmMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-        dg.getLbTitulo().setText("Ingresar Porducto");
+        dg.getLbTitulo().setText("Ingresar Producto");
         dg.setVisible(true);
     }//GEN-LAST:event_btnIngProducActionPerformed
 
@@ -1074,7 +1074,7 @@ public class frmMain extends javax.swing.JFrame {
                 dgRegistarProducto.idProducto = idProducto;
                 dgRegistarProducto.opcion = 1;
                 dgRegistarProducto dg = new dgRegistarProducto(this, true);
-                dg.getLbTitulo().setText("Modificar Porducto");
+                dg.getLbTitulo().setText("Modificar Producto");
                 dg.setVisible(true);
             }
         } catch (Exception e) {
@@ -1261,7 +1261,7 @@ public class frmMain extends javax.swing.JFrame {
         DefaultTableModel dt = (DefaultTableModel) tablaHistorialProducto.getModel();
         dt.setRowCount(0);
         for (Historial x : historialController.listadoHistorial(nombre)) {
-            Object v[] = {x.getId_Historial(),x.getFecha_entrada(), x.getFecha_salida(),x.getCantidad(), x.getNombreProducto()};
+            Object v[] = {x.getId_Historial(),x.getFecha_entrada(), x.getFecha_salida(),x.getCantidad(), x.getNombreProducto(), x.getEstado()};
             dt.addRow(v);
         }
     }
