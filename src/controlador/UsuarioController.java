@@ -164,7 +164,7 @@ public class UsuarioController {
 
         try {
             conn = MySQLConexion.getConexion();
-            String sql = "select nombre, dni ,contraseña, correo, t.nombre_tipo, u.id_tipo \n"
+            String sql = "select id, nombre, dni ,contraseña, correo, t.nombre_tipo, u.id_tipo \n"
                     + "from usuario u inner join tipo_usuario t \n"
                     + "on u.id_tipo = t.id_tipo where id = ?;";
             PreparedStatement st = conn.prepareStatement(sql);
@@ -173,12 +173,13 @@ public class UsuarioController {
             //llenar el arraylist con la clase entidad
             if (rs.next()) {
                 u = new Usuario();
-                u.setNombre(rs.getString(1));
-                u.setDni(rs.getInt(2));
-                u.setContraseña(rs.getString(3));
-                u.setCorreo(rs.getString(4));
-                u.setNombre_tipo(rs.getString(5));
-                u.setId_tipo(rs.getInt(6));
+                u.setId(rs.getInt(1));
+                u.setNombre(rs.getString(2));
+                u.setDni(rs.getInt(3));
+                u.setContraseña(rs.getString(4));
+                u.setCorreo(rs.getString(5));
+                u.setNombre_tipo(rs.getString(6));
+                u.setId_tipo(rs.getInt(7));
             }
         } catch (Exception ex) {
             ex.printStackTrace();

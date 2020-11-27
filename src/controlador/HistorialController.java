@@ -24,7 +24,7 @@ public class HistorialController {
         Connection conn = null;
 
         try {
-            if (nombre != null) {
+            if (!nombre.equals("")) {
                 conn = MySQLConexion.getConexion();
                 String sql = "select h.id_historial, p.fecha_ingreso, fecha_salida, cantidad, p.nombre_producto, estado\n"
                         + "from historial h inner join productos p\n"

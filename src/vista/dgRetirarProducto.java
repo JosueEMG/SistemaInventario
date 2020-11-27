@@ -5,6 +5,9 @@
  */
 package vista;
 
+import controlador.ProductoController;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author geanl
@@ -12,6 +15,8 @@ package vista;
 public class dgRetirarProducto extends javax.swing.JDialog {
 
     static int idProducto;
+    static int stock;
+    ProductoController productoController = new ProductoController();
     public dgRetirarProducto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -95,7 +100,20 @@ public class dgRetirarProducto extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRetirarPorductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarPorductoActionPerformed
-        System.out.print(idProducto);
+        
+        if (Integer.parseInt(txtNumeroProducto.getText()) > stock) {
+            JOptionPane.showMessageDialog(null, "Ingrese una cantidad valida");
+        }
+        else if (Integer.parseInt(txtNumeroProducto.getText()) == stock){
+            productoController.eliminarProducto(idProducto);
+            productoController.retirarProducto(Integer.parseInt(txtNumeroProducto.getText()), idProducto);
+            this.dispose();
+        }
+        else {
+            productoController.retirarProducto(Integer.parseInt(txtNumeroProducto.getText()), idProducto);
+            this.dispose();
+        }
+        
     }//GEN-LAST:event_btnRetirarPorductoActionPerformed
 
     private void btnCerrarEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarEliminarProductoActionPerformed

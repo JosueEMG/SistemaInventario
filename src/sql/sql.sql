@@ -27,6 +27,19 @@ and p.Id_Usuario=u.Id
 and p.Id_categoria=c.Id_categoria
 and id_producto = 1;
 
+use sistemainventario;
+select h.id_historial, p.fecha_ingreso, fecha_salida, cantidad, p.nombre_producto, estado
+from historial h inner join productos p
+on h.id_producto = p.id_producto
+
+use sistemainventario;
+select Id_producto, Nombre_Producto, Stock, Precio, Fecha_Ingreso, Fecha_vencimiento, Nombre_categoria, Nombre_proveedores, Nombre 
+from productos p, proveedores pro, usuario u, categoria c 
+where p.Id_proveedores=pro.Id_proveedores 
+and p.Id_categoria=c.Id_categoria
+and u.id = p.id_usuario
+
+
 select Id_proveedores, Nombre_proveedores from proveedores;
 
 use sistemainventario;

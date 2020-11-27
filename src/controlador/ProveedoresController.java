@@ -65,6 +65,35 @@ public class ProveedoresController {
         return lis;
     }
     
+    public int getIdProveedor(String nombre) {
+        int idProveedor = 0;
+        Connection conn = null;
+
+        try {
+            conn = MySQLConexion.getConexion();
+            String sql = "select id_proveedores from proveedores where nombre_proveedores = ?;";
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setString(1, nombre);
+            ResultSet rs = st.executeQuery();
+            //llenar el arraylist con la clase entidad
+            while (rs.next()) {
+                idProveedor = rs.getInt(1);
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (Exception e2) {
+            }
+        }
+        return idProveedor;
+    }
+    
     public List<Proveedores> listaProveedoresCB() {
         List<Proveedores> lis = new ArrayList<>();
         Connection conn = null;

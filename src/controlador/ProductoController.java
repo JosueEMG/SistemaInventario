@@ -110,7 +110,7 @@ public class ProductoController {
 
         try {
             conn = MySQLConexion.getConexion();
-            String sql = "update productos set nombre_producto = ?, precio = ?, fecha_ingreso = ?, fecha_vencimiento = ?, id_categoria = ?, id_proveedor = ?, stock = ? where id_producto = ?;";
+            String sql = "update productos set nombre_producto = ?, precio = ?, fecha_ingreso = ?, fecha_vencimiento = ?, id_categoria = ?, id_proveedores = ?, stock = ? where id_producto = ?;";
             PreparedStatement st = conn.prepareStatement(sql);
             st.setString(1, p.getNombre_producto());
             st.setDouble(2, p.getPrecio());
@@ -119,6 +119,7 @@ public class ProductoController {
             st.setInt(5, p.getId_categoria());
             st.setInt(6, p.getId_proveedores());
             st.setInt(7, p.getStock());
+            st.setInt(8, idProducto);
             st.executeUpdate();
             //llenar el arraylist con la clase entidad
             
@@ -284,6 +285,30 @@ public class ProductoController {
             CallableStatement st = conn.prepareCall(sql);
             st.setInt(1, cantidad);
             st.setInt(2, idProducto);
+            st.executeUpdate();
+            //llenar el arraylist con la clase entidad
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (Exception e2) {
+            }
+        }
+    }
+    
+    public void eliminarProducto(int idProducto) {
+        Connection conn = null;
+
+        try {
+            conn = MySQLConexion.getConexion();
+            String sql = "delete from productos where id_producto = ?";
+            CallableStatement st = conn.prepareCall(sql);
+            st.setInt(1, idProducto);
             st.executeUpdate();
             //llenar el arraylist con la clase entidad
             

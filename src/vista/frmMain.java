@@ -41,7 +41,7 @@ public class frmMain extends javax.swing.JFrame {
     public frmMain() {
         initComponents();
         muestraCategoria();
-        muestraHistorialProducto("");
+        muestraHistorialProducto();
         tablaProveedores();
         tablaUsuario();
         this.setLocationRelativeTo(null);
@@ -164,6 +164,7 @@ public class frmMain extends javax.swing.JFrame {
         btnCerrarRegistro = new javax.swing.JButton();
         TablaProducto = new javax.swing.JScrollPane();
         tablaProducto = new javax.swing.JTable();
+        btnActualizarTablaProducto = new javax.swing.JButton();
         frmProveedores = new javax.swing.JInternalFrame();
         jPanel6 = new javax.swing.JPanel();
         btnCerrarProveedores = new javax.swing.JButton();
@@ -709,6 +710,15 @@ public class frmMain extends javax.swing.JFrame {
         jPanel2.add(TablaProducto);
         TablaProducto.setBounds(50, 160, 1060, 450);
 
+        btnActualizarTablaProducto.setText("Actualizar tabla");
+        btnActualizarTablaProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarTablaProductoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnActualizarTablaProducto);
+        btnActualizarTablaProducto.setBounds(977, 100, 130, 32);
+
         javax.swing.GroupLayout frmProductosLayout = new javax.swing.GroupLayout(frmProductos.getContentPane());
         frmProductos.getContentPane().setLayout(frmProductosLayout);
         frmProductosLayout.setHorizontalGroup(
@@ -1046,12 +1056,13 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_ActualizarActionPerformed
 
     private void btnBuscarHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarHistorialActionPerformed
-        muestraHistorialProducto(txtidHistorial.getText());
+        muestraHistorialProducto();
     }//GEN-LAST:event_btnBuscarHistorialActionPerformed
 
     private void btnIngProducActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngProducActionPerformed
 
         dgRegistarProducto.opcion = 2;
+        dgRegistarProducto.idUsuario = user.getId();
         dgRegistarProducto dg = null;
         try {
             dg = new dgRegistarProducto(this, true);
@@ -1091,7 +1102,9 @@ public class frmMain extends javax.swing.JFrame {
             }
             else {
                 int idProducto = Integer.parseInt(tablaProducto.getValueAt(f, 0).toString());
+                int stock = Integer.parseInt(tablaProducto.getValueAt(f, 2).toString());
                 dgRetirarProducto.idProducto = idProducto;
+                dgRetirarProducto.stock = stock;
                 dgRetirarProducto dg = new dgRetirarProducto(this, true);
                 dg.setVisible(true);
             }
@@ -1201,6 +1214,12 @@ public class frmMain extends javax.swing.JFrame {
         }    
     }//GEN-LAST:event_btnEliminarUsuarioActionPerformed
 
+    private void btnActualizarTablaProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarTablaProductoActionPerformed
+        tablaProducto();
+        muestraHistorialProducto();
+        
+    }//GEN-LAST:event_btnActualizarTablaProductoActionPerformed
+
     public void setActiveFrame(JInternalFrame frame) {
         this.activeFrame = frame;
     }
@@ -1257,7 +1276,8 @@ public class frmMain extends javax.swing.JFrame {
         }
     }
 
-    public void muestraHistorialProducto(String nombre) {
+    public void muestraHistorialProducto() {
+        String nombre = txtidHistorial.getText();
         DefaultTableModel dt = (DefaultTableModel) tablaHistorialProducto.getModel();
         dt.setRowCount(0);
         for (Historial x : historialController.listadoHistorial(nombre)) {
@@ -1306,6 +1326,7 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JScrollPane TablaProducto;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnActualizarTabla;
+    private javax.swing.JButton btnActualizarTablaProducto;
     private javax.swing.JButton btnAgregarUsuario;
     private javax.swing.JButton btnBuscarHistorial;
     private javax.swing.JButton btnCerrarCategoria;
