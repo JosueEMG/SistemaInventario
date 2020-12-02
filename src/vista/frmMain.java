@@ -133,7 +133,6 @@ public class frmMain extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tablaCategoria = new javax.swing.JTable();
-        Actualizar = new javax.swing.JButton();
         btnEliminarCategoria = new javax.swing.JButton();
         frmListadoUsuarios = new javax.swing.JInternalFrame();
         jPanel4 = new javax.swing.JPanel();
@@ -146,7 +145,6 @@ public class frmMain extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
-        btnActualizarTabla = new javax.swing.JButton();
         frmClasificacion = new javax.swing.JInternalFrame();
         jPanel5 = new javax.swing.JPanel();
         btnCerrarClasificacion = new javax.swing.JButton();
@@ -164,7 +162,6 @@ public class frmMain extends javax.swing.JFrame {
         btnCerrarRegistro = new javax.swing.JButton();
         TablaProducto = new javax.swing.JScrollPane();
         tablaProducto = new javax.swing.JTable();
-        btnActualizarTablaProducto = new javax.swing.JButton();
         frmProveedores = new javax.swing.JInternalFrame();
         jPanel6 = new javax.swing.JPanel();
         btnCerrarProveedores = new javax.swing.JButton();
@@ -175,7 +172,6 @@ public class frmMain extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         txtProveedor = new javax.swing.JTextField();
-        btnTabla = new javax.swing.JButton();
         frmHistorial = new javax.swing.JInternalFrame();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -359,14 +355,6 @@ public class frmMain extends javax.swing.JFrame {
         ));
         jScrollPane4.setViewportView(tablaCategoria);
 
-        Actualizar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
-        Actualizar.setText("Actualizar");
-        Actualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ActualizarActionPerformed(evt);
-            }
-        });
-
         btnEliminarCategoria.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         btnEliminarCategoria.setText("Eliminar Categoria");
         btnEliminarCategoria.addActionListener(new java.awt.event.ActionListener() {
@@ -381,17 +369,12 @@ public class frmMain extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(284, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(btnEliminarCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(btnCerrarCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(290, 290, 290))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(Actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(459, 459, 459))))
+                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(btnEliminarCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(btnCerrarCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(290, 290, 290))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -405,9 +388,7 @@ public class frmMain extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(517, Short.MAX_VALUE)
-                .addComponent(Actualizar)
-                .addGap(32, 32, 32)
+                .addContainerGap(585, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCerrarCategoria)
                     .addComponent(jButton11)
@@ -530,15 +511,6 @@ public class frmMain extends javax.swing.JFrame {
         });
         jPanel4.add(txtUsuario);
         txtUsuario.setBounds(540, 150, 190, 24);
-
-        btnActualizarTabla.setText("Actualizar Tabla");
-        btnActualizarTabla.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarTablaActionPerformed(evt);
-            }
-        });
-        jPanel4.add(btnActualizarTabla);
-        btnActualizarTabla.setBounds(820, 140, 170, 32);
 
         javax.swing.GroupLayout frmListadoUsuariosLayout = new javax.swing.GroupLayout(frmListadoUsuarios.getContentPane());
         frmListadoUsuarios.getContentPane().setLayout(frmListadoUsuariosLayout);
@@ -710,15 +682,6 @@ public class frmMain extends javax.swing.JFrame {
         jPanel2.add(TablaProducto);
         TablaProducto.setBounds(50, 160, 1060, 450);
 
-        btnActualizarTablaProducto.setText("Actualizar tabla");
-        btnActualizarTablaProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarTablaProductoActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnActualizarTablaProducto);
-        btnActualizarTablaProducto.setBounds(977, 100, 130, 32);
-
         javax.swing.GroupLayout frmProductosLayout = new javax.swing.GroupLayout(frmProductos.getContentPane());
         frmProductos.getContentPane().setLayout(frmProductosLayout);
         frmProductosLayout.setHorizontalGroup(
@@ -825,15 +788,6 @@ public class frmMain extends javax.swing.JFrame {
         });
         jPanel6.add(txtProveedor);
         txtProveedor.setBounds(450, 100, 240, 24);
-
-        btnTabla.setText("Actualizar Tabla");
-        btnTabla.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTablaActionPerformed(evt);
-            }
-        });
-        jPanel6.add(btnTabla);
-        btnTabla.setBounds(730, 100, 130, 32);
 
         javax.swing.GroupLayout frmProveedoresLayout = new javax.swing.GroupLayout(frmProveedores.getContentPane());
         frmProveedores.getContentPane().setLayout(frmProveedoresLayout);
@@ -1047,13 +1001,10 @@ public class frmMain extends javax.swing.JFrame {
 
         dgResgistrarCategoria dg = new dgResgistrarCategoria(this, true);
         dg.setVisible(true);
-
-    }//GEN-LAST:event_jButton11ActionPerformed
-
-    private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
         muestraCategoria();
         llenarCbTipoProducto();
-    }//GEN-LAST:event_ActualizarActionPerformed
+
+    }//GEN-LAST:event_jButton11ActionPerformed
 
     private void btnBuscarHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarHistorialActionPerformed
         muestraHistorialProducto();
@@ -1071,6 +1022,8 @@ public class frmMain extends javax.swing.JFrame {
         }
         dg.getLbTitulo().setText("Ingresar Producto");
         dg.setVisible(true);
+        tablaProducto();
+        muestraHistorialProducto();
     }//GEN-LAST:event_btnIngProducActionPerformed
 
     private void btnModProducActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModProducActionPerformed
@@ -1087,6 +1040,8 @@ public class frmMain extends javax.swing.JFrame {
                 dgRegistarProducto dg = new dgRegistarProducto(this, true);
                 dg.getLbTitulo().setText("Modificar Producto");
                 dg.setVisible(true);
+                tablaProducto();
+                muestraHistorialProducto();
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Hubo un error al momento de seleccionar: "+e.getMessage());
@@ -1107,6 +1062,8 @@ public class frmMain extends javax.swing.JFrame {
                 dgRetirarProducto.stock = stock;
                 dgRetirarProducto dg = new dgRetirarProducto(this, true);
                 dg.setVisible(true);
+                tablaProducto();
+                muestraHistorialProducto();
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Hubo un error al momento de seleccionar: "+e.getMessage());
@@ -1129,15 +1086,12 @@ public class frmMain extends javax.swing.JFrame {
         //  System.out.println(""+Nombre);
     }//GEN-LAST:event_btnEliminarCategoriaActionPerformed
 
-    private void btnTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTablaActionPerformed
-        tablaProveedores();
-    }//GEN-LAST:event_btnTablaActionPerformed
-
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         dgRegistrarProveedor.titulo = "Registrar Proveedor";
         dgRegistrarProveedor pro = new dgRegistrarProveedor(this, true);
         pro.setLocationRelativeTo(null);
         pro.setVisible(true);
+        tablaProveedores();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
@@ -1151,6 +1105,7 @@ public class frmMain extends javax.swing.JFrame {
             dgRegistrarProveedor pro = new dgRegistrarProveedor(this, true);
             pro.setLocationRelativeTo(null);
             pro.setVisible(true);
+            tablaProveedores();
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
@@ -1163,7 +1118,7 @@ public class frmMain extends javax.swing.JFrame {
             dgEliminarUsuario.codigo = Integer.parseInt(tabProveedores.getValueAt(fila, 0).toString());
             dgEliminarUsuario dg = new dgEliminarUsuario(this, true);
             dg.setVisible(true);
-            
+            tablaProveedores();
             /*int codigo = (int) tabProveedores.getValueAt(fila, 0);
             proveedoresController.eliminarProveedores(codigo);
             tablaProveedores();*/
@@ -1174,12 +1129,8 @@ public class frmMain extends javax.swing.JFrame {
         tablaProveedores();
     }//GEN-LAST:event_txtProveedorKeyTyped
 
-    private void btnActualizarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarTablaActionPerformed
-        tablaUsuario();
-    }//GEN-LAST:event_btnActualizarTablaActionPerformed
-
     private void txtUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyTyped
-         tablaUsuario();
+        tablaUsuario();
     }//GEN-LAST:event_txtUsuarioKeyTyped
 
     private void btnAgregarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarUsuarioActionPerformed
@@ -1187,6 +1138,7 @@ public class frmMain extends javax.swing.JFrame {
         dgRegistrarUsuario dg = new dgRegistrarUsuario(this, true);
         dg.setLocationRelativeTo(null);
         dg.setVisible(true);
+        tablaUsuario();
     }//GEN-LAST:event_btnAgregarUsuarioActionPerformed
 
     private void btnEditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarUsuarioActionPerformed
@@ -1199,6 +1151,7 @@ public class frmMain extends javax.swing.JFrame {
             dgRegistrarUsuario dg = new dgRegistrarUsuario(this, true);
             dg.setLocationRelativeTo(null);
             dg.setVisible(true);
+            tablaUsuario();
         }
     }//GEN-LAST:event_btnEditarUsuarioActionPerformed
 
@@ -1211,14 +1164,9 @@ public class frmMain extends javax.swing.JFrame {
             dgEliminarUsuario.codigo = Integer.parseInt(tabUsuario.getValueAt(fila, 0).toString());
             dgEliminarUsuario dg = new dgEliminarUsuario(this, true);
             dg.setVisible(true);
+            tablaUsuario();
         }    
     }//GEN-LAST:event_btnEliminarUsuarioActionPerformed
-
-    private void btnActualizarTablaProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarTablaProductoActionPerformed
-        tablaProducto();
-        muestraHistorialProducto();
-        
-    }//GEN-LAST:event_btnActualizarTablaProductoActionPerformed
 
     public void setActiveFrame(JInternalFrame frame) {
         this.activeFrame = frame;
@@ -1322,11 +1270,8 @@ public class frmMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Actualizar;
     private javax.swing.JScrollPane TablaProducto;
     private javax.swing.JButton btnActualizar;
-    private javax.swing.JButton btnActualizarTabla;
-    private javax.swing.JButton btnActualizarTablaProducto;
     private javax.swing.JButton btnAgregarUsuario;
     private javax.swing.JButton btnBuscarHistorial;
     private javax.swing.JButton btnCerrarCategoria;
@@ -1343,7 +1288,6 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JButton btnModProduc;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnRetirarProducto;
-    private javax.swing.JButton btnTabla;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbTipoProducto;
     private javax.swing.JLabel fontImage;
