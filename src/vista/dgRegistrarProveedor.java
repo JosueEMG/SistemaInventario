@@ -53,6 +53,7 @@ public class dgRegistrarProveedor extends javax.swing.JDialog {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/FMainMenu.png"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         setSize(new java.awt.Dimension(510, 470));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));

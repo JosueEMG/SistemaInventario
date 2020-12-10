@@ -55,6 +55,7 @@ public class dgRegistrarUsuario extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         setSize(new java.awt.Dimension(450, 380));
 
         btnAceptar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N

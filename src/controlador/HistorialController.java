@@ -26,9 +26,9 @@ public class HistorialController {
         try {
             if (!nombre.equals("")) {
                 conn = MySQLConexion.getConexion();
-                String sql = "select h.id_historial, p.fecha_ingreso, fecha_salida, cantidad, p.nombre_producto, estado\n"
-                        + "from historial h inner join productos p\n"
-                        + "on h.id_producto = p.id_producto and p.nombre_producto LIKE ?;";
+                String sql = "select id_historial, fecha_ingreso, fecha_salida, cantidad, nombre_producto, estado\n"
+                        + "from historial\n"
+                        + "where nombre_producto LIKE ?;";
                 PreparedStatement st = conn.prepareStatement(sql);
                 st.setString(1, "%" + nombre + "%");
                 ResultSet rs = st.executeQuery();
@@ -45,9 +45,8 @@ public class HistorialController {
                 }
             } else {
                 conn = MySQLConexion.getConexion();
-                String sql = "select h.id_historial, p.fecha_ingreso, fecha_salida, cantidad, p.nombre_producto, estado \n"
-                        + "from historial h inner join productos p\n"
-                        + "on h.id_producto = p.id_producto";
+                String sql = "select id_historial, fecha_ingreso, fecha_salida, cantidad, nombre_producto, estado \n"
+                        + "from historial\n";
                 PreparedStatement st = conn.prepareStatement(sql);
                 ResultSet rs = st.executeQuery();
                 //llenar el arraylist con la clase entidad

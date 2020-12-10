@@ -7,7 +7,6 @@ package vista;
 
 import controlador.CategoriaControlller;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import controlador.EventsController;
 import controlador.ProductoController;
 import controlador.HistorialController;
@@ -42,7 +41,7 @@ public class frmMain extends javax.swing.JFrame {
     public frmMain() {
         initComponents();
         muestraCategoria();
-        muestraHistorialProducto();
+        muestraHistorialProducto("");
         tablaProveedores();
         tablaUsuario();
         this.setLocationRelativeTo(null);
@@ -179,8 +178,7 @@ public class frmMain extends javax.swing.JFrame {
         tablaHistorialProducto = new javax.swing.JTable();
         btnCerrarHistorial = new javax.swing.JButton();
         jLabel23 = new javax.swing.JLabel();
-        btnBuscarHistorial = new javax.swing.JButton();
-        txtidHistorial = new javax.swing.JTextField();
+        txtHistorial = new javax.swing.JTextField();
         fontImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -854,17 +852,13 @@ public class frmMain extends javax.swing.JFrame {
         jPanel7.add(jLabel23);
         jLabel23.setBounds(340, 70, 120, 20);
 
-        btnBuscarHistorial.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
-        btnBuscarHistorial.setText("Buscar");
-        btnBuscarHistorial.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarHistorialActionPerformed(evt);
+        txtHistorial.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtHistorialKeyTyped(evt);
             }
         });
-        jPanel7.add(btnBuscarHistorial);
-        btnBuscarHistorial.setBounds(740, 65, 100, 36);
-        jPanel7.add(txtidHistorial);
-        txtidHistorial.setBounds(500, 70, 200, 24);
+        jPanel7.add(txtHistorial);
+        txtHistorial.setBounds(500, 70, 200, 24);
 
         javax.swing.GroupLayout frmHistorialLayout = new javax.swing.GroupLayout(frmHistorial.getContentPane());
         frmHistorial.getContentPane().setLayout(frmHistorialLayout);
@@ -921,7 +915,7 @@ public class frmMain extends javax.swing.JFrame {
 
                         }
                     } catch (Exception e) {
-                        SimpleAlert.showMessaje(null, false, e);
+                        
                     }
                 }
             };
@@ -945,7 +939,7 @@ public class frmMain extends javax.swing.JFrame {
                             }
                         }
                     } catch (Exception e) {
-                        SimpleAlert.showMessaje(null, false, e);
+                        
                     }
                 }
             };
@@ -994,7 +988,7 @@ public class frmMain extends javax.swing.JFrame {
         try { 
             tablaClasificacionProducto(categoriaController.getIdCategoria(cbTipoProducto.getSelectedItem().toString()));
         } catch (Exception e) {
-            SimpleAlert.showMessaje(null, false, e);
+            
         }
 
     }//GEN-LAST:event_cbTipoProductoItemStateChanged
@@ -1007,10 +1001,6 @@ public class frmMain extends javax.swing.JFrame {
         llenarCbTipoProducto();
 
     }//GEN-LAST:event_jButton11ActionPerformed
-
-    private void btnBuscarHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarHistorialActionPerformed
-        muestraHistorialProducto();
-    }//GEN-LAST:event_btnBuscarHistorialActionPerformed
 
     private void btnIngProducActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngProducActionPerformed
 
@@ -1025,7 +1015,7 @@ public class frmMain extends javax.swing.JFrame {
         dg.getLbTitulo().setText("Ingresar Producto");
         dg.setVisible(true);
         tablaProducto();
-        muestraHistorialProducto();
+        muestraHistorialProducto("");
     }//GEN-LAST:event_btnIngProducActionPerformed
 
     private void btnModProducActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModProducActionPerformed
@@ -1043,7 +1033,7 @@ public class frmMain extends javax.swing.JFrame {
                 dg.getLbTitulo().setText("Modificar Producto");
                 dg.setVisible(true);
                 tablaProducto();
-                muestraHistorialProducto();
+                muestraHistorialProducto("");
             }
         } catch (Exception e) {
 
@@ -1056,7 +1046,7 @@ public class frmMain extends javax.swing.JFrame {
         try {
             int f = tablaProducto.getSelectedRow();
             if (f == -1) {
-                JOptionPane.showMessageDialog(null, "Por favor, seleccione un producto de la tabla");
+                SimpleAlert.showMessaje(null, true, "Por favor, seleccione un producto de la tabla");
             }
             else {
                 int idProducto = Integer.parseInt(tablaProducto.getValueAt(f, 0).toString());
@@ -1066,7 +1056,7 @@ public class frmMain extends javax.swing.JFrame {
                 dgRetirarProducto dg = new dgRetirarProducto(this, true);
                 dg.setVisible(true);
                 tablaProducto();
-                muestraHistorialProducto();
+                muestraHistorialProducto("");
             }
         } catch (Exception e) {
             SimpleAlert.showMessaje(null, false, "Hubo un error al momento de seleccionar: "+e.getMessage());
@@ -1080,13 +1070,19 @@ public class frmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBuscarProductoKeyTyped
 
     private void btnEliminarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCategoriaActionPerformed
-       String Nombre;
-       tablaCategoria.getSelectedRow();
-       int col=1;
-       Nombre=(tablaCategoria.getValueAt(tablaCategoria.getSelectedRow(),col)).toString();
-       categoriaController.removeCategoria(Nombre);
-       muestraCategoria();
-       llenarCbTipoProducto();
+        String Nombre;
+        int f = tablaCategoria.getSelectedRow();
+        int col=1;
+        if (f != -1) {
+            Nombre=(tablaCategoria.getValueAt(f,col)).toString();
+            categoriaController.removeCategoria(Nombre);
+            muestraCategoria();
+            llenarCbTipoProducto();
+        }
+        else { 
+            SimpleAlert.showMessaje(null, true, "Seleccione una categoria de la tabla");
+        }
+       
         //  System.out.println(""+Nombre);
     }//GEN-LAST:event_btnEliminarCategoriaActionPerformed
 
@@ -1172,6 +1168,10 @@ public class frmMain extends javax.swing.JFrame {
         }    
     }//GEN-LAST:event_btnEliminarUsuarioActionPerformed
 
+    private void txtHistorialKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHistorialKeyTyped
+        muestraHistorialProducto(txtHistorial.getText());
+    }//GEN-LAST:event_txtHistorialKeyTyped
+
     public void setActiveFrame(JInternalFrame frame) {
         this.activeFrame = frame;
     }
@@ -1228,8 +1228,7 @@ public class frmMain extends javax.swing.JFrame {
         }
     }
 
-    public void muestraHistorialProducto() {
-        String nombre = txtidHistorial.getText();
+    public void muestraHistorialProducto(String nombre) {
         DefaultTableModel dt = (DefaultTableModel) tablaHistorialProducto.getModel();
         dt.setRowCount(0);
         for (Historial x : historialController.listadoHistorial(nombre)) {
@@ -1277,7 +1276,6 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JScrollPane TablaProducto;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregarUsuario;
-    private javax.swing.JButton btnBuscarHistorial;
     private javax.swing.JButton btnCerrarCategoria;
     private javax.swing.JButton btnCerrarClasificacion;
     private javax.swing.JButton btnCerrarHistorial;
@@ -1349,9 +1347,9 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JTable tablaProducto;
     private javax.swing.JTable tableClasificacionProducto;
     private javax.swing.JTextField txtBuscarProducto;
+    private javax.swing.JTextField txtHistorial;
     private javax.swing.JTextField txtProveedor;
     private javax.swing.JTextField txtUsuario;
-    private javax.swing.JTextField txtidHistorial;
     // End of variables declaration//GEN-END:variables
     private void labelcolor(JLabel label) {
         label.setBackground(new java.awt.Color(53, 162, 107));

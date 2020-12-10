@@ -8,6 +8,7 @@ package vista;
 import modelo.Categoria;
 import controlador.CategoriaControlller;
 import javax.swing.JOptionPane;
+import josueemg.SimpleAlert;
 
 /**
  *
@@ -43,6 +44,7 @@ public class dgResgistrarCategoria extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         setSize(new java.awt.Dimension(530, 470));
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 18)); // NOI18N
@@ -116,7 +118,7 @@ public class dgResgistrarCategoria extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         if (NombreCategoria.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Ingrese el Nombre de Una categoria");
+            SimpleAlert.showMessaje(null, true, "Ingrese el Nombre de Una categoria");
         } else {
             cat.addCategoria(NombreCategoria.getText());
             

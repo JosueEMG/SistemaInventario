@@ -46,6 +46,7 @@ public class dgEliminarUsuario extends javax.swing.JDialog {
         txtContraseña = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         setSize(new java.awt.Dimension(463, 196));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));

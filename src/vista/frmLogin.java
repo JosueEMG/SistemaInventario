@@ -7,6 +7,7 @@ package vista;
 import controlador.UsuarioController;
 import modelo.Usuario;
 import javax.swing.JOptionPane;
+import josueemg.SimpleAlert;
 /**
  *
  * @author geanl
@@ -127,20 +128,21 @@ public class frmLogin extends javax.swing.JFrame {
             int id = userController.userVerify(dni, contrasena);
 
             if (contrasena.equals("") && dni.equals("")) {
-                JOptionPane.showMessageDialog(null, "Ingrese datos a todos los campos");
+                SimpleAlert.showMessaje(null, true, "Ingrese datos a todos los campos");
             }
             else if (id == 0) {
-                JOptionPane.showMessageDialog(null, "Los datos de usuario son incorrectos");
+                SimpleAlert.showMessaje(null, true, "Los datos de usuario son incorrectos");
             }
             else{
                 Usuario user = userController.getUsuario(id);
                 frmMain.user = user;
                 frmMain frm = new frmMain();
                 frm.setVisible(true);
+                SimpleAlert.showMessaje(null, true, "Bienvenido");
                 this.dispose();
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Hubo un error al momento de ingresar al sistema: " + e.getMessage());
+            SimpleAlert.showMessaje(null, false, "Hubo un error al momento de ingresar al sistema: " + e.getMessage());
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
