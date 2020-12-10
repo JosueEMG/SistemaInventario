@@ -921,7 +921,7 @@ public class frmMain extends javax.swing.JFrame {
 
                         }
                     } catch (Exception e) {
-                        JOptionPane.showMessageDialog(null, e);
+                        SimpleAlert.showMessaje(null, false, e);
                     }
                 }
             };
@@ -945,7 +945,7 @@ public class frmMain extends javax.swing.JFrame {
                             }
                         }
                     } catch (Exception e) {
-                        JOptionPane.showMessageDialog(null, e);
+                        SimpleAlert.showMessaje(null, false, e);
                     }
                 }
             };
@@ -994,6 +994,7 @@ public class frmMain extends javax.swing.JFrame {
         try { 
             tablaClasificacionProducto(categoriaController.getIdCategoria(cbTipoProducto.getSelectedItem().toString()));
         } catch (Exception e) {
+            SimpleAlert.showMessaje(null, false, e);
         }
 
     }//GEN-LAST:event_cbTipoProductoItemStateChanged
@@ -1033,7 +1034,6 @@ public class frmMain extends javax.swing.JFrame {
             int f = tablaProducto.getSelectedRow();
             if (f == -1) {
                 SimpleAlert.showMessaje(this, true, "Por favor, seleccione un producto de la tabla");
-                JOptionPane.showMessageDialog(null, "Por favor, seleccione un producto de la tabla");
             }
             else {
                 int idProducto = (int)tablaProducto.getValueAt(f, 0);
@@ -1046,7 +1046,8 @@ public class frmMain extends javax.swing.JFrame {
                 muestraHistorialProducto();
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Hubo un error al momento de seleccionar: "+e.getMessage());
+
+            SimpleAlert.showMessaje(null, false, "Hubo un error al momento de seleccionar: "+e.getMessage());
         }
         
     }//GEN-LAST:event_btnModProducActionPerformed
@@ -1068,7 +1069,8 @@ public class frmMain extends javax.swing.JFrame {
                 muestraHistorialProducto();
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Hubo un error al momento de seleccionar: "+e.getMessage());
+            SimpleAlert.showMessaje(null, false, "Hubo un error al momento de seleccionar: "+e.getMessage());
+            
         }
         
     }//GEN-LAST:event_btnRetirarProductoActionPerformed
@@ -1099,7 +1101,7 @@ public class frmMain extends javax.swing.JFrame {
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         int fila = tabProveedores.getSelectedRow();
         if (fila == -1) {
-            JOptionPane.showMessageDialog(null, "Seleccione una fila");
+            SimpleAlert.showMessaje(null, true, "Seleccione una fila");
         } else {
             dgRegistrarProveedor.codigo = Integer.parseInt(tabProveedores.getValueAt(fila, 0).toString());
             dgRegistrarProveedor.nombre = tabProveedores.getValueAt(fila, 1).toString();
@@ -1114,7 +1116,7 @@ public class frmMain extends javax.swing.JFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         int fila = tabProveedores.getSelectedRow();
         if (fila == -1) {
-            JOptionPane.showMessageDialog(null, "Seleccione una fila");
+            SimpleAlert.showMessaje(null, true, "Seleccione una fila");
         } else {
             dgEliminarUsuario.nro=2;
             dgEliminarUsuario.codigo = Integer.parseInt(tabProveedores.getValueAt(fila, 0).toString());
@@ -1146,7 +1148,7 @@ public class frmMain extends javax.swing.JFrame {
     private void btnEditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarUsuarioActionPerformed
         int fila = tabUsuario.getSelectedRow();
         if (fila == -1) {
-            JOptionPane.showMessageDialog(null, "Seleccione una fila");
+            SimpleAlert.showMessaje(null, true, "Seleccione una fila");
         } else {
             dgRegistrarUsuario.titulo = "Actualizar Usuario";
             dgRegistrarUsuario.codigo = Integer.parseInt(tabUsuario.getValueAt(fila, 0).toString());
@@ -1160,7 +1162,7 @@ public class frmMain extends javax.swing.JFrame {
     private void btnEliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarUsuarioActionPerformed
         int fila = tabUsuario.getSelectedRow();
         if(fila == -1){
-            JOptionPane.showMessageDialog(null, "Seleccione una fila");
+            SimpleAlert.showMessaje(null, true, "Seleccione una fila");
         }else{
             dgEliminarUsuario.nro=1;
             dgEliminarUsuario.codigo = Integer.parseInt(tabUsuario.getValueAt(fila, 0).toString());
