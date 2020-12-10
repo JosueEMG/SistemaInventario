@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JInternalFrame;
 import javax.swing.table.DefaultTableModel;
+import josueemg.SimpleAlert;
 import modelo.Usuario;
 import modelo.Categoria;
 import modelo.Historial;
@@ -1031,6 +1032,7 @@ public class frmMain extends javax.swing.JFrame {
         try {
             int f = tablaProducto.getSelectedRow();
             if (f == -1) {
+                SimpleAlert.showMessaje(this, true, "Por favor, seleccione un producto de la tabla");
                 JOptionPane.showMessageDialog(null, "Por favor, seleccione un producto de la tabla");
             }
             else {

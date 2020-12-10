@@ -7,6 +7,7 @@ package vista;
 
 import javax.swing.JOptionPane;
 import controlador.ProveedoresController;
+import josueemg.SimpleAlert;
 import modelo.Proveedores;
 /**
  *
@@ -139,7 +140,7 @@ public class dgRegistrarProveedor extends javax.swing.JDialog {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         if (titulo.equals("Registrar Proveedor")) {
             if (txtNombreProveedor.getText().equals("")) {
-                JOptionPane.showMessageDialog(null, "Ingrese un nombre valido");
+                SimpleAlert.showMessaje(null, true, "Ingrese un nombre valido");
             } else {
                 String nombre = txtNombreProveedor.getText();
                 proveedores.setNombre_proveedores(nombre);

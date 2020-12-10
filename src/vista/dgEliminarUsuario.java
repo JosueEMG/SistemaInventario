@@ -8,6 +8,7 @@ package vista;
 import controlador.UsuarioController;
 import controlador.ProveedoresController;
 import javax.swing.JOptionPane;
+import josueemg.SimpleAlert;
 import modelo.Usuario;
 
 /**
@@ -138,7 +139,7 @@ public class dgEliminarUsuario extends javax.swing.JDialog {
                 this.dispose();
             }
         }else{
-            JOptionPane.showMessageDialog(null, "Ingrese una contraseña correcta");
+            SimpleAlert.showMessaje(null, true, "Ingrese una contraseña correcta");
         }
     }//GEN-LAST:event_btnContraseñaActionPerformed
 
