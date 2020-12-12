@@ -5,6 +5,8 @@
  */
 package vista;
 import controlador.UsuarioController;
+import java.awt.Toolkit;
+import josueemg.SimpleAlert;
 import modelo.Usuario;
 /**
  *
@@ -81,13 +83,19 @@ public class dgRegistrarUsuario extends javax.swing.JDialog {
         jLabel3.setText("Ingrese su Correo:");
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
-        jLabel4.setText("Ingrese suContraseña:");
+        jLabel4.setText("Ingrese su contraseña:");
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel5.setText("Ingrese su Nombre:");
 
         labelTitulo.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         labelTitulo.setText("Registrar Usuario");
+
+        txtDNI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDNIKeyTyped(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/FMainMenu.png"))); // NOI18N
         jLabel1.setText("C");
@@ -168,7 +176,8 @@ public class dgRegistrarUsuario extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        if(titulo.equals("Registrar Usuario")){
+        try {
+            if(titulo.equals("Registrar Usuario")){
             Usuario usuario = new Usuario();
             usuario.setNombre(txtNombre.getText());
             usuario.setDni(Integer.parseInt(txtDNI.getText()));
@@ -176,16 +185,34 @@ public class dgRegistrarUsuario extends javax.swing.JDialog {
             usuario.setCorreo(txtCorreo.getText());
             usuarioController.añadirUsuarios(usuario);
             this.dispose();
+            }
+            if(titulo.equals("Actualizar Usuario")){
+                usuarioController.actualizarUsuario(txtNombre.getText(), Integer.parseInt(txtDNI.getText()), txtContraseña.getText(), txtCorreo.getText(), codigo);
+                this.dispose();
+            }
+        } catch (Exception e) {
+            
         }
-        if(titulo.equals("Actualizar Usuario")){
-            usuarioController.actualizarUsuario(txtNombre.getText(), Integer.parseInt(txtDNI.getText()), txtContraseña.getText(), txtCorreo.getText(), codigo);
-            this.dispose();
-        }
+        
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void txtDNIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDNIKeyTyped
+       
+        char letra = evt.getKeyChar();
+        if(Character.isSpaceChar(letra)) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep(); 
+        }
+        else if (txtDNI.getText().length() + 1 > 8){
+            System.out.println(txtDNI.getText());
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep(); 
+        }
+    }//GEN-LAST:event_txtDNIKeyTyped
 
     /**
      * @param args the command line arguments

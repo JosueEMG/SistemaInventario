@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import josueemg.SimpleAlert;
 import modelo.Usuario;
 import util.MySQLConexion;
 
@@ -87,7 +88,7 @@ public class UsuarioController {
             st.executeUpdate();
 
         } catch (Exception ex) {
-            ex.printStackTrace();
+            SimpleAlert.showMessaje(null, true, "El DNI ya se encuentra registrado en el sistema");
         } finally {
             try {
 

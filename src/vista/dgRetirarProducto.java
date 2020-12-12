@@ -8,6 +8,7 @@ package vista;
 import controlador.ProductoController;
 import javax.swing.JOptionPane;
 import josueemg.SimpleAlert;
+import modelo.Productos;
 
 /**
  *
@@ -101,9 +102,14 @@ public class dgRetirarProducto extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRetirarPorductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarPorductoActionPerformed
-        
-        if (Integer.parseInt(txtNumeroProducto.getText()) > stock) {
-            SimpleAlert.showMessaje(null, true, "Ingrese una cantidad valida");
+
+        Productos p = productoController.getProducto(idProducto);
+        if (p == null) {
+            SimpleAlert.showMessaje(null, true, "El producto seleccionado ya no existe en el inventario");
+            this.dispose();
+        }
+        else if (Integer.parseInt(txtNumeroProducto.getText()) > stock) {
+            SimpleAlert.showMessaje(null, true, "Ingrese una cantidad válida");
         }
         else if (Integer.parseInt(txtNumeroProducto.getText()) == stock){
             productoController.retirarProducto(Integer.parseInt(txtNumeroProducto.getText()), idProducto);

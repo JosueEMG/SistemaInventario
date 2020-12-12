@@ -107,6 +107,9 @@ public class frmMain extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         slideBar = new javax.swing.JPanel();
+        cerrarSesion = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
         panelCategorias = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -162,6 +165,7 @@ public class frmMain extends javax.swing.JFrame {
         btnCerrarRegistro = new javax.swing.JButton();
         TablaProducto = new javax.swing.JScrollPane();
         tablaProducto = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
         frmProveedores = new javax.swing.JInternalFrame();
         jPanel6 = new javax.swing.JPanel();
         btnCerrarProveedores = new javax.swing.JButton();
@@ -194,6 +198,20 @@ public class frmMain extends javax.swing.JFrame {
 
         slideBar.setBackground(new java.awt.Color(54, 70, 78));
         slideBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        cerrarSesion.setBackground(new java.awt.Color(54, 70, 78));
+        cerrarSesion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/icons8-male-user-23.png"))); // NOI18N
+        cerrarSesion.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 4, 40, 30));
+
+        jLabel19.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setText("Cerrar sesion");
+        cerrarSesion.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 290, 20));
+
+        slideBar.add(cerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 350, 40));
 
         panelCategorias.setBackground(new java.awt.Color(54, 70, 78));
         panelCategorias.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -680,6 +698,15 @@ public class frmMain extends javax.swing.JFrame {
 
         jPanel2.add(TablaProducto);
         TablaProducto.setBounds(50, 160, 1060, 450);
+
+        jButton1.setText("Actualizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1);
+        jButton1.setBounds(800, 100, 150, 32);
 
         javax.swing.GroupLayout frmProductosLayout = new javax.swing.GroupLayout(frmProductos.getContentPane());
         frmProductos.getContentPane().setLayout(frmProductosLayout);
@@ -1172,6 +1199,17 @@ public class frmMain extends javax.swing.JFrame {
         muestraHistorialProducto(txtHistorial.getText());
     }//GEN-LAST:event_txtHistorialKeyTyped
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        tablaProducto();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    public void cerrarSesion() {
+        user = null;
+        frmLogin frm = new frmLogin();
+        frm.setVisible(true);
+        this.dispose();
+    }
+    
     public void setActiveFrame(JInternalFrame frame) {
         this.activeFrame = frame;
     }
@@ -1292,6 +1330,7 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JButton btnRetirarProducto;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbTipoProducto;
+    private javax.swing.JPanel cerrarSesion;
     private javax.swing.JLabel fontImage;
     private javax.swing.JInternalFrame frmCategorias;
     private javax.swing.JInternalFrame frmClasificacion;
@@ -1299,6 +1338,7 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JInternalFrame frmListadoUsuarios;
     private javax.swing.JInternalFrame frmProductos;
     private javax.swing.JInternalFrame frmProveedores;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton11;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1308,6 +1348,8 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel23;
@@ -1405,6 +1447,10 @@ public class frmMain extends javax.swing.JFrame {
 
     public javax.swing.JPanel getPanelProductos() {
         return panelProductos;
+    }
+
+    public javax.swing.JPanel getCerrarSesion() {
+        return cerrarSesion;
     }
 
 }

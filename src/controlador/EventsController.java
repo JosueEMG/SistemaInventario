@@ -31,6 +31,7 @@ public class EventsController implements MouseListener{
        menu.getPanelProveedores().addMouseListener(this);
        menu.getPanelProductos().addMouseListener(this);
        menu.getPanelCategorias().addMouseListener(this);
+       menu.getCerrarSesion().addMouseListener(this);
     }
     
     public void closeActiveFrames() {
@@ -79,6 +80,9 @@ public class EventsController implements MouseListener{
             menu.getFrmCategorias().setVisible(true);
             menu.setActiveFrame(menu.getFrmCategorias());
         }
+        else if(evt.equals(menu.getCerrarSesion())){
+            menu.cerrarSesion();
+        }
         
     }
 
@@ -115,6 +119,9 @@ public class EventsController implements MouseListener{
         else if(evt.equals(menu.getPanelCategorias())){
             changePanelColor(menu.getPanelCategorias(), new Color(53,162,107));
         }
+        else if(evt.equals(menu.getCerrarSesion())){
+            changePanelColor(menu.getCerrarSesion(), new Color(53,162,107));
+        }
 
     }
 
@@ -139,6 +146,9 @@ public class EventsController implements MouseListener{
         }
         else if(evt.equals(menu.getPanelCategorias())){
             changePanelColor(menu.getPanelCategorias(), new Color(54,70,78));
+        }
+        else if(evt.equals(menu.getCerrarSesion())){
+            changePanelColor(menu.getCerrarSesion(), new Color(54,70,78));
         }
 
     }
