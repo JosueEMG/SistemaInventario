@@ -81,3 +81,37 @@ and p.Id_Usuario=u.Id
 and p.Id_categoria=c.Id_categoria 
 and Nombre_Producto 
 like "Leche Gloria";
+
+
+
+DELIMITER @@
+DROP PROCEDURE AdicionProducto @@
+CREATE PROCEDURE sistemainventario.AdicionProducto
+(nom varchar(25), stock int, precio int, fecha_ingreso varchar(25), fecha_vencimiento varchar(25), idcat int, idpro int, idusu int)
+begin
+declare nro int;
+declare nrohis int;
+select Max(Id_producto)+1 into nro from productos;
+select Max(Id_historial)+1 into nrohis from historial;
+insert into productos values (nro, nom, stock, precio, fecha_ingreso, fecha_vencimiento, idcat, idpro, nrohis, idusu);
+insert into historial values (nrohis, fecha_ingreso,"-", stock, nom, "Ingreso");
+end @@ 
+DELIMITER ; 
+
+
+
+
+DELIMITER @@
+DROP PROCEDURE AdicionProducto @@
+CREATE PROCEDURE sistemainventario.AdicionProducto
+(nom varchar(25), stock int, precio int, fecha_ingreso varchar(25), fecha_vencimiento varchar(25), idcat int, idpro int, idusu int)
+begin
+declare nro int;
+declare nrohis int;
+select Max(Id_producto)+1 into nro from productos;
+select Max(Id_historial)+1 into nrohis from historial;
+insert into productos values (nro, nom, stock, precio, fecha_ingreso, fecha_vencimiento, idcat, idpro, nrohis, idusu);
+insert into historial values (nrohis, fecha_ingreso,"-", stock, nom, "Ingreso");
+end @@ 
+DELIMITER ; 
+
