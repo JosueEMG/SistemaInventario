@@ -99,19 +99,23 @@ end @@
 DELIMITER ; 
 
 
-
-
 DELIMITER @@
-DROP PROCEDURE AdicionProducto @@
-CREATE PROCEDURE sistemainventario.AdicionProducto
-(nom varchar(25), stock int, precio int, fecha_ingreso varchar(25), fecha_vencimiento varchar(25), idcat int, idpro int, idusu int)
+DROP PROCEDURE RetiroProducto @@
+CREATE PROCEDURE sistemainventario.RetiroProducto
+(cantidad int, idproducto int)
 begin
-declare nro int;
+declare stockanterior int;
 declare nrohis int;
-select Max(Id_producto)+1 into nro from productos;
+declare nomProducto varchar(30);
+declare fechaIngreso varchar(25);
+select stock from productos where id_producto=idproducto into stockanterior;
+select nombre_producto from productos where id_producto=idproducto into nomProducto;
+select fecha_ingreso from productos where id_producto=idproducto into fechaIngreso;
+Update productos set stock = stockanterior-cantidad where id_producto=idproducto;
 select Max(Id_historial)+1 into nrohis from historial;
-insert into productos values (nro, nom, stock, precio, fecha_ingreso, fecha_vencimiento, idcat, idpro, nrohis, idusu);
-insert into historial values (nrohis, fecha_ingreso,"-", stock, nom, "Ingreso");
+insert into historial values (nrohis, fechaIngreso, curdate(), cantidad, nomProducto, "Retiro");
 end @@ 
 DELIMITER ; 
+
+
 
